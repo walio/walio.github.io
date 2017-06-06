@@ -7,24 +7,23 @@ tags: test
 
 1. 安装git。这是hexo官方文档给出的[链接](https://git-scm.com/downloads)。
 2. 安装nodejs。[nodejs官网](https://nodejs.org/)去下对应的版本安装就好了。
-3. 安装hex。 ` npm install hexo-cl `
+3. 安装hexo。 ` npm install hexo-cl `
 4. 初始化hexo。切换到你的workspace文件夹，执行以下命令安装nodejs所需要的库。
-    ```cmd
-    	hexo init <folder>
-    	cd <folder>
-    	npm install```
+   ```cmd
+   hexo init <folder>
+   cd <folder>
+   npm install
+   ```
 5. optional 个人感觉hexo默认的主题[landscape](https://hexo.io/hexo-theme-landscape/)不是很好看，虽然还有[landscape-plus](http://xiangming.github.io/landscape-plus/)。换了[next](http://notes.iissnan.com/)的主题。同样[官方文档](http://theme-next.iissnan.com/getting-started.html)也很详细。很神奇的是默认语言是日语。需要根据[这里](http://theme-next.iissnan.com/getting-started.html#select-language)修改。
-6. 本地调试。在<folder>文件夹下运行` hexo s `命令可以启动一个本地的服务器，打开[页面](http://localhost:4000/)就可以看到效果。hexo默认使用4000端口，如果无法启动可以试试查看端口是否被占用。修改了<folder>中的文件后刷新页面即可看到效果。命令` hexo generate `可以生成一个public文件夹，这个是静态网页，目标就是将这些静态网页上传至github，通过github pages访问。
+6. 本地调试。在`<folder>`文件夹下运行` hexo s `命令可以启动一个本地的服务器，打开[页面](http://localhost:4000/)就可以看到效果。hexo默认使用4000端口，如果无法启动可以试试查看端口是否被占用。修改了<folder>中的文件后刷新页面即可看到效果。命令` hexo generate `可以生成一个public文件夹，这个是静态网页，目标就是将这些静态网页上传至github，通过github pages访问。
 7. 同步至github。使用命令` npm install hexo-deployer-git --save `安装hexo-deployer-git扩展，然后在<folder>文件加下生成的__config.yml中修改。
-在<folder>文件夹下执行` hexo deploy `命令，应当会弹出git的图形界面要求输入用户名和密码。完成以后就会生成githubpages了。
-``` yaml
-deploy:
-  type: git
-  repo: https://github.com/walio/walio.github.io.git
-  branch: master
-```
-
-test
+   ```yaml
+   deploy:
+     type: git
+     repo: https://github.com/walio/walio.github.io.git
+     branch: master
+  ```
+   在<folder>文件夹下执行` hexo deploy `命令，应当会弹出git的图形界面要求输入用户名和密码。完成以后就会生成githubpages了。
 8. 持续部署。毕竟每一次这样修改了之后都要同步两个分支太麻烦，用travis CI可以帮助我们同时同步。
 
 还是很高兴地看到其中很多优秀的应用都是由国人所编写的。还有很多事情要做，比如把以前的笔记迁移过来，还要考虑怎么配置一个比较舒适的写笔记的环境，包括有时候可能要在平板或者手机上写。还在考虑要不要通过vps同步到github，毕竟这个环境搭起来也有点麻烦。但有可能过一阵我要换一个vps，现在这个没有办法通过vpn登陆，要做一些见不得人的事情还是不放心。有时间可能写一写自己玩vps的过程。
