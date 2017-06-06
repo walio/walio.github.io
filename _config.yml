@@ -71,3 +71,4 @@ deploy:
   type: git
   repo: https://github.com/walio/walio.github.io.git
   branch: master
+
