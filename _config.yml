@@ -72,3 +72,8 @@ deploy:
   repo: https://github.com/walio/walio.github.io.git
   branch: master
 
+
+sitemap:
+  path: sitemap.xml
+baidusitemap:
+  path: baidusitemap.xml
