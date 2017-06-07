@@ -19,7 +19,7 @@
 
 
 {% if theme.baidu_site_verification %}
-  <meta name="baidu-site-verification" content="lCrdsvdTLN" />
+  <meta name="baidu-site-verification" content="Dd8P2nJsBS" />
 {% endif %}
 
 
