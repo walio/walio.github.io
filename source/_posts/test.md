@@ -1,31 +1,48 @@
 ---
-title: 测试博客
-tags: test
+title: 搭建一个没什么卵用的博客（一）随便部署
+tags:
+  - hexo
+  - 瞎折腾系列
+keywords:
+  - hexo
+  - github pages
+  - seo
+categories: 如何搭建一个舒适的博客创作环境
 ---
 
-也算是闲来无事搭建了一个博客，费了很多事，一开始用了最流行的jekyll，发现这个ruby的东西很难搞定，如果不懂ruby的话还是不要轻易尝试好了。ruby也不在我准备学习的技术栈里，虽然整上但又放弃了。还是hexo看着更简洁，虽然部署的时候麻烦。总之记录下自己部署的过程吧。其实[hexo官方文档](https://hexo.io/zh-cn/docs/)写的已经很详细了。
+**施工中**
 <!-- more -->
-1. 安装git。这是hexo官方文档给出的[链接](https://git-scm.com/downloads)。
-2. 安装nodejs。[nodejs官网](https://nodejs.org/)去下对应的版本安装就好了。
-3. 安装hexo。 ` npm install hexo-cl `
-4. 初始化hexo。切换到你的workspace文件夹，执行以下命令安装nodejs所需要的库。
+也算是闲来无事搭建了一个博客，本来只是觉着有趣，结果费了很多事。一开始用了最流行的jekyll，但发现这个东西还是有点复杂的，如果ruby不在你的技术栈里还是不要轻易尝试了。这篇博客随着我部署的过程逐渐变长，本来想着只是写给自己看的，结果变成了大而全的东西。于是想着索性写成一个教程，怕链接失效把原有的许多链接内容也抄了过来，如果有侵犯版权，请告知，必定删除。其实[hexo官方文档](https://hexo.io/zh-cn/docs/)写的已经很详细了。本身这也是一个学习的过程，还望诸君能够有所收获。
+
+其实大部分步骤都能百度到，文章目的是整理下搭建博客的流程。没有用域名还是因为没找到好的域名。。没有增加文章置顶还是因为需要修改hexo-generator-index的源码，但是travis构建的时候却没有效果，还是等待官方给出具体解决方案吧。
+1. 首先你得有一个github账号，不用多说。新建一个工程名为your_github_name.github.io，把静态页面提交至master分支，github会自动在https://your_github_name.github.io/ 生成页面。
+2. 安装git。hexo官方文档给出的[下载链接](https://git-scm.com/downloads)。
+3. 安装nodejs。[nodejs官网](https://nodejs.org/)去下对应的版本安装就好了。建议不太了解nodejs的可以百度一下，大致来说nodejs把js由只能在浏览器执行的脚本语言变成了可在本地执行的语言，npm是nodejs的包管理程序，如pip之于python，gem之于ruby。
+4. 安装hexo。` npm install -g hexo-cl `，这句话相当于在全局安装hexo-cl，-g是global的简写，默认npm是会将库文件安装至当前文件夹下的node-modules(相当于python的virtualenv)，需要用-g参数指定全局安装。
+5. 初始化hexo。切换到workspace文件夹，执行以下命令初始化hexo并安装hexo所需要的库。
    ```cmd
    hexo init <folder>
    cd <folder>
    npm install
    ```
-5. 更改主题。(optional)个人感觉hexo默认的主题[landscape](https://hexo.io/hexo-theme-landscape/)不是很好看，虽然还有[landscape-plus](http://xiangming.github.io/landscape-plus/)。换了[next](http://notes.iissnan.com/)的主题。同样[官方文档](http://theme-next.iissnan.com/getting-started.html)也很详细。很神奇的是默认语言是日语。需要根据[这里](http://theme-next.iissnan.com/getting-started.html#select-language)修改。
-6. 本地调试。在`<folder>`文件夹下运行` hexo s `命令可以启动一个本地的服务器，打开[页面](http://localhost:4000/)就可以看到效果。hexo默认使用4000端口，如果无法启动可以试试查看端口是否被占用。修改了<folder>中的文件后刷新页面即可看到效果。命令` hexo generate `可以生成一个public文件夹，这个是静态网页，目标就是将这些静态网页上传至github，通过github pages访问。
-7. 同步至github。使用命令` npm install hexo-deployer-git --save `安装hexo-deployer-git扩展，然后在<folder>文件加下生成的__config.yml中修改。
+6. 本地调试。在`<folder>`文件夹下运行` hexo server `命令可以启动一个本地的服务器，打开[页面](http://localhost:4000/)就可以看到效果。hexo默认使用4000端口，如果无法启动可以试试查看端口是否被占用。修改了<folder>中的文件后刷新页面即可看到效果。命令` hexo generate `会在`<folder>`下生成一个public文件夹，存储了静态页面。
+7. 同步至github。有两种手段。
+   （1）使用命令` npm install hexo-deployer-git --save `安装hexo-deployer-git扩展，然后在<folder>文件夹下生成的__config.yml中修改。
    ```yaml
    deploy:
      type: git
      repo: https://github.com/walio/walio.github.io.git
      branch: master
   ```
-   在<folder>文件夹下执行` hexo deploy `命令，应当会弹出git的图形界面要求输入用户名和密码。完成以后就会生成githubpages了。
-8. 持续部署。毕竟每一次这样修改了之后都要同步两个分支太麻烦，用travis CI可以帮助我们同时同步。[这篇文章](http://www.jianshu.com/p/e22c13d85659)已经写的很详细了，大家还是要注意拼写，我把下划线写成中划线结果查了半天都没搞明白。
-9. 添加徽章。(optional)这个纯属自己消遣了应该。。。
-10. SEO优化。写了博客虽然没什么用，但还是希望能被人搜索到，被更多人看到的。首先用百度搜索site:walio.github.io，没有搜到说明就没被收录了。[这篇文章](https://zonghongyan.github.io/2017/02/18/201702181911/)同样写的很详细。另外安装了hexo-generator-baidu-sitemap和hexo-generator-sitemap，生成了两个站点地图，不知道有没有用
+   在<folder>文件夹下执行` hexo deploy `命令，应当会弹出git的图形界面要求输入用户名和密码。完成以后就会自动部署至githubpages了。
+   （2）持续部署。毕竟每一次这样修改了之后都要同步两个分支太麻烦，用travis CI可以帮助我们同时同步。[这篇文章](http://www.jianshu.com/p/e22c13d85659)已经写的很详细了。GH_TOKEN写成GH-TOKEN结果查了半天都没搞明白，还是要注意拼写。
+8. 修改`<folder>`文件夹下的__config.yml文件，看着改就行，主要是title、author、description等。
+9. *optional* 更改主题。(optional)先安利一波next主题，主题配置文件有500多行，可配置项还是很多的，对于我辈动手能力不强不会自己造轮子的前端小白来说是个福音了。个人感觉hexo默认的主题landscape不是很好看。换了next主题，这是[官方示例](http://notes.iissnan.com/)。同样[官方文档](http://theme-next.iissnan.com/getting-started.html)也很详细。很神奇的是换了主题后默认语言是日语。需要根据[这里](http://theme-next.iissnan.com/getting-started.html#select-language)修改。`theme\next\__config.yml`可读性很高，可以通读一遍有什么想要的加上就行。
+10. *optional* 添加七牛云。如果不需要图片其实可以不用，个人感觉用大部分图用echarts画足够甚至更好
+往往画图的时候心有余而力不足，就需要用到echats：1.插件(方便)2.手动(可能不优雅？但可以保持最新的echats)3.手动引入需要的模块
+11. *optional* 安装echarts。(1)插件（方便）(2)手动（不优雅，但通过cdn能保持最新版echarts）。其余一些有趣的插件
+[hexo插件官方列表](https://hexo.io/plugins/)
+11. *optional* 添加徽章，，这个应该纯属消遣
 
-还是很高兴地看到其中很多优秀的应用都是由国人所编写的。还有很多事情要做，比如把以前的笔记迁移过来，还要考虑怎么配置一个比较舒适的写笔记的环境，包括有时候可能要在平板或者手机上写。还在考虑要不要通过vps同步到github，毕竟这个环境搭起来也有点麻烦。但有可能过一阵我要换一个vps，现在这个没有办法通过vpn登陆，要做一些见不得人的事情还是不放心。有时间可能写一写自己玩vps的过程。
+
+如果你的travis-CI构建运行npm install的时候遇到了Invalid version: "https://registry.npmjs.org/hexo-util/-/hexo-util-0.6.0.tgz"的问题，有可能是你的package-lock.json出了问题。package-lock.json是根据package.json自动创建的，删掉会重新创建，不用担心会出错。
