@@ -24,7 +24,7 @@
 
 
 {% if theme.qihu_site_verification %}
-  <meta name="360-site-verification" content="{{ theme.qihu_site_verification }}" />
+  <meta name="360-site-verification" content="c725dc45f4aae08c2bcac3d84601a885" />
 {% endif %}
 
 
