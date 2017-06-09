@@ -6,8 +6,11 @@ keywords:
   - snippet
   - 代码片段
   - scope
+  - timestamp
+  - atom使用代码片添加时间
 categories: 如何搭建一个舒适的博客创作环境
 ---
+${/fillDataText}
 **施工中**
 <!-- more -->
 atom介绍
@@ -75,6 +78,6 @@ keywords:
 keywords: sqlmapapi sqlmap 匿名上网
 ```
 需要插入date，hexo new出来的是带date的，不带date hexo会按修改时间排序？
-另外，貌似atom还不支持插入动态代码段？好像并不能在snippet中执行js代码，这个issue一直是open的，https://github.com/atom/snippets/issues/33，还是只能用静态变量表示时间，https://github.com/atom/snippets/pull/83，时间格式http://momentjs.com/docs/#/displaying/
+关于snippets中时间变量和文件路径变量的问题关注[这个issue](https://github.com/atom/snippets/pull/173)，目前为止最后一次提交是2015年9月21日，尚未与master分支合并，强行安装需要atom的开发者模式。
 sync同步插件
 给出我的gist

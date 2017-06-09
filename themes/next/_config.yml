@@ -30,9 +30,9 @@ canonical: true
 
 # Change headers hierarchy on site-subtitle (will be main site description) and on all post/pages titles for better SEO-optimization.
 seo: true
-google_site_verification: true
-baidu_site_verification: true
-qihu_site_verification: true
+google_site_verification: J9x_3qeYJgpHXg3TWkjrMVeWgrvoJXCn9BdqH8lpyPE
+baidu_site_verification: Dd8P2nJsBS
+qihu_site_verification: c725dc45f4aae08c2bcac3d84601a885
 # ---------------------------------------------------------------
 # Menu Settings
 # ---------------------------------------------------------------
@@ -135,8 +135,10 @@ font:
 # Social Links
 # Key is the link label showing to end users.
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
-#social:
-  #LinkLabel: Link
+social:
+  GitHub: https://github.com/walio
+  email: mailto:userLeeee@gmail.com
+
 
 
 # Social Links Icons
@@ -151,6 +153,7 @@ social_icons:
   GitHub: github
   Twitter: twitter
   Weibo: weibo
+  email: envelope
 
 
 # Sidebar Avatar
@@ -339,7 +342,7 @@ changyan:
 #google_site_verification:
 
 # Google Analytics
-#google_analytics:
+google_analytics: UA-100755954-1
 
 # Yandex Webmaster tools verification setting
 # See: https://webmaster.yandex.ru/

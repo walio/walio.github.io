@@ -38,6 +38,8 @@ categories: 如何搭建一个舒适的博客创作环境
    （2）持续部署。毕竟每一次这样修改了之后都要同步两个分支太麻烦，用travis CI可以帮助我们同时同步。[这篇文章](http://www.jianshu.com/p/e22c13d85659)已经写的很详细了。GH_TOKEN写成GH-TOKEN结果查了半天都没搞明白，还是要注意拼写。
 8. 修改`<folder>`文件夹下的__config.yml文件，看着改就行，主要是title、author、description等。
 9. *optional* 更改主题。(optional)先安利一波next主题，主题配置文件有500多行，可配置项还是很多的，对于我辈动手能力不强不会自己造轮子的前端小白来说是个福音了。个人感觉hexo默认的主题landscape不是很好看。换了next主题，这是[官方示例](http://notes.iissnan.com/)。同样[官方文档](http://theme-next.iissnan.com/getting-started.html)也很详细。很神奇的是换了主题后默认语言是日语。需要根据[这里](http://theme-next.iissnan.com/getting-started.html#select-language)修改。`theme\next\__config.yml`可读性很高，可以通读一遍有什么想要的加上就行。
+10. 添加作者邮箱。因为没有评论，总要有一个别人联系我的方式(~~并不会有人联系~~)。
+11. 使用[谷歌数据分析](http://theme-next.iissnan.com/third-party-services.html#analytics-google)。
 10. *optional* 添加七牛云。如果不需要图片其实可以不用，个人感觉用大部分图用echarts画足够甚至更好
 往往画图的时候心有余而力不足，就需要用到echats：1.插件(方便)2.手动(可能不优雅？但可以保持最新的echats)3.手动引入需要的模块
 11. *optional* 安装echarts。(1)插件（方便）(2)手动（不优雅，但通过cdn能保持最新版echarts）。其余一些有趣的插件
