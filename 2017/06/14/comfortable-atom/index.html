@@ -81,7 +81,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo,next,hexo生成的博客创建时间都相同" />
+  <meta name="keywords" content="atom,snippet,代码片段,scope,timestamp,atom使用代码片添加时间" />
 
 
 
@@ -97,17 +97,17 @@
 
 
 
-<meta name="description" content="一些小技巧，同样是没什么卵用的">
-<meta name="keywords" content="hexo,next,hexo生成的博客创建时间都相同">
+<meta name="description" content="首先例行公事吹一波atom。  这个世界上有那么多种编辑器，为什么你要花时间学习和使用 Atom 呢？虽然 Sublime 和 TextMate 之类的编辑器已经非常好用了，但它们仅提供了很有限的拓展性。而在另一个极端，Emacs 和 Vim 提供了灵活的拓展性，但它们并不是很友好，需要使用专用的编程语言来配置和拓展。我们觉得我们可以做得更好。我们的目标是在保证易用性的同时提供充分的可拓展性（ha">
+<meta name="keywords" content="atom,snippet,代码片段,scope,timestamp,atom使用代码片添加时间">
 <meta property="og:type" content="article">
-<meta property="og:title" content="next主题一些技巧">
-<meta property="og:url" content="https://walio.github.io/2017/06/14/hexo_next_trick/index.html">
+<meta property="og:title" content="整编辑器">
+<meta property="og:url" content="https://walio.github.io/2017/06/14/comfortable-atom/index.html">
 <meta property="og:site_name" content="冰淇淋好吃树难栽">
-<meta property="og:description" content="一些小技巧，同样是没什么卵用的">
+<meta property="og:description" content="首先例行公事吹一波atom。  这个世界上有那么多种编辑器，为什么你要花时间学习和使用 Atom 呢？虽然 Sublime 和 TextMate 之类的编辑器已经非常好用了，但它们仅提供了很有限的拓展性。而在另一个极端，Emacs 和 Vim 提供了灵活的拓展性，但它们并不是很友好，需要使用专用的编程语言来配置和拓展。我们觉得我们可以做得更好。我们的目标是在保证易用性的同时提供充分的可拓展性（ha">
 <meta property="og:updated_time" content="2017-06-14T13:47:22.666Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="next主题一些技巧">
-<meta name="twitter:description" content="一些小技巧，同样是没什么卵用的">
+<meta name="twitter:title" content="整编辑器">
+<meta name="twitter:description" content="首先例行公事吹一波atom。  这个世界上有那么多种编辑器，为什么你要花时间学习和使用 Atom 呢？虽然 Sublime 和 TextMate 之类的编辑器已经非常好用了，但它们仅提供了很有限的拓展性。而在另一个极端，Emacs 和 Vim 提供了灵活的拓展性，但它们并不是很友好，需要使用专用的编程语言来配置和拓展。我们觉得我们可以做得更好。我们的目标是在保证易用性的同时提供充分的可拓展性（ha">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://walio.github.io/2017/06/14/hexo_next_trick/"/>
+  <link rel="canonical" href="https://walio.github.io/2017/06/14/comfortable-atom/"/>
 
 
 
 
 
-  <title>next主题一些技巧 | 冰淇淋好吃树难栽</title>
+  <title>整编辑器 | 冰淇淋好吃树难栽</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -290,7 +290,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://walio.github.io/2017/06/14/hexo_next_trick/">
+    <link itemprop="mainEntityOfPage" href="https://walio.github.io/2017/06/14/comfortable-atom/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qianjie">
@@ -307,7 +307,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">next主题一些技巧</h2>
+          <h2 class="post-title" itemprop="name headline">整编辑器</h2>
         
 
         <div class="post-meta">
@@ -376,13 +376,28 @@
       
 
       
-        <p>一些小技巧，同样是没什么卵用的<br><a id="more"></a></p>
-<h2 id="文章排序杂乱"><a href="#文章排序杂乱" class="headerlink" title="文章排序杂乱"></a>文章排序杂乱</h2><p>首先感谢<a href="https://github.com/ukari" target="_blank" rel="external">同学</a>发现并帮忙解决了这个问题。<br>hexo博客next主题是完全根据修改时间来给博文排序的，并没有提供类似于置顶等功能。详细讨论看<a href="https://github.com/iissnan/hexo-theme-next/issues/415" target="_blank" rel="external">这里</a>。可以通过<a href="http://www.netcan666.com/2015/11/22/%E8%A7%A3%E5%86%B3Hexo%E7%BD%AE%E9%A1%B6%E9%97%AE%E9%A2%98/" target="_blank" rel="external">修改hexo-generator-index模块</a>的方法魔改，但如果是通过travis-CI生成博客，node-modules一般都被gitignore，所以无效。个人还是等待next作者更新添加feature，我觉得希望还是比较大。<br>另外如果出现每次构建以后文章创建日期相同的情况，是因为网页文件都是重新构建的，可以修改下.travis.yml文件，先clone再push</p>
-<h2 id="更新麻烦"><a href="#更新麻烦" class="headerlink" title="更新麻烦"></a>更新麻烦</h2><p>next处于一直更新当中，如果每次都要重新下载覆盖实在麻烦。可以把<code>/theme/next/_config.yml</code>文件移动到<code>/source/_data/next.yml</code>，然后将next作为子模块引入就可以啦，每次更新的时候对子模块更新就行。否则：</p>
+        <p>首先例行公事吹一波atom。</p>
+<blockquote>
+<p>这个世界上有那么多种编辑器，为什么你要花时间学习和使用 Atom 呢？<br>虽然 Sublime 和 TextMate 之类的编辑器已经非常好用了，但它们仅提供了很有限的拓展性。而在另一个极端，Emacs 和 Vim 提供了灵活的拓展性，但它们并不是很友好，需要使用专用的编程语言来配置和拓展。<br>我们觉得我们可以做得更好。我们的目标是在保证易用性的同时提供充分的可拓展性（hackability）：这个编辑器会受到第一天学习编程的新生欢迎，而且当他们成长为编程专家时也难以割舍。<br>当我们使用 Atom 来开发 Atom 的时候，随着它的逐渐完善，我们愈发觉得已经离不开它了。从表面上来看，Atom 是一个能满足你的期待的，现代化的桌面文本编辑器，而在表面之下，这是一个值得你去一同完善的系统。</p>
+</blockquote>
+<a id="more"></a>
+<p>当然我们可以把它变得好用。</p>
 <ol>
-<li>直接在/theme/next文件夹中git clone，然后用git pull更新：/theme/next下的.git文件夹无法上传，重新下载后还要在/theme/next中重新git init</li>
-<li>直接将next主题作为子模块引入：git push无法修改_config.yml文件，我的理解是，next是单独的模块，需要有单独的远程库，修改了_config.yml文件后，要不提交到next的库，要不fork一个库来提交，而无论哪种都是不符合本意的。git pull则没关系，因为这只是对本地文件做的修改。</li>
+<li>安装git-plus插件</li>
+<li>每次新建md文件都写很长的文件头title、tags内容是不是很烦？<br>可以通过创建代码片可以省略重复工作，只输入一小段单词即可自动补全。当然了你也可以切出去换命令行 <code>hexo new &lt;blog_name&gt;</code>。</li>
 </ol>
+<p>网上用Alt+Shift+S打开所有可用snippets都是骗人的，要配置快捷键才行。关于创建代码段网上很多讲的不是很详细<br>按下Ctrl+Shift+P打开控制面板，输入snip在下拉菜单中可以找到<code>Application: Open Your Snippets</code>项，打开snippets.cson文件，文件用CoffeeScript写就，有一段被注释了的实例代码：<br><figure class="highlight cson"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">'.source.js'</span>:</div><div class="line">    <span class="string">'console.log'</span>:</div><div class="line">        <span class="string">'prefix'</span>: <span class="string">'log'</span></div><div class="line">        <span class="string">'body'</span>: <span class="string">'console.log($&#123;1:"crash"&#125;);$2'</span></div></pre></td></tr></table></figure></p>
+<p>网上很多教程大多是照这个改，很容易混淆的一点是，<code>.source.js</code>中js并不是指后缀名而是作用域，所以改为如下内容是没有用的：<br><figure class="highlight cson"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="string">'.source.md'</span>:</div><div class="line">    <span class="string">'blog head'</span>:</div><div class="line">        <span class="string">'prefix'</span>: <span class="string">'head'</span></div><div class="line">        <span class="string">'body'</span>: <span class="string">"""</span></div><div class="line">          ---</div><div class="line">          title: $1</div><div class="line">          date: $2</div><div class="line">          tags: $3</div><div class="line">          keywords: $4</div><div class="line">          categories: $5</div><div class="line">          ---</div><div class="line">        """</div></pre></td></tr></table></figure></p>
+<p>而应该是<br><figure class="highlight cson"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="string">'.source.gfm'</span>:</div><div class="line">    <span class="string">'blog head'</span>:</div><div class="line">        <span class="string">'prefix'</span>: <span class="string">'head'</span></div><div class="line">        <span class="string">'body'</span>: <span class="string">"""</span></div><div class="line">          ---</div><div class="line">          title: $1</div><div class="line">          date: $2</div><div class="line">          tags: $3</div><div class="line">          keywords: $4</div><div class="line">          categories: $5</div><div class="line">          ---</div><div class="line">        """</div></pre></td></tr></table></figure></p>
+<p>这和atom代码片的作用于(Scope)有关，关于这个我也没找到什么说的特别清楚的文章，查看已安装插件中的language-xxx插件，里面会写这个这个作用域的有关信息，比如我们所用到的language-gfm包，如snippet_scope.png中所示，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Scope: source.gfm</div><div class="line">File Types:markdown, md, mdown, mkd, mkdown, rmd, ron</div></pre></td></tr></table></figure></p>
+<p>表示的是以markdown, md, mdown, mkd, mkdown, rmd, ron为后缀名的文件均属于<code>source.gfm</code>作用域，在<code>source.gfm</code>作用域上定义的代码片作用于以上所有后缀名。<br>顺带一提多个tags和keywords应该如下写<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">keywords:</div><div class="line">  - sqlmap</div><div class="line">  - sqlmapapi</div><div class="line">  - 匿名上网</div></pre></td></tr></table></figure></p>
+<p>而不是<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">keywords: sqlmapapi sqlmap 匿名上网</div></pre></td></tr></table></figure></p>
+<p>关于snippets中时间变量和文件路径变量的问题关注<a href="https://github.com/atom/snippets/pull/173" target="_blank" rel="external">这个issue</a>，目前尚未有优雅的解决方案。</p>
+<ol>
+<li>推荐file-icons和sync-setting插件。</li>
+<li>git-plus插件中Add and Commit and Push只会提交当前文件修改，Add All Commit and Push提交所有文件修改</li>
+</ol>
+<p>顺便说句，有序列表每一行前面最好都保持同样的缩进，第二行起要加三个空格，表示和第一行的<code>[数字][点号][空格]</code>有相同的缩进，是属于同一个列表项，否则列表项中代码段后的文字会认为是正文不属于列表。</p>
 
       
     </div>
@@ -411,7 +426,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://walio.github.io/2017/06/14/hexo_next_trick/" title="next主题一些技巧">https://walio.github.io/2017/06/14/hexo_next_trick/</a>
+      <a href="https://walio.github.io/2017/06/14/comfortable-atom/" title="整编辑器">https://walio.github.io/2017/06/14/comfortable-atom/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -425,12 +440,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
-          
-        </div>
-      
 
       
       
@@ -440,8 +449,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/14/How_to_construct_hexo_blog_1/" rel="next" title="部署博客">
-                <i class="fa fa-chevron-left"></i> 部署博客
+              <a href="/2017/06/14/construct_mc_server/" rel="next" title="搭建mc服务器(pc版和pe版)">
+                <i class="fa fa-chevron-left"></i> 搭建mc服务器(pc版和pe版)
               </a>
             
           </div>
@@ -449,6 +458,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/14/How_to_construct_hexo_blog_1/" rel="prev" title="部署博客">
+                部署博客 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -495,17 +508,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -596,22 +600,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文章排序杂乱"><span class="nav-number">1.</span> <span class="nav-text">文章排序杂乱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新麻烦"><span class="nav-number">2.</span> <span class="nav-text">更新麻烦</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

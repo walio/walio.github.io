@@ -81,7 +81,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo,next,hexo生成的博客创建时间都相同" />
+  <meta name="keywords" content="seo,搜索引擎优化,sitemap,google search console,百度站长工具,360站长工具,next主题优化" />
 
 
 
@@ -97,17 +97,17 @@
 
 
 
-<meta name="description" content="一些小技巧，同样是没什么卵用的">
-<meta name="keywords" content="hexo,next,hexo生成的博客创建时间都相同">
+<meta name="description" content="写了博客虽然没什么用，但还是希望能被人搜索到，被更多人看到的。虽然不是顶级域名，但还是可以稍微整一整SEO的。">
+<meta name="keywords" content="seo,搜索引擎优化,sitemap,google search console,百度站长工具,360站长工具,next主题优化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="next主题一些技巧">
-<meta property="og:url" content="https://walio.github.io/2017/06/14/hexo_next_trick/index.html">
+<meta property="og:title" content="搜索引擎优化">
+<meta property="og:url" content="https://walio.github.io/2017/06/14/how_to_do_seo/index.html">
 <meta property="og:site_name" content="冰淇淋好吃树难栽">
-<meta property="og:description" content="一些小技巧，同样是没什么卵用的">
+<meta property="og:description" content="写了博客虽然没什么用，但还是希望能被人搜索到，被更多人看到的。虽然不是顶级域名，但还是可以稍微整一整SEO的。">
 <meta property="og:updated_time" content="2017-06-14T13:47:22.666Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="next主题一些技巧">
-<meta name="twitter:description" content="一些小技巧，同样是没什么卵用的">
+<meta name="twitter:title" content="搜索引擎优化">
+<meta name="twitter:description" content="写了博客虽然没什么用，但还是希望能被人搜索到，被更多人看到的。虽然不是顶级域名，但还是可以稍微整一整SEO的。">
 
 
 
@@ -135,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://walio.github.io/2017/06/14/hexo_next_trick/"/>
+  <link rel="canonical" href="https://walio.github.io/2017/06/14/how_to_do_seo/"/>
 
 
 
 
 
-  <title>next主题一些技巧 | 冰淇淋好吃树难栽</title>
+  <title>搜索引擎优化 | 冰淇淋好吃树难栽</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -290,7 +290,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://walio.github.io/2017/06/14/hexo_next_trick/">
+    <link itemprop="mainEntityOfPage" href="https://walio.github.io/2017/06/14/how_to_do_seo/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qianjie">
@@ -307,7 +307,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">next主题一些技巧</h2>
+          <h2 class="post-title" itemprop="name headline">搜索引擎优化</h2>
         
 
         <div class="post-meta">
@@ -376,12 +376,12 @@
       
 
       
-        <p>一些小技巧，同样是没什么卵用的<br><a id="more"></a></p>
-<h2 id="文章排序杂乱"><a href="#文章排序杂乱" class="headerlink" title="文章排序杂乱"></a>文章排序杂乱</h2><p>首先感谢<a href="https://github.com/ukari" target="_blank" rel="external">同学</a>发现并帮忙解决了这个问题。<br>hexo博客next主题是完全根据修改时间来给博文排序的，并没有提供类似于置顶等功能。详细讨论看<a href="https://github.com/iissnan/hexo-theme-next/issues/415" target="_blank" rel="external">这里</a>。可以通过<a href="http://www.netcan666.com/2015/11/22/%E8%A7%A3%E5%86%B3Hexo%E7%BD%AE%E9%A1%B6%E9%97%AE%E9%A2%98/" target="_blank" rel="external">修改hexo-generator-index模块</a>的方法魔改，但如果是通过travis-CI生成博客，node-modules一般都被gitignore，所以无效。个人还是等待next作者更新添加feature，我觉得希望还是比较大。<br>另外如果出现每次构建以后文章创建日期相同的情况，是因为网页文件都是重新构建的，可以修改下.travis.yml文件，先clone再push</p>
-<h2 id="更新麻烦"><a href="#更新麻烦" class="headerlink" title="更新麻烦"></a>更新麻烦</h2><p>next处于一直更新当中，如果每次都要重新下载覆盖实在麻烦。可以把<code>/theme/next/_config.yml</code>文件移动到<code>/source/_data/next.yml</code>，然后将next作为子模块引入就可以啦，每次更新的时候对子模块更新就行。否则：</p>
+        <p>写了博客虽然没什么用，但还是希望能被人搜索到，被更多人看到的。虽然不是顶级域名，但还是可以稍微整一整SEO的。<br><a id="more"></a></p>
 <ol>
-<li>直接在/theme/next文件夹中git clone，然后用git pull更新：/theme/next下的.git文件夹无法上传，重新下载后还要在/theme/next中重新git init</li>
-<li>直接将next主题作为子模块引入：git push无法修改_config.yml文件，我的理解是，next是单独的模块，需要有单独的远程库，修改了_config.yml文件后，要不提交到next的库，要不fork一个库来提交，而无论哪种都是不符合本意的。git pull则没关系，因为这只是对本地文件做的修改。</li>
+<li>SEO优化。首先用谷歌搜索site:walio.github.io，没有结果说明没被收录。<a href="http://theme-next.iissnan.com/third-party-services.html#google-webmaster-tools" target="_blank" rel="external">官方文档</a>写的很详细。<a href="http://zhanzhang.baidu.com/dashboard/index" target="_blank" rel="external">google search console</a>和<a href="http://zhanzhang.baidu.com/dashboard/index" target="_blank" rel="external">百度站长工具</a>及<a href="http://zhanzhang.so.com/index.php?s=/Site/index.html" target="_blank" rel="external">360站长平台</a>类似，添加方式相同。</li>
+<li>生成站点地图。安装hexo-generator-baidu-sitemap和hexo-generator-sitemap，生成了两个站点地图，记得要把站点配置文件的_config.yml中的url属性改了，否则默认生成的baidusitemap.xml和sitemap.xml中网站的地址都是<a href="http://yoursite.com/，谷歌提交站点地图会出现“" target="_blank" rel="external">http://yoursite.com/，谷歌提交站点地图会出现“</a><br>URL not allowed<br>This url is not allowed for a Sitemap at this location.”的错误。至于添加百度seo的时候一定要选对是https协议，否则也是一直无法验证，报301的错误。但是百度一直没能通过https验证，很难受。</li>
+<li>为hexo每篇文章添加关键字。关键字就是网页head中的meta标签，设定准确地关键字有利于搜索引擎搜索相关关键词时排名更靠前。默认next主题的文章关键字取文章的标签，所以如果想要设置很全的关键字，就需要设置很多tags，看着过于杂乱，通过在front-matter中加入keywords可解决。</li>
+<li>使用<a href="http://theme-next.iissnan.com/third-party-services.html#analytics-google" target="_blank" rel="external">谷歌数据分析</a>。详见<a href="google_ayalytics.md">本文</a>。</li>
 </ol>
 
       
@@ -411,7 +411,7 @@
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://walio.github.io/2017/06/14/hexo_next_trick/" title="next主题一些技巧">https://walio.github.io/2017/06/14/hexo_next_trick/</a>
+      <a href="https://walio.github.io/2017/06/14/how_to_do_seo/" title="搜索引擎优化">https://walio.github.io/2017/06/14/how_to_do_seo/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -427,7 +427,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/seo/" rel="tag"># seo</a>
           
         </div>
       
@@ -440,8 +440,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/14/How_to_construct_hexo_blog_1/" rel="next" title="部署博客">
-                <i class="fa fa-chevron-left"></i> 部署博客
+              <a href="/2017/06/14/python/" rel="next" title="python每日进步">
+                <i class="fa fa-chevron-left"></i> python每日进步
               </a>
             
           </div>
@@ -449,6 +449,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/14/How_to_construct_hexo_blog_2/" rel="prev" title="后记">
+                后记 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -495,17 +499,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -596,22 +591,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#文章排序杂乱"><span class="nav-number">1.</span> <span class="nav-text">文章排序杂乱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新麻烦"><span class="nav-number">2.</span> <span class="nav-text">更新麻烦</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
