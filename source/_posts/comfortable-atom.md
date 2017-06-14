@@ -80,5 +80,6 @@ keywords: sqlmapapi sqlmap 匿名上网
 ```
 关于snippets中时间变量和文件路径变量的问题关注[这个issue](https://github.com/atom/snippets/pull/173)，目前尚未有优雅的解决方案。
 3. 推荐file-icons和sync-setting插件。
+4. git-plus插件中Add and Commit and Push只会提交当前文件修改，Add All Commit and Push提交所有文件修改
 
 顺便说句，有序列表每一行前面最好都保持同样的缩进，第二行起要加三个空格，表示和第一行的`[数字][点号][空格]`有相同的缩进，是属于同一个列表项，否则列表项中代码段后的文字会认为是正文不属于列表。
