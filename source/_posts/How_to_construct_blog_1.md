@@ -36,12 +36,9 @@ categories: 如何整一个没什么卵用的博客
 8. 修改` <folder> `文件夹下的__config.yml文件，看着改就行，主要是title、author、description等。
 9. 添加作者邮箱。因为没有评论，总要有一个别人联系我的方式(~~并不会有人联系~~)。
 10. 添加图标。[图片制作为ico图标](http://tool.lu/favicon/)
-11. *optional* 更改主题。个人感觉hexo默认的主题landscape不是很好看。换了next主题，这是[官方示例](http://notes.iissnan.com/)。安利一波next主题，灵活性好，开放性强，贡献者多，对于我辈不会自己造轮子的前端小白来说是福音。同样[官方文档](http://theme-next.iissnan.com/getting-started.html)也很详细。[官方wiki](https://github.com/iissnan/hexo-theme-next/wiki/%E5%88%9B%E5%BB%BA%E5%88%86%E7%B1%BB%E9%A1%B5%E9%9D%A2)。可以从头至尾看一遍` theme\next\__config.yml `按需要修改。
-12. *optional* 添加七牛云。如果不需要图片其实可以不用，个人感觉用大部分图用echarts画足够甚至更好
-往往画图的时候心有余而力不足，就需要用到echats：1.插件(方便)2.手动(可能不优雅？但可以保持最新的echats)3.手动引入需要的模块
-13. *optional* 安装echarts。(1)插件（方便）(2)手动（不优雅，但通过cdn能保持最新版echarts）。其余一些有趣的插件
-[hexo插件官方列表](https://hexo.io/plugins/)
-14. 添加谷歌日历。
+11. *optional* 更改主题。个人感觉hexo默认的主题landscape不是很好看。换了next主题，这是[官方示例](http://notes.iissnan.com/)。安利一波next主题，灵活性好，开放性强，贡献者多，对于我辈不会自己造轮子的前端小白来说是福音。同样[官方文档](http://theme-next.iissnan.com/getting-started.html)也很详细。[官方wiki](https://github.com/iissnan/hexo-theme-next/wiki/%E5%88%9B%E5%BB%BA%E5%88%86%E7%B1%BB%E9%A1%B5%E9%9D%A2)。这里下载也有学问。直接下载，每次更新覆盖无疑是最麻烦的，如果作为子模块引入，修改了config.yml之后父模块无法同步提交。[比较好的方法](https://github.com/iissnan/hexo-theme-next/issues/328)。可以从头至尾看一遍` theme\next\__config.yml `按需要修改。
+13. *optional* 安装echarts。(1)插件（方便）(2)手动（不优雅，但通过cdn能保持最新版echarts）。
+14. *optional* 取消sidebar自动弹出
 
 
 如果你的travis-CI构建运行npm install的时候遇到了Invalid version: "<https://registry.npmjs.org/hexo-util/-/hexo-util-0.6.0.tgz>"的问题，有可能是你的package-lock.json出了问题。package-lock.json是根据package.json自动创建的，删掉会重新创建，不用担心会出错。
