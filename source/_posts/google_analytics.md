@@ -1,8 +1,7 @@
 ---
 title: 谷歌分析
-date: ${/filename}
+date:
 tags:
-  - google web master
   - seo
 keywords:
   - 谷歌分析
