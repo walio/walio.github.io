@@ -1,5 +1,5 @@
 ---
-title: 搭建mc服务器(pc版和pe版)
+title: 搭建正义的太阳骑士Minecraft服务器(pc版和pe版)
 date:
 tags:
   - MineCraft
@@ -8,6 +8,7 @@ keywords:
   - 搭建mc服务器
   - 搭建mcpe服务器
 categories:
+  - 正义的太阳骑士套装
 ---
 **pc版已经没问题，pe版调试中**
 >请支持正版，本服务器仅做交流学习使用
