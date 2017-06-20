@@ -81,7 +81,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="supervisor,Linux服务器进程管理,Linux服务器阻塞进程" />
 
 
 
@@ -97,15 +97,17 @@
 
 
 
-<meta name="description" content="walio&apos;s blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="冰淇淋好吃树难栽">
-<meta property="og:url" content="https://walio.github.io/page/2/index.html">
+<meta name="description" content="当使用ssh连接到Linux服务器时，开启阻塞进程后，关闭ssh连接即会停止阻塞进程，这时需要将阻塞进程作为后台程序管理，个人感觉管理进程最佳工具是supervisor。官方文档">
+<meta name="keywords" content="supervisor,Linux服务器进程管理,Linux服务器阻塞进程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="supervisor相关">
+<meta property="og:url" content="https://walio.github.io/2017/06/20/supervisor/index.html">
 <meta property="og:site_name" content="冰淇淋好吃树难栽">
-<meta property="og:description" content="walio&apos;s blog">
+<meta property="og:description" content="当使用ssh连接到Linux服务器时，开启阻塞进程后，关闭ssh连接即会停止阻塞进程，这时需要将阻塞进程作为后台程序管理，个人感觉管理进程最佳工具是supervisor。官方文档">
+<meta property="og:updated_time" content="2017-06-20T09:21:52.615Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="冰淇淋好吃树难栽">
-<meta name="twitter:description" content="walio&apos;s blog">
+<meta name="twitter:title" content="supervisor相关">
+<meta name="twitter:description" content="当使用ssh连接到Linux服务器时，开启阻塞进程后，关闭ssh连接即会停止阻塞进程，这时需要将阻塞进程作为后台程序管理，个人感觉管理进程最佳工具是supervisor。官方文档">
 
 
 
@@ -133,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://walio.github.io/page/2/"/>
+  <link rel="canonical" href="https://walio.github.io/2017/06/20/supervisor/"/>
 
 
 
 
 
-  <title>冰淇淋好吃树难栽</title>
+  <title>supervisor相关 | 冰淇淋好吃树难栽</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -174,9 +176,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -279,125 +279,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://walio.github.io/2017/06/20/python_gui/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qianjie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="冰淇淋好吃树难栽">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/20/python_gui/" itemprop="url">Tkinter中踩过的坑</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T09:21:52+00:00">
-                2017-06-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Tkinter只适合做最简单的应用，但凡复杂一点还是用wxpython或者pyQt吧<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/20/python_gui/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
 
   
 
@@ -423,9 +307,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/20/supervisor/" itemprop="url">supervisor相关</a></h2>
+          <h2 class="post-title" itemprop="name headline">supervisor相关</h2>
         
 
         <div class="post-meta">
@@ -494,282 +376,102 @@
       
 
       
+        <p>当使用ssh连接到Linux服务器时，开启阻塞进程后，关闭ssh连接即会停止阻塞进程，这时需要将阻塞进程作为后台程序管理，个人感觉管理进程最佳工具是supervisor。<a href="http://supervisord.org/index.html" target="_blank" rel="external">官方文档</a><br><a id="more"></a><br>supervisor是python写成，且只支持python2。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>linux自带python2，安装请用<code>sudo pip install supervisor</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Supervisor requires Python 2.4 or later but does not work on any version of Python 3.  You are using version 3.5.2 (default, Nov 17 2016, 17:05:23)</div><div class="line">    [GCC 5.4.0 20160609].  Please install using a supported version.</div></pre></td></tr></table></figure></p>
+<p>尝试使用apt-get install supervisor</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>centOS安装后会生成/etc/supervisor/supervisord.conf并自动包含/etc/supervisor/conf.d文件夹下所有ini文件，ubuntu要手动生成：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mkdir /etc/supervisor</div><div class="line">mkdir /etc/supervisor/conf.d</div><div class="line">echo_supervisord_conf &gt; /etc/supervisor/supervisord.conf</div><div class="line">vim /etc/supervisor/supervisord.conf</div></pre></td></tr></table></figure></p>
+<p>将<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">;[include]</div><div class="line">;files = relative/directory/*.ini</div></pre></td></tr></table></figure></p>
+<p>改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[include]</div><div class="line">files = conf.d/*.ini</div></pre></td></tr></table></figure></p>
+<p>修改完成后启动supervisor时/etc/supervisor/supervisord.conf会自动加载，并且supervisord.conf包含的/etc/supervisor/conf.d下的任何ini文件都会自动加载。ini文件基本语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">[program:usercenter]</div><div class="line">directory = /home/leon/projects/usercenter ; 程序的启动目录</div><div class="line">command = gunicorn -c gunicorn.py wsgi:app ; 启动命令，可以看出与手动在命令行启动的命令是一样的</div><div class="line">autostart = true ; 在 supervisord 启动的时候也自动启动</div><div class="line">startsecs = 5 ; 启动 5 秒后没有异常退出，就当作已经正常启动了</div><div class="line">autorestart = true ; 程序异常退出后自动重启</div><div class="line">startretries = 3 ; 启动失败自动重试次数，默认是 3</div><div class="line">user = leon ; 用哪个用户启动</div><div class="line">redirect_stderr = true ; 把 stderr 重定向到 stdout，默认 false</div><div class="line">stdout_logfile_maxbytes = 20MB ; stdout 日志文件大小，默认 50MB</div><div class="line">stdout_logfile_backups = 20 ; stdout 日志文件备份数</div><div class="line">stdout_logfile = /data/logs/usercenter_stdout.log; stdout 日志文件，需要注意当指定目录不存在时无法正常启动，所以需要手动创建目录（supervisord 会自动创建日志文件）</div><div class="line"></div><div class="line">; 可以通过 environment 来添加需要的环境变量，一种常见的用法是修改 PYTHONPATH</div><div class="line">; environment=PYTHONPATH=$PYTHONPATH:/path/to/somewhere</div></pre></td></tr></table></figure></p>
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>运行<code>supervisord</code>启动，运行supervisorctl进入supervisorctl的shell界面，可以执行以下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&gt; status    <span class="comment"># 查看程序状态</span></div><div class="line">&gt; stop usercenter   <span class="comment"># 关闭 usercenter 程序</span></div><div class="line">&gt; start usercenter  <span class="comment"># 启动 usercenter 程序</span></div><div class="line">&gt; restart usercenter    <span class="comment"># 重启 usercenter 程序</span></div><div class="line">&gt; reread    <span class="comment"># 读取有更新（增加）的配置文件，不会启动新添加的程序</span></div><div class="line">&gt; update    <span class="comment"># 重启配置文件修改过的程序</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
         
-          <p>当使用ssh连接到Linux服务器时，开启阻塞进程后，关闭ssh连接即会停止阻塞进程，这时需要将阻塞进程作为后台程序管理，个人感觉管理进程最佳工具是supervisor。<a href="http://supervisord.org/index.html" target="_blank" rel="external">官方文档</a><br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/06/20/supervisor/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <ul class="post-copyright">
+    <li class="post-copyright-author">
+      <strong>本文作者：</strong>
+      qianjie
+    </li>
+    <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://walio.github.io/2017/06/20/supervisor/" title="supervisor相关">https://walio.github.io/2017/06/20/supervisor/</a>
+    </li>
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong>
+      本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MineCraft/" rel="tag"># MineCraft</a>
+          
+            <a href="/tags/服务器管理/" rel="tag"># 服务器管理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/20/todo/" rel="next" title="todo事项">
+                <i class="fa fa-chevron-left"></i> todo事项
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
+          <span class="post-nav-divider"></span>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://walio.github.io/2017/06/20/todo/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qianjie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="冰淇淋好吃树难栽">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/20/todo/" itemprop="url">todo事项</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T09:21:52+00:00">
-                2017-06-20
-              </time>
+              <a href="/2017/06/20/python_gui/" rel="prev" title="Tkinter中踩过的坑">
+                Tkinter中踩过的坑 <i class="fa fa-chevron-right"></i>
+              </a>
             
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <ul>
-<li>制作minecraft启动器</li>
-<li>解决文章排序问题</li>
-<li>弄清楚mcpe的版本</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://walio.github.io/2017/06/20/webdev_tips/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="qianjie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/uploads/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="冰淇淋好吃树难栽">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/20/webdev_tips/" itemprop="url">前后端开发相关</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-20T09:21:52+00:00">
-                2017-06-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>json formatter我觉得比json view好用，jf会把json字符串转化为名为json的对象，在控制台就可以使用这个对象。<br>但是jf在head不是application/json的情况下不会自动格式化json</p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-  </nav>
-
+  </div>
 
 
           </div>
@@ -777,6 +479,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -796,8 +502,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.jpg"
@@ -888,6 +603,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动"><span class="nav-number">3.</span> <span class="nav-text">启动</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1001,10 +732,10 @@
   
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
 
-  
+
 
   
 
