@@ -16,6 +16,11 @@ categories:
 supervisor是python写成，且只支持python2。
 ## 安装
 linux自带python2，安装请用` sudo pip install supervisor `
+```
+Supervisor requires Python 2.4 or later but does not work on any version of Python 3.  You are using version 3.5.2 (default, Nov 17 2016, 17:05:23)
+    [GCC 5.4.0 20160609].  Please install using a supported version.
+```
+尝试使用apt-get install supervisor
 ## 配置
 centOS安装后会生成/etc/supervisor/supervisord.conf并自动包含/etc/supervisor/conf.d文件夹下所有ini文件，ubuntu要手动生成：
 ```bash

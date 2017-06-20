@@ -11,6 +11,7 @@ categories:
   - 正义的太阳骑士套装
 ---
 **pc版已经没问题，pe版调试中**
+惊了，有[教程](https://www.linode.com/docs/game-servers/minecraft-on-debian-and-ubuntu)为什么我还要折腾半天
 >请支持正版，本服务器仅做交流学习使用
 
 | 客户端类型 | 客户端版本 | 客户端下载 | 服务器地址 | 客户端版本特性 |
