@@ -11,7 +11,7 @@ keywords:
 categories:
   - Linux服务器管理
 ---
-当使用ssh连接到Linux服务器时，开启阻塞进程后，关闭ssh连接即会停止阻塞进程，这时需要将阻塞进程作为后台程序管理，个人感觉管理进程最佳工具是supervisor。[官方文档](http://supervisord.org/index.html)
+当使用ssh连接到Linux服务器时，开启阻塞进程后，关闭ssh连接即会停止阻塞进程，这时需要将阻塞进程s作为后台程序管理，个人感觉管理进程最佳工具是supervisor。[官方文档](http://supervisord.org/index.html)
 <!-- more -->
 supervisor是python写成，且只支持python2。
 ## 安装
