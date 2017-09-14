@@ -13,8 +13,9 @@ categories: 网络摄像头扫描地图
 ---
 *个人感觉tornado的websocket要比flask-socketio要好得多，毕竟tornado是原生支持，flask-socketio要依靠gevent或者eventlet，这两个库当中貌似有不少的坑*
 个人感觉python的socketio服务器一般有两种比较典型的选择，flask-socketio+socket.io-client和tornado.websocket+原生websocket，这两者之前我最近做了一个比较
+<!-- more -->
 ## 接受消息
-flask-socketio收到前端的消息后会启动定义的event handler，然而在这个event handler中发送的消息要等这个event handler全部执行完毕以后才会发送，而且执行过程中无法响应心跳包。这就导致，当单个event handler执行耗时操作时，会一直没有任何消息发送到前端，如果时间太长前端会判断为超时，然后发起重连请求，真的很糟心。以下是示例，后台收到testmessage的事件后，每隔10秒发送一个消息到前台，然而事实情况会是一个包都没有发送到前端，前端就判断为超时了。
+flask-socketio收到前端的消息后会启动定义的event handler，然而在这个event handler中发送的消息要等这个event handler全部执行完毕以后才会发送，而且执行过程中无法响应心跳包。这就导致，当单个event handler执行耗时操作时，会一直没有任何消息发送到前端，如果时间太长前端会判断为超时，然后发起重连请求，真的很糟心。以下是示例，后台收到testmessage的事件后，每隔10秒发送一个消息到前台，然而事实情况会是，差不多后台发送到第四第五个数字后前端就判断为超时了，而且一个包都没有收到。
 后台代码
 ```python
 from flask import Flask
