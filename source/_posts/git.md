@@ -12,7 +12,7 @@ git status查看本地和远程分支状况，提示很友好，告诉你达到�
 ## 首先不看远程分支。
 首先git是不管文件具体变化的，只会记录哪些文件变化了，然后记录文件前后的内容。比较文件变化是别的工具做的，linux下可以指定vimdiff等，Windows的会自动显示diff应该是自带了？
 本地分支有五个状态，untracked，unmodified，modified，staged，committed。commited状态其实就是unmodified状态。需要注意的是git add XXX并不是字面上看上去的把文件从untracked变为tracked，而是将目标文件（从tracked或者untracked状态）直接变为staged状态。简单来说，git add将文件变为staged，git commit将文件变为committed。但是git commit -a只会提交tracked的文件，而不会对untracked的文件做任何操作。想一下也能明白，git add的时候都需要添加参数，不指定的话自然untracked的文件对git来说是透明的。
-![“图片描述”](/img/git_status.jpg)
+![“git状态转移”](/img/git_status.jpg)
 git stash：将当前工作区暂时存储起来，包括staged和unstaged的文件，untracked的文件会怎样？如何处理冲突？
 5. git checkout branchname~2可能会使HEAD移动到特定提交但没有任何引用分支，此时所做的任何commit，在checkout到其它位置后都会丢失。
 6. git revert会建立一个反向提交，用于“删除”指定提交到HEAD之间的修改，而不会改变提交历史。
