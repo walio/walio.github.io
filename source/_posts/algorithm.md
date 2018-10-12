@@ -2,7 +2,7 @@
 title: 关于算法
 date:
 tags:
-  - 算法
+  - algorithm
 keywords:
   - algorithm
   - 算法
