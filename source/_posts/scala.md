@@ -6,6 +6,7 @@ keywords:
   - scala
   - functional programming
 categories:
+  - data development
 ---
 写公司wiki感觉不太好，直接写个人博客
 <!--more-->
@@ -15,4 +16,3 @@ categories:
 感觉functional programming确实水很深，并不是简简单单的MapReduce和将函数作为参数传入
 ##_
 xx.map(_(1))：这里的下划线表示参数
-

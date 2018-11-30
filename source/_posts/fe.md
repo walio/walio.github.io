@@ -13,3 +13,5 @@ categories:
 ---
 json formatter我觉得比json view好用，jf会把json字符串转化为名为json的对象，在控制台就可以使用这个对象。
 但是jf在head不是application/json的情况下不会自动格式化json
+## vue数据更新
+疑惑来自于[这里](https://github.com/lakb248/vue-ip-input/blob/master/src/vue-ip-input.vue#L104)

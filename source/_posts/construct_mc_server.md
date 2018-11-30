@@ -5,10 +5,8 @@ tags:
   - MineCraft
 keywords:
   - Minecraft Server
-  - 搭建mc服务器
-  - 搭建mcpe服务器
-categories:
-  - 正义的太阳骑士套装
+  - mc服务器
+  - mcpe服务器
 ---
 **pc版已经没问题，pe版调试中**
 惊了，有[教程](https://www.linode.com/docs/game-servers/minecraft-on-debian-and-ubuntu)为什么我还要折腾半天

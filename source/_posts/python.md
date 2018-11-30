@@ -66,3 +66,8 @@ reduce_(lambda x,y:x if x>y else y,[1,2,3],1)
 
 利于并行？
 ###### 装饰器
+
+###### gui
+Tkinter只适合做最简单的应用，但凡复杂一点还是用wxpython或者pyQt吧
+任何耗时的操作(io等)均会造成GUI卡死，请把它们放在单独的进程中执行。
+少用pack()，我根本不知道怎么用pack()对齐
