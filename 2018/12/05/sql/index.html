@@ -122,7 +122,7 @@
 <meta property="og:site_name" content="冰淇淋好吃树难栽">
 <meta property="og:description" content="sql看起来简单，还是有点东西的（不过还是很简单)">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-05T06:15:14.673Z">
+<meta property="og:updated_time" content="2018-12-05T11:44:34.837Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql优化相关">
 <meta name="twitter:description" content="sql看起来简单，还是有点东西的（不过还是很简单)">
@@ -362,7 +362,7 @@
                 
               
 
-              <time title="Created: 2018-12-05 06:15:14" itemprop="dateCreated datePublished" datetime="2018-12-05T06:15:14+00:00">2018-12-05</time>
+              <time title="Created: 2018-12-05 11:44:34" itemprop="dateCreated datePublished" datetime="2018-12-05T11:44:34+00:00">2018-12-05</time>
             
 
             
@@ -399,7 +399,7 @@
         <p>sql看起来简单，还是有点东西的（不过还是很简单)<br><a id="more"></a></p>
 <h2 id="hive"><a href="#hive" class="headerlink" title="hive"></a>hive</h2><h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><ol>
 <li>调整map和reduce的大小<br>两个参数：最大值和分片大小</li>
-<li>数据倾斜<br>set hive.groupby.skewindata = true<br>针对count(distinct)，限制条件<a href="https://blog.csdn.net/baidu_29843359/article/details/46967473，具体原理：两轮map：" target="_blank" rel="noopener">https://blog.csdn.net/baidu_29843359/article/details/46967473，具体原理：两轮map：</a><br>set hive.auto.convert.join = true;<br>针对小表join大表，将小表加载至内存，在大表的map端直接过滤，注意顺序不能乱，否则无法达到性能的提高（虽然不会报错）<h4 id="hive-sql"><a href="#hive-sql" class="headerlink" title="hive sql"></a>hive sql</h4>select 1/0不会报错，只会返回NULL，日了狗了<br>很多时候数据有问题真的不是逻辑问题啥的，多半是你自己犯了一个愚蠢到无以复加的错误<br>hive中的变量和字符串一样，比如表达式exp的最终结果是123，则arr[exp]其实是arr[‘123’]，需要arr[cast(exp as int)]<br>关键字如current是不能作为如with as的标识符的，否则会报错<h2 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h2><h4 id="sql-cache"><a href="#sql-cache" class="headerlink" title="sql cache"></a>sql cache</h4>会通过sql语句生成cache来缓存，这也是为什么要确立大小写规范的原因</li>
+<li>数据倾斜<br>set hive.groupby.skewindata = true<br>针对count(distinct)，限制条件<a href="https://blog.csdn.net/baidu_29843359/article/details/46967473，具体原理：两轮map：" target="_blank" rel="noopener">https://blog.csdn.net/baidu_29843359/article/details/46967473，具体原理：两轮map：</a><br>set hive.auto.convert.join = true;<br>针对小表join大表，将小表加载至内存，在大表的map端直接过滤，注意顺序不能乱，否则无法达到性能的提高（虽然不会报错）<h4 id="hive-sql"><a href="#hive-sql" class="headerlink" title="hive sql"></a>hive sql</h4>select 1/0不会报错，只会返回NULL，日了狗了<br>很多时候数据有问题真的不是逻辑问题啥的，多半是你自己犯了一个愚蠢到无以复加的错误<br>hive中的变量和字符串一样，比如表达式exp的最终结果是123，则arr[exp]其实是arr[‘123’]，需要arr[cast(exp as int)]<br>关键字如current是不能作为如with as的标识符的，否则会报错<h4 id="hive开窗函数"><a href="#hive开窗函数" class="headerlink" title="hive开窗函数"></a>hive开窗函数</h4><h2 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h2><h4 id="sql-cache"><a href="#sql-cache" class="headerlink" title="sql cache"></a>sql cache</h4>会通过sql语句生成cache来缓存，这也是为什么要确立大小写规范的原因</li>
 </ol>
 <h2 id="hive-groupby-skewindata"><a href="#hive-groupby-skewindata" class="headerlink" title="hive.groupby.skewindata"></a>hive.groupby.skewindata</h2><p>一直不太理解hive.groupby.skewindata这个参数到底是如何解决数据倾斜的，很多时候我感觉即使加了效果也不大</p>
 <h2 id="数据倾斜"><a href="#数据倾斜" class="headerlink" title="数据倾斜"></a>数据倾斜</h2><p>追根溯源到底distinct和count distinct为什么会引起数据倾斜？到底又是怎么解决的？</p>
@@ -657,7 +657,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hive"><span class="nav-number">1.</span> <span class="nav-text">hive</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优化"><span class="nav-number">1.0.1.</span> <span class="nav-text">优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hive-sql"><span class="nav-number">1.0.2.</span> <span class="nav-text">hive sql</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#关系型数据库"><span class="nav-number">2.</span> <span class="nav-text">关系型数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sql-cache"><span class="nav-number">2.0.1.</span> <span class="nav-text">sql cache</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hive-groupby-skewindata"><span class="nav-number">3.</span> <span class="nav-text">hive.groupby.skewindata</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据倾斜"><span class="nav-number">4.</span> <span class="nav-text">数据倾斜</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#hive"><span class="nav-number">1.</span> <span class="nav-text">hive</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#优化"><span class="nav-number">1.0.1.</span> <span class="nav-text">优化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hive-sql"><span class="nav-number">1.0.2.</span> <span class="nav-text">hive sql</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#hive开窗函数"><span class="nav-number">1.0.3.</span> <span class="nav-text">hive开窗函数</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#关系型数据库"><span class="nav-number">2.</span> <span class="nav-text">关系型数据库</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sql-cache"><span class="nav-number">2.0.1.</span> <span class="nav-text">sql cache</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hive-groupby-skewindata"><span class="nav-number">3.</span> <span class="nav-text">hive.groupby.skewindata</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据倾斜"><span class="nav-number">4.</span> <span class="nav-text">数据倾斜</span></a></li></div>
             
 
           </div>
