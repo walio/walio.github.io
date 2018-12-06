@@ -113,6 +113,14 @@
               {% endif %}
             {% endif %}
           </span>
+          {%if post.updated and post.updated > post.date%}
+            <span class="post-updated">
+              &nbsp; | &nbsp; {{ __('post.updated') }}
+              <time itemprop="dateUpdated" datetime="{{ moment(post.updated).format() }}" content="{{ date(post.updated, config.date_format) }}">
+                {{ date(post.updated, config.date_format) }}
+              </time>
+            </span>
+          {% endif %}
 
           {% if post.categories and post.categories.length and theme.post_meta.categories %}
             <span class="post-category" >
@@ -360,9 +368,9 @@
     {% endif %}
 
     {% if page.reward === undefined and theme.reward.enable %}
-      {% set reward_able = true %} 
+      {% set reward_able = true %}
     {% else %}
-      {% set reward_able = page.reward %} 
+      {% set reward_able = page.reward %}
     {% endif %}
     {% if reward_able and (theme.reward.alipay or theme.reward.wechatpay or theme.reward.bitcoin) and not is_index %}
       <div>
