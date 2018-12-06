@@ -5,6 +5,8 @@ tags:
 keywords:
   - sql
 categories:
+post:
+  updated: 2018-01-01 12:00:00
 ---
 sql看起来简单，还是有点东西的（不过还是很简单)
 <!--more-->
