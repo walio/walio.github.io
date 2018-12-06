@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,6 +37,7 @@
 
 
 
+  <meta name="google-site-verification" content="J9x_3qeYJgpHXg3TWkjrMVeWgrvoJXCn9BdqH8lpyPE">
 
 
 
@@ -45,7 +46,12 @@
 
 
 
+  <meta name="baidu-site-verification" content="Dd8P2nJsBS">
 
+
+
+
+  <meta name="360-site-verification" content="c725dc45f4aae08c2bcac3d84601a885">
 
 
 
@@ -84,9 +90,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '6.5.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -116,7 +122,7 @@
 <meta property="og:site_name" content="冰淇淋好吃树难栽">
 <meta property="og:description" content="闲来无事搭建了博客，只为有趣，结果费了很多事。一开始用了最流行的jekyll，但发现这个东西还是挺复杂，如果ruby不在你的技术栈里还是不要轻易尝试了。这篇博客随着我部署的过程逐渐变长，想着只是写给自己看的，写着写着变成了大而全的东西。于是索性编成一个教程，怕链接失效把原有的许多链接内容也抄了过来，如果有侵犯版权，请告知，必定删除。其实hexo官方文档写的已经很详细了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-06T03:32:59.589Z">
+<meta property="og:updated_time" content="2018-12-06T03:46:49.543Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="博客部署过程">
 <meta name="twitter:description" content="闲来无事搭建了博客，只为有趣，结果费了很多事。一开始用了最流行的jekyll，但发现这个东西还是挺复杂，如果ruby不在你的技术栈里还是不要轻易尝试了。这篇博客随着我部署的过程逐渐变长，想着只是写给自己看的，写着写着变成了大而全的东西。于是索性编成一个教程，怕链接失效把原有的许多链接内容也抄了过来，如果有侵犯版权，请告知，必定删除。其实hexo官方文档写的已经很详细了。">
@@ -141,6 +147,15 @@
 
 
 
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-100755954-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-100755954-1');
+</script>
 
 
 
@@ -202,7 +217,7 @@
     </div>
     
       
-        <p class="site-subtitle">一堆没有用的东西</p>
+        <h1 class="site-subtitle" itemprop="description">一堆没有用的东西</h1>
       
     
   </div>
@@ -310,7 +325,7 @@
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="qianjie">
       <meta itemprop="description" content="walio's blog">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
@@ -322,10 +337,10 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">博客部署过程
+          <h2 class="post-title" itemprop="name headline">博客部署过程
               
             
-          </h1>
+          </h2>
         
 
         <div class="post-meta">
@@ -347,11 +362,12 @@
                 
               
 
-              <time title="Created: 2018-12-06 03:32:59" itemprop="dateCreated datePublished" datetime="2018-12-06T03:32:59+00:00">2018-12-06</time>
+              <time title="Created: 2018-12-06 03:46:49" itemprop="dateCreated datePublished" datetime="2018-12-06T03:46:49+00:00">2018-12-06</time>
             
 
             
           </span>
+          
 
           
             <span class="post-category">
@@ -438,7 +454,7 @@
     
 
     
-       
+      
     
     
 
@@ -532,6 +548,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image" src="/uploads/avatar.jpg" alt="qianjie">
+            
               <p class="site-author-name" itemprop="name">qianjie</p>
               <p class="site-description motion-element" itemprop="description">walio's blog</p>
           </div>
@@ -616,6 +634,43 @@
           
 
           
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/walio" title="GitHub &rarr; https://github.com/walio" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:userLeeee@gmail.com" title="E-Mail &rarr; mailto:userLeeee@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://twitter.com/907937976" title="Twitter &rarr; https://twitter.com/907937976" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                </span>
+              
+            </div>
+          
 
           
 
@@ -680,7 +735,7 @@
 
 
 
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v6.5.0</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.5.0</div>
 
 
 
@@ -812,10 +867,32 @@
   
 
   
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
 
   
 
   
+  
+
+  
+  
+
+  
+
 
   
   
