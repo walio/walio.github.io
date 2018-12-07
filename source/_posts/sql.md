@@ -19,6 +19,7 @@ set hive.groupby.skewindata = true
 针对count(distinct)，限制条件https://blog.csdn.net/baidu_29843359/article/details/46967473，具体原理：两轮map：
 set hive.auto.convert.join = true;
 针对小表join大表，将小表加载至内存，在大表的map端直接过滤，注意顺序不能乱，否则无法达到性能的提高（虽然不会报错）
+最近发现with as很消耗硬盘io，不知道为啥，待查证，另外sparksql是否存在此问题？
 #### hive sql
 select 1/0不会报错，只会返回NULL，日了狗了
 很多时候数据有问题真的不是逻辑问题啥的，多半是你自己犯了一个愚蠢到无以复加的错误
@@ -37,3 +38,7 @@ hive中的变量和字符串一样，比如表达式exp的最终结果是123，�
 
 ## 数据倾斜
 追根溯源到底distinct和count distinct为什么会引起数据倾斜？到底又是怎么解决的？
+
+## sql解析
+logical plan->优化->physical plan->
+感觉是和编译的过程类似？先优化生成中间语言，然后通过后端生成目标语言？看来也可以分编译器前端和后端
