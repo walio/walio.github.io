@@ -3,8 +3,9 @@ title: python每日进步
 tags:
   - python
 keywords:
-  - python learning
-  - urllib2和requests对比
+  - python
+  - urllib2
+  - requests
 categories:
 ---
 一些关于python的想法。

@@ -7,10 +7,10 @@ keywords:
   - spark调试
   - spark广播
 categories:
+  - 数仓开发
 ---
 写wiki感觉不太好，直接写个人博客。其中掺杂了太多个人理解，不保证正确性。但是感觉网上的都是官样文章，而且都是抄来抄去，真真叫没意思。
 <!--more-->
-
 1. 新手村
 推荐一个[极好的博客](https://github.com/JerryLead/SparkInternals)，最好是一边看能够一遍动手验证，看看scala的函数是怎样转化成不同的stage和task的，看看spark-sql是怎么划分的，理解比较深入
 2. 相关原理

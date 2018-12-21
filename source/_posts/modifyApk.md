@@ -7,7 +7,7 @@ keywords:
   - apk修改
   - apk注入
 categories:
-  - security
+  - 安全
 ---
 最近做的apk检测，随便讲一讲修改apk重新打包以获取输出方便调试的方法。[参考](https://www.52pojie.cn/thread-255754-1-1.html)
 <!-- more -->

@@ -9,7 +9,8 @@ keywords:
   - socket.io
   - flask-socket.io
   - tornado.websocket
-categories: 网络摄像头扫描地图
+categories:
+  - 毕业论文
 ---
 *个人感觉tornado的websocket要比flask-socketio要好得多，毕竟tornado是原生支持，flask-socketio要依靠gevent或者eventlet，这两个库当中貌似有不少的坑*
 个人感觉python的socketio服务器一般有两种比较典型的选择，flask-socketio+socket.io-client和tornado.websocket+原生websocket，这两者之前我最近做了一个比较

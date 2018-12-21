@@ -2,14 +2,11 @@
 title: supervisor相关
 date:
 tags:
-  - 服务器管理
-  - MineCraft
+  - linux
 keywords:
   - supervisor
-  - Linux服务器进程管理
-  - Linux服务器阻塞进程
 categories:
-  - Linux服务器管理
+  - Linux
 ---
 当使用ssh连接到Linux服务器时，开启阻塞进程后，关闭ssh连接即会停止阻塞进程，这时需要将阻塞进程s作为后台程序管理，个人感觉管理进程最佳工具是supervisor。[官方文档](http://supervisord.org/index.html)
 <!-- more -->

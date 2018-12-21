@@ -6,7 +6,7 @@ keywords:
   - scala
   - functional programming
 categories:
-  - data development
+  - 数仓开发
 ---
 写公司wiki感觉不太好，直接写个人博客
 <!--more-->

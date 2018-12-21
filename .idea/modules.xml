@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://E:\PycharmPorjects\test\.idea\test.iml" filepath="E:\PycharmPorjects\test\.idea\test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/walio.github.io.iml" filepath="$PROJECT_DIR$/.idea/walio.github.io.iml" />
     </modules>
   </component>

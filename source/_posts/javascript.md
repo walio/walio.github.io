@@ -3,6 +3,7 @@ title: 关于javascript
 date:
 tags:
   - JavaScript
+  - 前端
 keywords:
   - JavaScript
 categories:

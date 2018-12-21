@@ -46,7 +46,8 @@
                 </span>
               {% endif %}
               {% set postTitleIcon = '<i class="fa fa-external-link"></i>' %}
-              {{ next_url(url_for(post.link), (post.title or post.link) + postTitleIcon, {class: 'post-title-link post-title-link-external', itemprop: 'url' }) }}
+              {% set postText = post.title or post.link %}
+              {{ next_url(post.link, postText + postTitleIcon, {class: 'post-title-link post-title-link-external', itemprop: 'url' }) }}
             {% else %}{#
             #}{% if is_index %}
                 {% if post.sticky > 0 %}
@@ -55,13 +56,10 @@
                   </span>
                 {% endif %}
                 {# Need to delete maybe? #}
-                {{ next_url(url_for(post.path), post.title | default(__('post.untitled')), {class: 'post-title-link', itemprop: url }) }}
+                {{ next_url(post.path, post.title | default(__('post.untitled')), {class: 'post-title-link', itemprop: url }) }}
               {% else -%}
                 {{- post.title -}}
-                {% if theme.post_edit.enable -%}
-                  {% set editIcon = '<i class="fa fa-pencil"></i>' -%}
-                  {{ next_url(theme.post_edit.url + post.source.slice(7), editIcon, {class: 'post-edit-link', title: __('post.edit') }) }}
-                {%- endif %}
+                {% include '../_partials/post-edit.swig' %}
               {% endif %}
             {% endif %}
           </{% if theme.seo %}h2{% else %}h1{% endif %}>
@@ -113,14 +111,6 @@
               {% endif %}
             {% endif %}
           </span>
-          {%if post.updated and post.updated > post.date%}
-            <span class="post-updated">
-              &nbsp; | &nbsp; {{ __('post.updated') }}
-              <time itemprop="dateUpdated" datetime="{{ moment(post.updated).format() }}" content="{{ date(post.updated, config.date_format) }}">
-                {{ date(post.updated, config.date_format) }}
-              </time>
-            </span>
-          {% endif %}
 
           {% if post.categories and post.categories.length and theme.post_meta.categories %}
             <span class="post-category" >
@@ -354,7 +344,7 @@
     </div>
 
     {% if theme.related_posts.enable and (theme.related_posts.display_in_home or not is_index) %}
-      {% include 'post-related.swig' with { post: post } %}
+      {% include '../_partials/post/post-related.swig' with { post: post } %}
     {% endif %}
 
     {#####################}
@@ -363,7 +353,7 @@
 
     {% if theme.wechat_subscriber.enabled and not is_index %}
       <div>
-        {% include 'wechat-subscriber.swig' %}
+        {% include '../_partials/post/wechat-subscriber.swig' %}
       </div>
     {% endif %}
 
@@ -374,13 +364,13 @@
     {% endif %}
     {% if reward_able and (theme.reward.alipay or theme.reward.wechatpay or theme.reward.bitcoin) and not is_index %}
       <div>
-        {% include 'reward.swig' %}
+        {% include '../_partials/post/reward.swig' %}
       </div>
     {% endif %}
 
     {% if theme.creative_commons.license and theme.creative_commons.post and not is_index %}
       <div>
-        {% include '../_partials/post-copyright.swig' with { post: post } %}
+        {% include '../_partials/post/post-copyright.swig' with { post: post } %}
       </div>
     {% endif %}
 

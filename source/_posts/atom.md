@@ -1,14 +1,9 @@
 ---
-title: 整编辑器
+title: 设置atom
 tags:
 keywords:
   - atom
-  - snippet
-  - 代码片段
-  - scope
-  - timestamp
-  - atom使用代码片添加时间
-categories: 如何整一个没什么卵用的博客
+categories: 博客搭建
 ---
 首先例行公事吹一波atom。
 >这个世界上有那么多种编辑器，为什么你要花时间学习和使用 Atom 呢？
