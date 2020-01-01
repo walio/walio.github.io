@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="J9x_3qeYJgpHXg3TWkjrMVeWgrvoJXCn9BdqH8lpyPE">
+  <meta name="baidu-site-verification" content="Dd8P2nJsBS">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://walio.github.io').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"hide","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="一些关于python的想法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python 每日进步">
+<meta property="og:url" content="https://walio.github.io/2017/01/08/python/index.html">
+<meta property="og:site_name" content="冰淇凌好吃树难栽">
+<meta property="og:description" content="一些关于python的想法。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-01-08T00:00:00.000Z">
+<meta property="article:modified_time" content="2018-12-07T00:00:00.000Z">
+<meta property="article:author" content="qianjie">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="urllib2">
+<meta property="article:tag" content="requests">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://walio.github.io/2017/01/08/python/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>python 每日进步 | 冰淇凌好吃树难栽</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100755954-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-100755954-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">冰淇凌好吃树难栽</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">无用技术大全</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>Schedule</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>Sitemap</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://walio.github.io/2017/01/08/python/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qianjie">
+      <meta itemprop="description" content="杂七杂八的技术">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冰淇凌好吃树难栽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          python 每日进步
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-01-08 00:00:00" itemprop="dateCreated datePublished" datetime="2017-01-08T00:00:00+00:00">2017-01-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2018-12-07 00:00:00" itemprop="dateModified" datetime="2018-12-07T00:00:00+00:00">2018-12-07</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>一些关于 python 的想法。</p>
+<a id="more"></a>
+<h2 id="动态类型"><a href="# 动态类型" class="headerlink" title="动态类型"></a>动态类型 </h2><p> 注意 python 是动态类型而不是弱类型，简单来说 python 中‘asdf’+1 是会报错的，而弱类型如 js 就可以</p>
+<h2 id="urllib2-urlopen 和 requests-get 对比："><a href="#urllib2-urlopen 和 requests-get 对比：" class="headerlink" title="urllib2.urlopen 和 requests.get 对比："></a>urllib2.urlopen 和 requests.get 对比：</h2><ol>
+<li>功能一样。urllib2.urlopen 是异步调用，requests.get 是同步调用，一旦有一个 url 阻塞住就无法继续往下了。grequests 是异步的 requests，但是无法取法取得响应信息。</li>
+<li>自定义 404 界面 requests.get 可以正常返回页面信息，status_code 属性是 404 等，而 urllib2 抛出 HTTPError 异常</li>
+</ol>
+<h2 id="打开文件"><a href="# 打开文件" class="headerlink" title="打开文件"></a>打开文件 </h2><p> 不要轻易用”w”打开文件，即使你什么也没做，文件也会被清空</p>
+<h2 id="性能测试"><a href="# 性能测试" class="headerlink" title="性能测试"></a>性能测试 </h2><h4 id="工具"><a href="# 工具" class="headerlink" title="工具"></a> 工具</h4><p>ipython，原谅我的愚昧无知，我一度以为 ipython 早就过时了，没想到功能很强大</p>
+<h4 id="列表推导和 map"><a href="# 列表推导和 map" class="headerlink" title="列表推导和 map"></a>列表推导和 map</h4><p>老生常谈，<a href="https://stackoverflow.com/questions/1247486/python-list-comprehension-vs-map" target="_blank" rel="noopener">sf 链接 </a>，最好自己运行一遍，毕竟 python 更新之后性能也许会改变？Windows 下如果<code>python -mtimeit -s&#39;xs=range(10)&#39; &#39;map(hex, xs)&#39;</code> 如果报 <code>SyntaxError: EOL while scanning string literal</code> 的错误的话，多半是因为单引号，改成 <br><code>python -mtimeit -s&quot;xs=range(10)&quot; &quot;map(hex, xs)&quot;</code> 或者 <code>python -mtimeit -s&#39;xs=range(10)&#39; &#39;map(hex,xs)&#39;</code>，原因大概是<code>map(hex, xs)</code> 中间的空格把这个字符串“截断成为两个参数 <code>map(hex,</code> 和<code>xs)</code>”了。<br>注意 python3 中 map 返回的是一个迭代器，返回列表需要 list(map)。参考 <br><a href="https://stackoverflow.com/a/40948713/8131108" target="_blank" rel="noopener"> 答案 </a> 版本 3.5.2 和我版本 3.6.1 很接近就没有重复试验了 <br> 可以看出 map 相对于列表推导有着非常明显的优势，可能是 python3 对 map 做了特别的优化(妈蛋我怎么记得 map 是 depricated 建议用列表推导和 zip 替代？)</p>
+<figure class="highlight ipython"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">%timeit list(map(sum, x_list))</span><br><span class="line"><span class="number">10000</span> loops, best of <span class="number">3</span>: <span class="number">161</span> µs per loop</span><br><span class="line"></span><br><span class="line">%timeit [sum(x) <span class="keyword">for</span> x <span class="keyword">in</span> x_list]</span><br><span class="line"><span class="number">1000</span> loops, best of <span class="number">3</span>: <span class="number">212</span> µs per loop</span><br><span class="line"></span><br><span class="line">%timeit list(map(sum, x_list))</span><br><span class="line"><span class="number">10000</span> loops, best of <span class="number">3</span>: <span class="number">161</span> µs per loop</span><br><span class="line"></span><br><span class="line">%timeit [sum(x) <span class="keyword">for</span> x <span class="keyword">in</span> x_list]</span><br><span class="line"><span class="number">1000</span> loops, best of <span class="number">3</span>: <span class="number">213</span> µs per loop</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight ipython"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">%timeit list(map(<span class="keyword">lambda</span> i: i+<span class="number">1</span>, i_list))</span><br><span class="line"><span class="number">10000</span> loops, best of <span class="number">3</span>: <span class="number">126</span> µs per loop</span><br><span class="line"></span><br><span class="line">%timeit [i+<span class="number">1</span> <span class="keyword">for</span> i <span class="keyword">in</span> i_list]</span><br><span class="line"><span class="number">10000</span> loops, best of <span class="number">3</span>: <span class="number">53.9</span> µs per loop</span><br><span class="line"></span><br><span class="line">%timeit list(map(<span class="keyword">lambda</span> i: i+<span class="number">1</span>, i_list))</span><br><span class="line"><span class="number">10000</span> loops, best of <span class="number">3</span>: <span class="number">125</span> µs per loop</span><br><span class="line"></span><br><span class="line">%timeit [i+<span class="number">1</span> <span class="keyword">for</span> i <span class="keyword">in</span> i_list]</span><br><span class="line"><span class="number">10000</span> loops, best of <span class="number">3</span>: <span class="number">53.9</span> µs per loop</span><br></pre></td></tr></table></figure>
+<p>sf 诚不我欺！</p>
+<h2 id="函数式编程"><a href="# 函数式编程" class="headerlink" title="函数式编程"></a>函数式编程 </h2><p> 简单来说减少中间变量，尽量使用不可变的集合 <br><a href="http://www.cnblogs.com/huxi/archive/2011/06/18/2084316.html" target="_blank" rel="noopener"> 推荐博文</a></p>
+<h4 id="闭包"><a href="# 闭包" class="headerlink" title="闭包"></a>闭包 </h4><p><a href="https://zhuanlan.zhihu.com/p/22486908?refer=study-fe" target="_blank" rel="noopener"> 简明介绍 </a> 简单来说就是防止随意更改变量，只允许部分函数更改</p>
+<blockquote>
+<p>那么，如果想要利用 reduce_找出列表中的最大值，应该怎么做呢？请自行思考：）</p>
+</blockquote>
+<p>reduce_(lambda x,y:x if x&gt;y else y,[1,2,3],1)</p>
+<blockquote>
+<p>使用函数替代循环是函数式风格区别于指令式风格的最显而易见的特征。</p>
+</blockquote>
+<p>利于并行？</p>
+<h6 id="装饰器"><a href="# 装饰器" class="headerlink" title="装饰器"></a>装饰器 </h6><p> 有没有办法将上下文管理作为装饰器？将 sql 语句传入函数后装饰器取出结果后将 result 传入原函数，这样就改变了原函数的参数列表，调用者在使用函数时可能会感到疑惑？docstring 也不好写</p>
+<h6 id="gui"><a href="#gui" class="headerlink" title="gui"></a>gui</h6><p>Tkinter 只适合做最简单的应用，但凡复杂一点还是用 wxpython 或者 pyQt 吧 <br> 任何耗时的操作 (io 等) 均会造成 GUI 卡死，请把它们放在单独的进程中执行。<br>少用 pack()，我根本不知道怎么用 pack()对齐</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2017/06/08/seo/" rel="next" title="搜索引擎优化">
+      搜索引擎优化 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#动态类型"><span class="nav-number">1.</span> <span class="nav-text">动态类型 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#urllib2-urlopen 和 requests-get 对比："><span class="nav-number">2.</span> <span class="nav-text">urllib2.urlopen 和 requests.get 对比：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打开文件"><span class="nav-number">3.</span> <span class="nav-text">打开文件 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能测试"><span class="nav-number">4.</span> <span class="nav-text">性能测试 </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#工具"><span class="nav-number">4.0.1.</span> <span class="nav-text"> 工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表推导和 map"><span class="nav-number">4.0.2.</span> <span class="nav-text">列表推导和 map</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数式编程"><span class="nav-number">5.</span> <span class="nav-text">函数式编程 </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#闭包"><span class="nav-number">5.0.1.</span> <span class="nav-text">闭包 </span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#装饰器"><span class="nav-number">5.0.1.0.1.</span> <span class="nav-text">装饰器 </span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#gui"><span class="nav-number">5.0.1.0.2.</span> <span class="nav-text">gui</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">qianjie</p>
+  <div class="site-description" itemprop="description">杂七杂八的技术</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/walio" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;walio" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mr.qianjie@gmail.com" title="E-Mail → mailto:mr.qianjie@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/907937976" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;907937976" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qianjie</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

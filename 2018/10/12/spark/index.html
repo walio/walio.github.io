@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="J9x_3qeYJgpHXg3TWkjrMVeWgrvoJXCn9BdqH8lpyPE">
+  <meta name="baidu-site-verification" content="Dd8P2nJsBS">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://walio.github.io').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"hide","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="写wiki感觉不太好，直接写个人博客。其中掺杂了太多个人理解，不保证正确性。但是感觉网上的都是官样文章，而且都是抄来抄去，真真叫没意思。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spark 入门概念">
+<meta property="og:url" content="https://walio.github.io/2018/10/12/spark/index.html">
+<meta property="og:site_name" content="冰淇凌好吃树难栽">
+<meta property="og:description" content="写wiki感觉不太好，直接写个人博客。其中掺杂了太多个人理解，不保证正确性。但是感觉网上的都是官样文章，而且都是抄来抄去，真真叫没意思。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://walio.github.io/img/broadcast.png">
+<meta property="article:published_time" content="2018-10-12T00:00:00.000Z">
+<meta property="article:modified_time" content="2018-10-12T00:00:00.000Z">
+<meta property="article:author" content="qianjie">
+<meta property="article:tag" content="spark">
+<meta property="article:tag" content="spark调试">
+<meta property="article:tag" content="spark广播">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://walio.github.io/img/broadcast.png">
+
+<link rel="canonical" href="https://walio.github.io/2018/10/12/spark/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>spark 入门概念 | 冰淇凌好吃树难栽</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100755954-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-100755954-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">冰淇凌好吃树难栽</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">无用技术大全</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>Schedule</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>Sitemap</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://walio.github.io/2018/10/12/spark/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qianjie">
+      <meta itemprop="description" content="杂七杂八的技术">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冰淇凌好吃树难栽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          spark 入门概念
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-10-12 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-12T00:00:00+00:00">2018-10-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/data-rd/" itemprop="url" rel="index">
+                    <span itemprop="name">data rd</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>写 wiki 感觉不太好，直接写个人博客。其中掺杂了太多个人理解，不保证正确性。但是感觉网上的都是官样文章，而且都是抄来抄去，真真叫没意思。</p>
+<a id="more"></a>
+<ol>
+<li>新手村 <br> 推荐一个 <a href="https://github.com/JerryLead/SparkInternals" target="_blank" rel="noopener"> 极好的博客</a>，最好是一边看能够一遍动手验证，看看 scala 的函数是怎样转化成不同的 stage 和 task 的，看看 spark-sql 是怎么划分的，理解比较深入</li>
+<li>相关原理</li>
+</ol>
+<ul>
+<li>job 划分和 stage 划分 <br> 凡是有 action 的地方会划分为一个 job，个人理解 action 就是一种”落地“，之前做的所有计算都只是生成 dag，都是空中楼阁，没有真正进行计算，而 action 会真正得到一个结果，真正的 scala 的数据结构 array，可以进行普通的非 spark 的计算 <br> 宽依赖和窄依赖 <br> 凡是遇到 shuffleDependency 都会划分为两个 stage，shuffleDependency 大白话讲就是要计算下一个 rdd 的任何一个 partition，都必须把上一个 rdd 的所有 partition 都计算出来，这个时候把两个 rdd 划分在同一个 stage 是不合适的，因为必须先把上一个 rdd 完全计算出来以后才能进行下一步的计算，所以就不必计较分区了。<br>所谓划分在一个 stage，就是说下一个 rdd 的分区永远只依赖上一个 rdd 的部分分区，所以一直往前推，最后一个 rdd 的分区都只依赖这一个 stage 最早的 rdd 的部分分区，所以可以按照这个依赖关系，最后一个 rdd 的每个分区都划分为一个任务（task），这个分区的所有计算都在这个 task 内完成，依赖从后往前推算，而计算的流程是从前往后，后一个 rdd 的分区计算完成以后，前面的依赖分区就可以扔掉了（当然某些情况下比如笛卡尔积应该还是需要缓存一下？）。这样的话，就不需要每次计算完一个 rdd 就全部存储起来（无论是内存还是硬盘），而是根据数据流，计算完下一个 rdd 的某个分区，它依赖的上一个 rdd 的分区就可以不用了，”按需计算“</li>
+<li>driver 和 executor<br>可以认为 driver 只有一个，但是 executor 有多个，driver 处理 rdd 等，executor 是具体执行的单位，所以是无法在 map 的函数中执行 spark.sql 的，因为执行 map 中函数的操作是在 executor 上进行的，而‘解析’rdd 只能在 driver 上做</li>
+<li>cache 机制</li>
+</ul>
+<ol start="3">
+<li>具体编程</li>
+</ol>
+<ul>
+<li>spark 调试 <br> 一开始以为 print 操作只会在各个 executor 上执行，所以并没有打印出来，其实只是因为 map 是 transformation 操作，没有调用 action 时是不会执行的，调用 collect 方法以后会发现 rdd 中的 print 操作都执行了。</li>
+<li>rdd.map 和 rdd.foreach 的区别：<br><a href="https://stackoverflow.com/questions/41388597/difference-between-rdd-foreach-and-rdd-map" target="_blank" rel="noopener">https://stackoverflow.com/questions/41388597/difference-between-rdd-foreach-and-rdd-map</a><br>（1）map 有返回值，foreach 不会返回任何值（调用过 foreach 后 rdd 会变为 None）<br>（2）map 操作不会立即执行，但 foreach 操作会<br>（3）理论上来说 foreach 适用于某种操作，如调用 restful api 等，map 适用于对数据做映射，</li>
+<li>spark 的广播 <br><img src="/img/broadcast.png" alt="“这张图讲的很好”"> 虽然 rdd 和 map 函数都定义在同一个 python 文件中，但是实际上 map 函数是在不同的 excutor 上执行的，可以通过闭包的方式将变量传递给各个 rdd（在 py 文件顶层定义变量，在 map 的函数中使用），但这种方式，每次 executor 遇到不属于 rdd 的变量时都会请求一次 driver，而广播变量则是一开始申请一次并缓存起来，后面每次都使用这个缓存。<br>案例：<a href="https://stackoverflow.com/questions/26959221/pyspark-broadcast-variables-from-local-functions" target="_blank" rel="noopener">https://stackoverflow.com/questions/26959221/pyspark-broadcast-variables-from-local-functions</a><br>注意有个问题是 partial 函数（1）p= partial(func,para)，这种方式指定 para 为 func 的第一个参数，p(para1,para2)中 para1，para2 分别为 func 的第二、第三个参数（2）p= partial(func,para=para)，para 只会作为 func 的一个关键字参数，p(para1,para2)中 para1 和 para2 会作为 func 的第一个和第二个参数，会报错，相当于 partial 传参的时候会变成 fun(para=para,para=para1,para2=para2)（感觉算是 partial 函数的一个 bug）</li>
+<li>关于 spark.sql 和 dataframe api<br><a href="https://stackoverflow.com/questions/35222539/spark-sql-queries-vs-dataframe-functions/35257258" target="_blank" rel="noopener">https://stackoverflow.com/questions/35222539/spark-sql-queries-vs-dataframe-functions/35257258</a><br>基本来说两者性能完全一致，最终都是调用了 spark 底层的 api，除非一些特殊情况，完全看个人喜好。当取数逻辑复杂到一定程度时，个人倾向于拆分 sql，并用 rdd 的 api，一方面便于 debug，另一方面可以利用 cache 等函数的优势。<br>20191231 更新：实际上个人觉得各有利弊，dataframe 的操作太多，很容易造成不清晰，而 sql 比较清晰；但 sql 无法执行到某一步停止，也无法 raise exception，长 sql 无法在出现问题时调试。总结：逻辑过长，清晰才是关键</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/scala/" rel="tag"># scala</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2018/01/04/git/" rel="prev" title="git">
+      <i class="fa fa-chevron-left"></i> git
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2018/10/12/scala/" rel="next" title="scala 每日进步">
+      scala 每日进步 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">qianjie</p>
+  <div class="site-description" itemprop="description">杂七杂八的技术</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/walio" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;walio" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mr.qianjie@gmail.com" title="E-Mail → mailto:mr.qianjie@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/907937976" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;907937976" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qianjie</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

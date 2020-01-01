@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="J9x_3qeYJgpHXg3TWkjrMVeWgrvoJXCn9BdqH8lpyPE">
+  <meta name="baidu-site-verification" content="Dd8P2nJsBS">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://walio.github.io').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"hide","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="首先例行公事吹一波atom。  这个世界上有那么多种编辑器，为什么你要花时间学习和使用 Atom 呢？虽然 Sublime 和 TextMate 之类的编辑器已经非常好用了，但它们仅提供了很有限的拓展性。而在另一个极端，Emacs 和 Vim 提供了灵活的拓展性，但它们并不是很友好，需要使用专用的编程语言来配置和拓展。我们觉得我们可以做得更好。我们的目标是在保证易用性的同时提供充分的可拓展性（ha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设置 atom">
+<meta property="og:url" content="https://walio.github.io/2017/06/08/atom/index.html">
+<meta property="og:site_name" content="冰淇凌好吃树难栽">
+<meta property="og:description" content="首先例行公事吹一波atom。  这个世界上有那么多种编辑器，为什么你要花时间学习和使用 Atom 呢？虽然 Sublime 和 TextMate 之类的编辑器已经非常好用了，但它们仅提供了很有限的拓展性。而在另一个极端，Emacs 和 Vim 提供了灵活的拓展性，但它们并不是很友好，需要使用专用的编程语言来配置和拓展。我们觉得我们可以做得更好。我们的目标是在保证易用性的同时提供充分的可拓展性（ha">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-06-08T00:00:00.000Z">
+<meta property="article:modified_time" content="2017-06-09T00:00:00.000Z">
+<meta property="article:author" content="qianjie">
+<meta property="article:tag" content="atom">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://walio.github.io/2017/06/08/atom/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>设置 atom | 冰淇凌好吃树难栽</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100755954-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-100755954-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">冰淇凌好吃树难栽</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">无用技术大全</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>Schedule</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>Sitemap</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://walio.github.io/2017/06/08/atom/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qianjie">
+      <meta itemprop="description" content="杂七杂八的技术">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冰淇凌好吃树难栽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          设置 atom
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-06-08 00:00:00" itemprop="dateCreated datePublished" datetime="2017-06-08T00:00:00+00:00">2017-06-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2017-06-09 00:00:00" itemprop="dateModified" datetime="2017-06-09T00:00:00+00:00">2017-06-09</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>首先例行公事吹一波 atom。</p>
+<blockquote>
+<p>这个世界上有那么多种编辑器，为什么你要花时间学习和使用 Atom 呢？<br>虽然 Sublime 和 TextMate 之类的编辑器已经非常好用了，但它们仅提供了很有限的拓展性。而在另一个极端，Emacs 和 Vim 提供了灵活的拓展性，但它们并不是很友好，需要使用专用的编程语言来配置和拓展。<br>我们觉得我们可以做得更好。我们的目标是在保证易用性的同时提供充分的可拓展性（hackability）：这个编辑器会受到第一天学习编程的新生欢迎，而且当他们成长为编程专家时也难以割舍。<br>当我们使用 Atom 来开发 Atom 的时候，随着它的逐渐完善，我们愈发觉得已经离不开它了。从表面上来看，Atom 是一个能满足你的期待的，现代化的桌面文本编辑器，而在表面之下，这是一个值得你去一同完善的系统。</p>
+</blockquote>
+<a id="more"></a>
+
+<p>当然我们可以把它变得好用。</p>
+<ol>
+<li>安装 git-plus 插件</li>
+<li>每次新建 md 文件都写很长的文件头 title、tags 内容是不是很烦？<br>可以通过创建代码片可以省略重复工作，只输入一小段单词即可自动补全。当然了你也可以切出去换命令行 <code>hexo new &lt;blog_name&gt;</code>。</li>
+</ol>
+<p>网上用 Alt+Shift+S 打开所有可用 snippets 都是骗人的，要配置快捷键才行。关于创建代码段网上很多讲的不是很详细 <br> 按下 Ctrl+Shift+P 打开控制面板，输入 snip 在下拉菜单中可以找到 <code>Application: Open Your Snippets</code> 项，打开 snippets.cson 文件，文件用 CoffeeScript 写就，有一段被注释了的实例代码：</p>
+<figure class="highlight cson"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'.source.js'</span>:</span><br><span class="line">    <span class="string">'console.log'</span>:</span><br><span class="line">        <span class="string">'prefix'</span>: <span class="string">'log'</span></span><br><span class="line">        <span class="string">'body'</span>: <span class="string">'console.log($&#123;1:"crash"&#125;);$2'</span></span><br></pre></td></tr></table></figure>
+<p>网上很多教程大多是照这个改，很容易混淆的一点是，<code>.source.js</code>中 js 并不是指后缀名而是作用域，所以改为如下内容是没有用的：</p>
+<figure class="highlight cson"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'.source.md'</span>:</span><br><span class="line">    <span class="string">'blog head'</span>:</span><br><span class="line">        <span class="string">'prefix'</span>: <span class="string">'head'</span></span><br><span class="line">        <span class="string">'body'</span>: <span class="string">"""</span></span><br><span class="line"><span class="string">          ---</span></span><br><span class="line"><span class="string">          title: $1</span></span><br><span class="line"><span class="string">          date: $2</span></span><br><span class="line"><span class="string">          tags: $3</span></span><br><span class="line"><span class="string">          keywords: $4</span></span><br><span class="line"><span class="string">          categories: $5</span></span><br><span class="line"><span class="string">          ---</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<p>而应该是</p>
+<figure class="highlight cson"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'.source.gfm'</span>:</span><br><span class="line">    <span class="string">'blog head'</span>:</span><br><span class="line">        <span class="string">'prefix'</span>: <span class="string">'head'</span></span><br><span class="line">        <span class="string">'body'</span>: <span class="string">"""</span></span><br><span class="line"><span class="string">          ---</span></span><br><span class="line"><span class="string">          title: $1</span></span><br><span class="line"><span class="string">          date: $2</span></span><br><span class="line"><span class="string">          tags: $3</span></span><br><span class="line"><span class="string">          keywords: $4</span></span><br><span class="line"><span class="string">          categories: $5</span></span><br><span class="line"><span class="string">          ---</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></table></figure>
+<p>这和 atom 代码片的作用于 (Scope) 有关，关于这个我也没找到什么说的特别清楚的文章，查看已安装插件中的 language-xxx 插件，里面会写这个这个作用域的有关信息，比如我们所用到的 language-gfm 包，如 snippet_scope.png 中所示，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Scope: source.gfm</span><br><span class="line">File Types:markdown, md, mdown, mkd, mkdown, rmd, ron</span><br></pre></td></tr></table></figure>
+<p>表示的是以 markdown, md, mdown, mkd, mkdown, rmd, ron 为后缀名的文件均属于 <code>source.gfm</code> 作用域，在 <code>source.gfm</code> 作用域上定义的代码片作用于以上所有后缀名。<br>顺带一提多个 tags 和 keywords 应该如下写</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">keywords:</span><br><span class="line"><span class="bullet">  - </span>sqlmap</span><br><span class="line"><span class="bullet">  - </span>sqlmapapi</span><br><span class="line"><span class="bullet">  - </span>匿名上网</span><br></pre></td></tr></table></figure>
+<p>而不是</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keywords: sqlmapapi sqlmap 匿名上网</span><br></pre></td></tr></table></figure>
+<p>关于 snippets 中时间变量和文件路径变量的问题关注 <a href="https://github.com/atom/snippets/pull/173" target="_blank" rel="noopener"> 这个 issue</a>，目前尚未有优雅的解决方案。<br>3. 推荐 file-icons 和 sync-setting 插件。<br>4. git-plus 插件中 Add and Commit and Push 只会提交当前文件修改，Add All Commit and Push 提交所有文件修改</p>
+<p>顺便说句，有序列表每一行前面最好都保持同样的缩进，第二行起要加三个空格，表示和第一行的 <code>[数字][点号][空格]</code> 有相同的缩进，是属于同一个列表项，否则列表项中代码段后的文字会认为是正文不属于列表。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/06/08/seo/" rel="prev" title="搜索引擎优化">
+      <i class="fa fa-chevron-left"></i> 搜索引擎优化
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/06/13/construct_mc_server/" rel="next" title="搭建正义的太阳骑士 Minecraft 服务器 (pc 版和 pe 版)">
+      搭建正义的太阳骑士 Minecraft 服务器 (pc 版和 pe 版) <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">qianjie</p>
+  <div class="site-description" itemprop="description">杂七杂八的技术</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/walio" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;walio" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mr.qianjie@gmail.com" title="E-Mail → mailto:mr.qianjie@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/907937976" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;907937976" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qianjie</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

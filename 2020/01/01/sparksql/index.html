@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="J9x_3qeYJgpHXg3TWkjrMVeWgrvoJXCn9BdqH8lpyPE">
+  <meta name="baidu-site-verification" content="Dd8P2nJsBS">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://walio.github.io').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"hide","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="多年以来踩过许许多多spark的坑，查问题的时候也是各种艰辛，基本没有中文资料，记录一下防止自己忘记，也方便后来人，主要是分pyspark相关、sparksql相关。尽量按照问题与回答进行组织。本篇为sparksql相关问题。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sparksql 踩坑实践">
+<meta property="og:url" content="https://walio.github.io/2020/01/01/sparksql/index.html">
+<meta property="og:site_name" content="冰淇凌好吃树难栽">
+<meta property="og:description" content="多年以来踩过许许多多spark的坑，查问题的时候也是各种艰辛，基本没有中文资料，记录一下防止自己忘记，也方便后来人，主要是分pyspark相关、sparksql相关。尽量按照问题与回答进行组织。本篇为sparksql相关问题。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-01-01T21:36:45.000Z">
+<meta property="article:modified_time" content="2020-01-01T21:36:45.000Z">
+<meta property="article:author" content="qianjie">
+<meta property="article:tag" content="hive">
+<meta property="article:tag" content="spark">
+<meta property="article:tag" content="sparksql">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://walio.github.io/2020/01/01/sparksql/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>sparksql 踩坑实践 | 冰淇凌好吃树难栽</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100755954-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-100755954-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">冰淇凌好吃树难栽</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">无用技术大全</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>Schedule</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>Sitemap</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://walio.github.io/2020/01/01/sparksql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qianjie">
+      <meta itemprop="description" content="杂七杂八的技术">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冰淇凌好吃树难栽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          sparksql 踩坑实践
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2020-01-01 21:36:45" itemprop="dateCreated datePublished" datetime="2020-01-01T21:36:45+00:00">2020-01-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>多年以来踩过许许多多 spark 的坑，查问题的时候也是各种艰辛，基本没有中文资料，记录一下防止自己忘记，也方便后来人，主要是分 pyspark 相关、sparksql 相关。尽量按照问题与回答进行组织。本篇为 sparksql 相关问题。</p>
+<a id="more"></a>
+<ul>
+<li><p><strong>为什么与 decimal 相乘时，hive 和 sparksql 有精度差异？</strong></p>
+<!-- -->
+<p><code>select (cast(29.26831421 as decimal(20,8))) * cast(4532 as bigint)</code>，乘法真实结果是 132643.99999972，在 hive 中结果是 132643，sparksql 结果是 132644。乍一看是 spark 做了四舍五入 hive 去尾，实际不是。<br>首先 cast as int 无论 spark 还是 hive 都是去尾。通过 explain 分析等可以得出，hive 执行时，select cast(29.26831421 as decimal(20,8)) * cast(4532 as bigint)并不会丢失 decimal 精度，而 sparksql 在这一步已经变为 132644，具体原因是 spark 首先将 bigint 转换为 decimal(20,0)（猜测因为 bigint 是 8byte，范围 -9,223,372,036,854,775,808 ~ 9,223,372,036,854,775,807，整数 19 位 + 符号 1 位），再取上限两个数均转换为 decimal(28,8)，然后结果保留 6 位小数（详见 2），实际上是 132643.99999972 舍入为 132643.000000</p>
+</li>
+<li><p><strong>关于保留小位数</strong></p>
+<!-- -->
+<p>decimal*any，会将 any 转换成 decimal，如 bigint 转为 decimal(20,0)，int 转为 decimal(10,0)，然后成为 decimal(a,b)*decimal(c,d)的计算，计算结果的精确度首先保证整数部分，保留位数为 38-(a-b)-(c-d)，如 decimal(20,8)*bigint 保留位数为 38-12-20=6</p>
+</li>
+<li><p><strong>为什么 collect_list 的数值类型会被转为 string 类型？</strong></p>
+<!-- -->
+<p>collect_list 只能 collect 同一类型数据，当 spark.sql 中有 collect_list(date,value)之类的语句时，value 会被强转为 string</p>
+</li>
+<li><p><strong>多个 collect_list 时，list 中不同列的相对位置是否相同？</strong></p>
+<!-- -->
+<p>貌似并无保证。<a href="https://stackoverflow.com/questions/44448008/does-collect-list-maintain-relative-ordering-of-rows" target="_blank" rel="noopener">refer1</a>，<a href="https://stackoverflow.com/questions/40407514/use-more-than-one-collect-list-in-one-query-in-spark-sql" target="_blank" rel="noopener">refer2</a></p>
+</li>
+<li><p><strong>为什么 insert 会生成重复记录？</strong></p>
+<!-- -->
+<p>insert overwrite 会覆盖，insert 不会，会生成重复记录，注意粘贴别粘错</p>
+</li>
+<li><p><strong>为什么 array(key, value)的时候将 value 转为 Boolean 时后一位永远是 true？</strong></p>
+<!-- -->
+<p>原理就是 array 中只能存同样类型的值，<code>select array(a,b)</code>，a 为 string 而 b 为 int 时，会自动执行<code>select(a,cast(b as string))</code>，取出后都为字符串，小心使用 1 和 0 表示 true 和 false 的，因为’1’和’0’均为 true</p>
+</li>
+<li><p><strong>关于 int 的上限</strong></p>
+<!-- -->
+<p>select cast(xxx as int)注意数值范围，超过 int 范围会变为负值，建议统一用 cast(xxx as bigint)</p>
+</li>
+<li><p><strong>下述语句会生成 731 行记录</strong></p>
+<!-- -->
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">  DATE_ADD(&#39;&#123;p_date&#125;&#39;, index - 365) AS base_date</span><br><span class="line">lateral view posexplode(split(space(730), &#39; &#39;)) pe as index,s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>with as 会进行缓存吗？</strong></p>
+<!-- -->
+<p>with as 貌似并不会缓存，如下面的查询中多次使用时的 filter 和 select 的列均相同时，会复用，其他情况则不会</p>
+</li>
+<li><p><strong>window 语句为什么不能用在 where 条件里面？</strong></p>
+<!-- -->
+<p><a href="https://stackoverflow.com/questions/13997177/why-no-windowed-functions-in-where-clauses" target="_blank" rel="noopener">https://stackoverflow.com/questions/13997177/why-no-windowed-functions-in-where-clauses</a></p>
+</li>
+</ul>
+<!-- todo -->
+<ul>
+<li><p><strong>hive 表添加列以后为什么新增列都是空？</strong></p>
+<!-- -->
+<p>hive 更改列名后列值会变为 null，可以使用 <code>ALTER TABLE table SET TBLPROPERTIES (&#39;parquet.column.index.access&#39;=&#39;true&#39;)</code> 使用列的次序而不是列名读取列，可见 aws<a href="https://docs.aws.amazon.com/zh_cn/athena/latest/ug/handling-schema-updates-chapter.html" target="_blank" rel="noopener">官方文档</a></p>
+</li>
+<li><p><strong>percent_rank 重复记录的 percent 是一样的</strong></p>
+<!-- --></li>
+<li><p><strong>为什么 hash()方法冲突很严重？</strong></p>
+<!-- -->
+<p>sparksql 的 hash()取值空间为 int 上下限（存疑），sparksql 使用的是 murmur3hash（确定），murmur3hash 有 2 个版本：<a href="https://segmentfault.com/a/1190000010990136" target="_blank" rel="noopener">https://segmentfault.com/a/1190000010990136</a></p>
+<blockquote>
+<p>除了 128 位版本以外，它还有生成 32 位哈希值的版本。在某些场景下，比如哈希的对象长度小于 128 位，或者存储空间要求占用小，或者需要把字符串转换成一个整数，这一特性就能帮上忙。当然，32 位哈希值发生碰撞的可能性就比 128 位的要高得多。当数据量达到十万时，就很有可能发生碰撞。</p>
+</blockquote>
+<!-- -->
+<p>猜测 sparksql 使用的是 32 位版本，哈希冲突在 sqrt(N)的时候大概率发生冲突，目前来看 10 万的数据量就会大概率发生冲突。int 加密到 int 参考解决方案：conv(substring(md5(string(did % (some prime))), start_index), 16, 10)。<br>2019-12-11 更新：确认 sparksql 用的 hash 是 32 位版本的，故在 2^16 量级发生碰撞概率较大。理论上来书 spark 的哈希适用于非加密转换</p>
+</li>
+<li><p><strong>sparksql 为什么插入的时候特别慢？</strong></p>
+<!-- -->
+<p>sparksql insert overwrite 太慢是因为使用了 hive 的早期版本，其中删除文件用了 for，而 hive 后续版本使用了线程池 <a href="https://www.cnblogs.com/barneywill/p/10154922.html" target="_blank" rel="noopener">https://www.cnblogs.com/barneywill/p/10154922.html</a></p>
+</li>
+<li><p><strong>为什么取最新分区数据时速度很慢？</strong></p>
+<!-- -->
+<p>首先，以下三者是相同的 <br><code>select * from table where p_date in (select max(p_date) from table)</code><br><code>select * from table inner join (select max(partition_col) max_p from table t1) a where table.patition_col=a.max_p</code><br><code>select * from table left semi join (select max(partition_col) max_p from table t1) a where table.patition_col=a.max_p</code><br>explain 一下就能明白，三者的 plan 是一样的，改一种写法根本没有用（很容易理解，这些写法是完全等价的，spark 有 optimize，如果其中一种方法更快的话 spark 一定会把另外一个写法优化为更快的那种）测试版本：spark2.3。<br> 但是两种都很慢，因为这样会扫描全表。为什么扫描全表？（感觉很有问题，为什么不是扫描 meta 信息后取出符合条件的分区扫描）参考 <a href="https://stackoverflow.com/questions/56994923/spark-subquery-scan-whole-partition" target="_blank" rel="noopener"> 这个问题 </a> 题主还特地在评论中说问为什么，但没有人回答为什么，全是应该怎么办，也是无语了。个人正在等待<a href="https://stackoverflow.com/questions/59375233/sparksqlwhy-in-clause-on-partition-col-lead-to-full-table-scan" target="_blank" rel="noopener"> 回答 </a> 中 （todo：完善一下问题）</p>
+</li>
+<li><p><strong>hive 如何实现乘法聚合？</strong></p>
+<!-- -->
+<p>hive 竟然没有类似 sum 的乘法聚合，坑爹！类似 exp(sum(log(value)))勉强能实现，sf 上全是这种，但是其实是错的！负数我且不论了，遇到 0 都很尴尬，value 中有一个 0，则乘法聚合结果理论上来说应该是 0，然而这种算法，log(0)=null，因此聚合时会忽略这个 null！而且还很难排查，因为不会报错，结果也很正常，不是 null，<a href="https://blog.jooq.org/2018/09/21/how-to-write-a-multiplication-aggregate-function-in-sql/" target="_blank" rel="noopener">这篇文章 </a> 做了非常深入的探讨, 搭嘎，口头哇路！这么麻烦不难受么，直接 udf 多好</p>
+</li>
+<li><p><strong>为什么 float 类型每次加和都不同？</strong></p>
+<!-- -->
+<p>float 类型加和有精度问题，由于不同的 executor 执行速度不一样，每一次可能是不同的 executor 的和聚合加在一起，因此进行舍入时的值时不一样的，会造成每次加的时候都会有一点点非常小的差异。</p>
+</li>
+<li><p><strong>多个 limit 语句 union 需加括号</strong></p>
+<!-- -->
+<p>select 语句中有 limit 语句时必须加括号，也就是 <code>select * from t1 limit 10 union all select * from t2 limit 10 会报错，必须改为(select * from t1 limit 10) union all (select * from t2 limit 10)</code>，<a href="https://stackoverflow.com/questions/1415328/combining-union-and-limit-operations-in-mysql-query" target="_blank" rel="noopener"> 参考</a>，原因是需要指定 limit 语句生效的子句</p>
+</li>
+<li><p><strong>union all 只会检查字段数是否一致而不会检查字段名</strong></p>
+<!-- -->
+<p><code>select a,b from table1 union all select c,d from table2</code>是正确的，生成的字段名分别为 a 和 b。所以字段顺序很重要，<code>select a,b from (select a,b from table1 union all select b,a from table2)</code>也是完全正确的，看不出来问题，真正用的时候才会有问题。另外 insert select 也务必注意顺序，若两列类型相同但顺序错了也是能插入的。</p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/01/01/restart/" rel="prev" title="重新出发">
+      <i class="fa fa-chevron-left"></i> 重新出发
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/01/01/pyspark/" rel="next" title="pyspark 相关问题踩坑">
+      pyspark 相关问题踩坑 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">qianjie</p>
+  <div class="site-description" itemprop="description">杂七杂八的技术</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/walio" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;walio" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mr.qianjie@gmail.com" title="E-Mail → mailto:mr.qianjie@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/907937976" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;907937976" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qianjie</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

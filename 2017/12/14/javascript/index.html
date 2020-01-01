@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="J9x_3qeYJgpHXg3TWkjrMVeWgrvoJXCn9BdqH8lpyPE">
+  <meta name="baidu-site-verification" content="Dd8P2nJsBS">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://walio.github.io').hostname,
+    root: '/',
+    scheme: 'Mist',
+    version: '7.7.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"hide","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="不知道是不是Python先入为主的原因，总感觉JavaScript是一门很扭曲的语言。比如for(let x in array)，x代表的是index，而且还是string；又比如a &#x3D; {key:value}，key会被“自动解析”为字符串，所以(arg)&#x3D;&gt;{return {arg:”test”}}，函数体中的arg也是字符串”arg”，而非传入的参数arg；又比如我个人感觉，undef">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于 javascript">
+<meta property="og:url" content="https://walio.github.io/2017/12/14/javascript/index.html">
+<meta property="og:site_name" content="冰淇凌好吃树难栽">
+<meta property="og:description" content="不知道是不是Python先入为主的原因，总感觉JavaScript是一门很扭曲的语言。比如for(let x in array)，x代表的是index，而且还是string；又比如a &#x3D; {key:value}，key会被“自动解析”为字符串，所以(arg)&#x3D;&gt;{return {arg:”test”}}，函数体中的arg也是字符串”arg”，而非传入的参数arg；又比如我个人感觉，undef">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-12-14T00:00:00.000Z">
+<meta property="article:modified_time" content="2017-12-14T00:00:00.000Z">
+<meta property="article:author" content="qianjie">
+<meta property="article:tag" content="fe">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://walio.github.io/2017/12/14/javascript/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>关于 javascript | 冰淇凌好吃树难栽</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100755954-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-100755954-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">冰淇凌好吃树难栽</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <h1 class="site-subtitle" itemprop="description">无用技术大全</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-schedule">
+
+    <a href="/schedule/" rel="section"><i class="fa fa-fw fa-calendar"></i>Schedule</a>
+
+  </li>
+        <li class="menu-item menu-item-sitemap">
+
+    <a href="/sitemap.xml" rel="section"><i class="fa fa-fw fa-sitemap"></i>Sitemap</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="en">
+    <link itemprop="mainEntityOfPage" href="https://walio.github.io/2017/12/14/javascript/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="qianjie">
+      <meta itemprop="description" content="杂七杂八的技术">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="冰淇凌好吃树难栽">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          关于 javascript
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-12-14 00:00:00" itemprop="dateCreated datePublished" datetime="2017-12-14T00:00:00+00:00">2017-12-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/fe/" itemprop="url" rel="index">
+                    <span itemprop="name">fe</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>不知道是不是 Python 先入为主的原因，总感觉 JavaScript 是一门很扭曲的语言。比如 for(let x in array)，x 代表的是 index，而且还是 string；又比如 a = {key:value}，key 会被“自动解析”为字符串，所以(arg)=&gt;{return {arg:”test”}}，函数体中的 arg 也是字符串”arg”，而非传入的参数 arg；又比如我个人感觉，undefined 的存在很鸡肋，不能说完全没有用，但是很容易让人混淆。很多语法都有种很反人类的感觉，又或者是我根本没有把 JavaScript 学懂？</p>
+<a id="more"></a>
+<h2 id="关于原型链"><a href="# 关于原型链" class="headerlink" title="关于原型链"></a>关于原型链 </h2><h4 id="函数作为一般对象时"><a href="# 函数作为一般对象时" class="headerlink" title="函数作为一般对象时"></a> 函数作为一般对象时</h4><p>JavaScript 中所有东西都是对象。大部分对象的含义都和传统面向对象一样， 单说下函数。查看函数的类型就是”function”。在作为对象这一点上，函数和和其他任何的对象没有任何区别。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&lt; <span class="literal">undefined</span></span><br><span class="line">&gt; <span class="keyword">typeof</span> test</span><br><span class="line">&lt; <span class="string">"function"</span></span><br></pre></td></tr></table></figure>
+<p>每个对象都定义了一个 <strong>proto</strong> 属性，这个 <strong>proto</strong> 属性的值既是定义了对象的“类”，并且由于 JavaScript 中所有东西都是对象的思想，这个“类”也是一个对象，叫做原型对象。在这一点上函数和每一个对象一样。</p>
+<h4 id="函数作为构造函数时"><a href="# 函数作为构造函数时" class="headerlink" title="函数作为构造函数时"></a>函数作为构造函数时 </h4><p> 现在再来说说函数和其他对象不一样的地方。函数除了可以作为一个对象，还能作为一个类的构造函数。这个类定义在函数对象的 prototype 属性上。而且每个函数默认都有一个 prototype 是 object（JavaScript 默认对象）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&lt; <span class="literal">undefined</span></span><br><span class="line">&gt; test.prototype</span><br><span class="line">&lt; <span class="built_in">Object</span> &#123;<span class="attr">constructor</span>: <span class="function"><span class="keyword">function</span>&#125;</span></span><br><span class="line"><span class="function">&lt; <span class="title">constructor</span>: <span class="title">function</span> <span class="title">test</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">&lt; <span class="title">__proto__</span>: <span class="title">Object</span></span></span><br></pre></td></tr></table></figure>
+<p>可以看到 test.prototype 仅有两个属性，constructor 即是构造函数，<strong>proto</strong>是这个原型对象的原型。</p>
+<h4 id="两种情况的异同"><a href="# 两种情况的异同" class="headerlink" title="两种情况的异同"></a>两种情况的异同 </h4><p> 使用 test()这种方式就是标准的函数调用，使用 new test()就是将 test 当做构造函数新建对象。由于 JavaScript 中任何东西都是对象，所以任何东西都有 <strong>proto</strong> 属性来表述其原型对象（“类”），函数也是对象，函数的 <strong>proto</strong> 就是一个函数对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&lt; <span class="literal">undefined</span></span><br><span class="line">&gt; test.__proto__</span><br><span class="line">&lt; <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; [native code] &#125;</span><br><span class="line">&gt; <span class="keyword">typeof</span> test.__proto__</span><br><span class="line">&lt; <span class="string">"function"</span></span><br></pre></td></tr></table></figure>
+
+<p>但并不是每个对象都有 prototype，只有函数有 prototype 属性。<br>另外函数作为一般函数调用时，this 对象指的就是外层对象，在 windows 对象中定义的函数，this 指向 Windows。而作为类的构造函数时，this 指向的是当前对象。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="keyword">this</span>)&#125;</span><br><span class="line">&lt; <span class="literal">undefined</span></span><br><span class="line">&gt; test()</span><br><span class="line">&lt; Window &#123;<span class="attr">stop</span>: <span class="function"><span class="keyword">function</span>, <span class="title">open</span>: <span class="title">function</span>, <span class="title">alert</span>: <span class="title">function</span>, <span class="title">confirm</span>: <span class="title">function</span>, <span class="title">prompt</span>: <span class="title">function</span>…&#125;</span></span><br><span class="line"><span class="function">&lt; <span class="title">undefined</span></span></span><br><span class="line"><span class="function">&gt; <span class="title">new</span> <span class="title">test</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function">&lt; <span class="title">test</span> </span>&#123;&#125;</span><br><span class="line">&lt; test &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="实例"><a href="# 实例" class="headerlink" title="实例"></a>实例 </h4><p> 原生的 WebSocket 比较难用，我需要扩展甚至改变原生对象的方法，比如连接上或断开以后设置某个标志位。当只有单个 WebSocket 时没问题，多个的话一个个写就太麻烦了。扩展的话没问题，直接 WebSocket.prototype.newfunc=function(){}就行，然而改变是不行的，貌似无法改变原生对象的方法，考虑新建对象继承 WebSocket。</p>
+<ol>
+<li>mysock.prototype=WebSocket.prototype × mysock 的原型就是 WebSocket 的原型，故无法改变</li>
+<li>mysock.prototype=new WebSocket() × websocket 需指定 url 参数</li>
+<li>mysock.prototype=Object.create(WWebSocket) √</li>
+</ol>
+<h2 id="sort 方法"><a href="#sort 方法" class="headerlink" title="sort 方法"></a>sort 方法 </h2><p><code>[-1,-2,0].sort()</code> 结果不对，非得 <code>[-1,-2,0].sort((a,b)=&gt;{return a-b})</code> 才对</p>
+<h2 id="遍历数组"><a href="# 遍历数组" class="headerlink" title="遍历数组"></a>遍历数组</h2><p>for(var x in [1,2,3])，真难受，x 是指数组下标，且是 string</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+              <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/06/26/websocket/" rel="prev" title="websocket 踩坑实践">
+      <i class="fa fa-chevron-left"></i> websocket 踩坑实践
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2017/12/14/algorithm/" rel="next" title="关于算法">
+      关于算法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于原型链"><span class="nav-number">1.</span> <span class="nav-text">关于原型链 </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函数作为一般对象时"><span class="nav-number">1.0.1.</span> <span class="nav-text"> 函数作为一般对象时</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函数作为构造函数时"><span class="nav-number">1.0.2.</span> <span class="nav-text">函数作为构造函数时 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#两种情况的异同"><span class="nav-number">1.0.3.</span> <span class="nav-text">两种情况的异同 </span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例"><span class="nav-number">1.0.4.</span> <span class="nav-text">实例 </span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sort 方法"><span class="nav-number">2.</span> <span class="nav-text">sort 方法 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#遍历数组"><span class="nav-number">3.</span> <span class="nav-text">遍历数组</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">qianjie</p>
+  <div class="site-description" itemprop="description">杂七杂八的技术</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/walio" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;walio" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:mr.qianjie@gmail.com" title="E-Mail → mailto:mr.qianjie@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/907937976" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;907937976" rel="noopener" target="_blank"><i class="fa fa-fw fa-twitter"></i>Twitter</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 2017 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">qianjie</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.7.0
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
