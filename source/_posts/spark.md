@@ -1,5 +1,7 @@
 ---
-title: spark每日进步
+title: spark入门概念
+date: 2018-10-12
+updated: 2018-10-12
 tags:
   - scala
 keywords:
@@ -7,7 +9,7 @@ keywords:
   - spark调试
   - spark广播
 categories:
-  - 数仓开发
+  - data rd
 ---
 写wiki感觉不太好，直接写个人博客。其中掺杂了太多个人理解，不保证正确性。但是感觉网上的都是官样文章，而且都是抄来抄去，真真叫没意思。
 <!--more-->
@@ -33,3 +35,9 @@ https://stackoverflow.com/questions/41388597/difference-between-rdd-foreach-and-
 （3）理论上来说foreach适用于某种操作，如调用restful api等，map适用于对数据做映射，
 * spark的广播
 ![“这张图讲的很好”](/img/broadcast.png)虽然rdd和map函数都定义在同一个python文件中，但是实际上map函数是在不同的excutor上执行的，可以通过闭包的方式将变量传递给各个rdd（在py文件顶层定义变量，在map的函数中使用），但这种方式，每次executor遇到不属于rdd的变量时都会请求一次driver，而广播变量则是一开始申请一次并缓存起来，后面每次都使用这个缓存。
+案例：https://stackoverflow.com/questions/26959221/pyspark-broadcast-variables-from-local-functions
+注意有个问题是partial函数（1）p= partial(func,para)，这种方式指定para为func的第一个参数，p(para1,para2)中para1，para2分别为func的第二、第三个参数（2）p= partial(func,para=para)，para只会作为func的一个关键字参数，p(para1,para2)中para1和para2会作为func的第一个和第二个参数，会报错，相当于partial传参的时候会变成fun(para=para,para=para1,para2=para2)（感觉算是partial函数的一个bug）
+* 关于spark.sql和dataframe api
+https://stackoverflow.com/questions/35222539/spark-sql-queries-vs-dataframe-functions/35257258
+基本来说两者性能完全一致，最终都是调用了spark底层的api，除非一些特殊情况，完全看个人喜好。当取数逻辑复杂到一定程度时，个人倾向于拆分sql，并用rdd的api，一方面便于debug，另一方面可以利用cache等函数的优势。
+20191231更新：实际上个人觉得各有利弊，dataframe的操作太多，很容易造成不清晰，而sql比较清晰；但sql无法执行到某一步停止，也无法raise exception，长sql无法在出现问题时调试。总结：逻辑过长，清晰才是关键

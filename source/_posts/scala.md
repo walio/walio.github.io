@@ -1,12 +1,14 @@
 ---
 title: scala每日进步
+date: 2018-10-12
+updated: 2018-12-07
 tags:
   - scala
 keywords:
   - scala
   - functional programming
 categories:
-  - 数仓开发
+  - data rd
 ---
 写公司wiki感觉不太好，直接写个人博客
 <!--more-->

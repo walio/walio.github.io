@@ -1,6 +1,7 @@
 ---
 title: git
-date:
+date: 2018-01-04
+updated: 2018-01-04
 tags:
 keywords:
 categories:
@@ -26,3 +27,6 @@ HEAD指向现在正在工作的地方
 2. git clone实际操作时在本地创建master分支，然后将远程的master分支同步到本地master分支，所以直接git pull会看到远程有新的分支，但不会像clone那样自动创建分支并同步，本地没有分支与之同步，无法通过git branch branchname那样切换到新的分支，需要别的分支的话需要`git checkout -b branchname origin/branchname`，在本地新建分支并和远程同步（此处不需联网，实际所有分支和历史都下载到本地了，只是需要checkout出来），或者直接`git clone -b branchname url`克隆指定分支。
 3. 删除远程分支的搞笑方法：git push origin :branchname。相当于将空分支推到远程分支。
 3. git fetch取回远程文件，但是仅在.git中，不会修改本地文件，需要自行merge。git pull = git fetch+merge
+
+
+git add .时在某个子目录时只会add自目录下的文件，不在此子目录下的不会track

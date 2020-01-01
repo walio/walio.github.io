@@ -1,9 +1,10 @@
 ---
 title: 设置atom
+date: 2017-06-08
+updated: 2017-06-09
 tags:
 keywords:
   - atom
-categories: 博客搭建
 ---
 首先例行公事吹一波atom。
 >这个世界上有那么多种编辑器，为什么你要花时间学习和使用 Atom 呢？

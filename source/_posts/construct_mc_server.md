@@ -1,6 +1,7 @@
 ---
 title: 搭建正义的太阳骑士Minecraft服务器(pc版和pe版)
-date:
+date: 2017-06-13
+updated: 2017-06-20
 tags:
   - MineCraft
 keywords:
@@ -16,6 +17,7 @@ keywords:
 | ------| ------ | ------ | ------ | ------ |
 | Minecraft | v1.12 | [下载](http://pan.baidu.com/s/1boBkt7T)(x8tb) | 47.93.218.135 | [链你妹的接啊](http://minecraft-zh.gamepedia.com/1.12) |
 | Minecraft: Pocket Edition | v | [下载]() | 47.93.218.135 | [再链一个试试]() |
+
 <!-- more -->
 pc版用的[官方版服务器](https://minecraft.net/zh-hans/download/server)，pe版用的[pmmp]()，大名鼎鼎的PocketMine-MP续作
 说起来这个pmmp也是牛逼啊，好像是反编译mc然后用php重写了一遍？我等只有崇拜

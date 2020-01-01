@@ -1,6 +1,7 @@
 ---
 title: supervisor相关
-date:
+date: 2017-06-14
+updated: 2017-06-20
 tags:
   - linux
 keywords:

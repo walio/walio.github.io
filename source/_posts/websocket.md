@@ -1,6 +1,7 @@
 ---
 title: websocket踩坑实践
-date:
+date: 2017-06-26
+updated: 2017-12-14
 tags:
   - python
 keywords:
@@ -10,7 +11,7 @@ keywords:
   - flask-socket.io
   - tornado.websocket
 categories:
-  - 毕业论文
+  - fe
 ---
 *个人感觉tornado的websocket要比flask-socketio要好得多，毕竟tornado是原生支持，flask-socketio要依靠gevent或者eventlet，这两个库当中貌似有不少的坑*
 个人感觉python的socketio服务器一般有两种比较典型的选择，flask-socketio+socket.io-client和tornado.websocket+原生websocket，这两者之前我最近做了一个比较

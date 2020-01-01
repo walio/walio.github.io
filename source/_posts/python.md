@@ -1,5 +1,7 @@
 ---
 title: python每日进步
+date: 2017-01-08
+updated: 2018-12-07
 tags:
   - python
 keywords:
@@ -68,6 +70,7 @@ reduce_(lambda x,y:x if x>y else y,[1,2,3],1)
 
 利于并行？
 ###### 装饰器
+有没有办法将上下文管理作为装饰器？将sql语句传入函数后装饰器取出结果后将result传入原函数，这样就改变了原函数的参数列表，调用者在使用函数时可能会感到疑惑？docstring也不好写
 
 ###### gui
 Tkinter只适合做最简单的应用，但凡复杂一点还是用wxpython或者pyQt吧

@@ -1,12 +1,14 @@
 ---
 title: 关于javascript
-date:
+date: 2017-12-14
+updated: 2017-12-14
 tags:
   - JavaScript
   - 前端
 keywords:
-  - JavaScript
+  - fe
 categories:
+  - fe
 ---
 不知道是不是Python先入为主的原因，总感觉JavaScript是一门很扭曲的语言。比如for(let x in array)，x代表的是index，而且还是string；又比如a = {key:value}，key会被“自动解析”为字符串，所以(arg)=>{return {arg:"test"}}，函数体中的arg也是字符串"arg"，而非传入的参数arg；又比如我个人感觉，undefined的存在很鸡肋，不能说完全没有用，但是很容易让人混淆。很多语法都有种很反人类的感觉，又或者是我根本没有把JavaScript学懂？
 <!-- more -->

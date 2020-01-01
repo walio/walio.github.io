@@ -1,6 +1,7 @@
 ---
 title: 随便讲一讲修改APK重新签名打包
-date:
+date: 2018-01-04
+updated: 2018-01-04
 tags:
   - 安全
 keywords:
