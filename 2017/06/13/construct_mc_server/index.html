@@ -9,13 +9,14 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <meta name="google-site-verification" content="J9x_3qeYJgpHXg3TWkjrMVeWgrvoJXCn9BdqH8lpyPE">
+  <meta name="google-site-verification" content="64FMlGAJs_Ar1iB0aZXQsWs5vrTqkLJ1lU3VCBLoVq8">
   <meta name="baidu-site-verification" content="Dd8P2nJsBS">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -30,10 +31,10 @@
     copycode: {"enable":false,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: false,
-    pangu: false,
+    lazyload: true,
+    pangu: true,
     comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
     algolia: {
       appID: '',
@@ -50,7 +51,7 @@
 
   <meta name="description" content="pc版已经没问题，pe版调试中惊了，有教程为什么我还要折腾半天  请支持正版，本服务器仅做交流学习使用     客户端类型 客户端版本 客户端下载 服务器地址 客户端版本特性    Minecraft v1.12 下载(x8tb) 47.93.218.135 链你妹的接啊   Minecraft: Pocket Edition v 下载 47.93.218.135 再链一个试试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="搭建正义的太阳骑士 Minecraft 服务器 (pc 版和 pe 版)">
+<meta property="og:title" content="搭建正义的太阳骑士Minecraft服务器(pc版和pe版)">
 <meta property="og:url" content="https://walio.github.io/2017/06/13/construct_mc_server/index.html">
 <meta property="og:site_name" content="冰淇凌好吃树难栽">
 <meta property="og:description" content="pc版已经没问题，pe版调试中惊了，有教程为什么我还要折腾半天  请支持正版，本服务器仅做交流学习使用     客户端类型 客户端版本 客户端下载 服务器地址 客户端版本特性    Minecraft v1.12 下载(x8tb) 47.93.218.135 链你妹的接啊   Minecraft: Pocket Edition v 下载 47.93.218.135 再链一个试试">
@@ -75,19 +76,28 @@
   };
 </script>
 
-  <title>搭建正义的太阳骑士 Minecraft 服务器 (pc 版和 pe 版) | 冰淇凌好吃树难栽</title>
+  <title>搭建正义的太阳骑士Minecraft服务器(pc版和pe版) | 冰淇凌好吃树难栽</title>
   
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100755954-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155294835-1"></script>
     <script>
       if (CONFIG.hostname === location.hostname) {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'UA-100755954-1');
+        gtag('config', 'UA-155294835-1');
       }
     </script>
 
 
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b7e22764d98213d5b77d57be73526009";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -196,6 +206,8 @@
     <span>0%</span>
   </div>
 
+  <a href="https://github.com/walio" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
 
     <main class="main">
       <div class="main-inner">
@@ -223,7 +235,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          搭建正义的太阳骑士 Minecraft 服务器 (pc 版和 pe 版)
+          搭建正义的太阳骑士Minecraft服务器(pc版和pe版)
         </h2>
 
         <div class="post-meta">
@@ -254,7 +266,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><strong>pc 版已经没问题，pe 版调试中 </strong><br> 惊了，有 <a href="https://www.linode.com/docs/game-servers/minecraft-on-debian-and-ubuntu" target="_blank" rel="noopener"> 教程 </a> 为什么我还要折腾半天</p>
+        <p><strong>pc版已经没问题，pe版调试中</strong><br>惊了，有<a href="https://www.linode.com/docs/game-servers/minecraft-on-debian-and-ubuntu" target="_blank" rel="noopener">教程</a>为什么我还要折腾半天</p>
 <blockquote>
 <p>请支持正版，本服务器仅做交流学习使用</p>
 </blockquote>
@@ -284,18 +296,18 @@
 </tr>
 </tbody></table>
 <a id="more"></a>
-<p>pc 版用的 <a href="https://minecraft.net/zh-hans/download/server" target="_blank" rel="noopener"> 官方版服务器 </a>，pe 版用的<a href="">pmmp</a>，大名鼎鼎的 PocketMine-MP 续作<br> 说起来这个 pmmp 也是牛逼啊，好像是反编译 mc 然后用 php 重写了一遍？我等只有崇拜</p>
-<h2 id="pe 版建服"><a href="#pe 版建服" class="headerlink" title="pe 版建服"></a>pe 版建服</h2><p>(非 root 用户去掉第三行<code>-r</code>)</p>
+<p>pc版用的<a href="https://minecraft.net/zh-hans/download/server" target="_blank" rel="noopener">官方版服务器</a>，pe版用的<a href="">pmmp</a>，大名鼎鼎的PocketMine-MP续作<br>说起来这个pmmp也是牛逼啊，好像是反编译mc然后用php重写了一遍？我等只有崇拜</p>
+<h2 id="pe版建服"><a href="#pe版建服" class="headerlink" title="pe版建服"></a>pe版建服</h2><p>(非root用户去掉第三行<code>-r</code>)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local</span><br><span class="line">mkdir mcpeserver</span><br><span class="line">curl -sL https:&#x2F;&#x2F;get.pmmp.io | bash -s - -r</span><br><span class="line">.&#x2F;start.sh</span><br></pre></td></tr></table></figure>
-<p>第一次使用会设定基本项，之后可以编辑 server.properties 修改设定。<br>由于服务器是阻塞进程，需要后台运行，方法是，mcpeserver.ini 内容</p>
+<p>第一次使用会设定基本项，之后可以编辑server.properties修改设定。<br>由于服务器是阻塞进程，需要后台运行，方法是，mcpeserver.ini内容</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[program:mcpeserver]</span><br><span class="line">command&#x3D;&#x2F;usr&#x2F;local&#x2F;mcpeserver&#x2F;start.sh</span><br><span class="line">stdout_logfile&#x3D;&#x2F;var&#x2F;log&#x2F;mcpeserver&#x2F;out.log</span><br><span class="line">stderr_logfile&#x3D;&#x2F;var&#x2F;log&#x2F;mcpeserver&#x2F;err.log</span><br></pre></td></tr></table></figure>
-<h2 id="pc 服务器建服"><a href="#pc 服务器建服" class="headerlink" title="pc 服务器建服"></a>pc 服务器建服 </h2><p> 如果出现</p>
+<h2 id="pc服务器建服"><a href="#pc服务器建服" class="headerlink" title="pc服务器建服"></a>pc服务器建服</h2><p>如果出现</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread <span class="string">"main"</span> java.lang.UnsupportedClassVersionError: net/minecraft/server/MinecraftServer : Unsupported major.minor version <span class="number">52.0</span></span><br></pre></td></tr></table></figure>
-<p>的错误，可能是安装的 java 有问题 (亲测，上述问题就是因为用的 openjdk，换 Oracle 版的就好了)，请安装 Oracle 版的 java(吐槽一句，阿里云下载 java 可能是做了本地缓存，1 秒就下好了，但是文件又有问题，根本没办法安装)，Oracle java 安装不上的请看<a href="http://www.cnblogs.com/DebugLife/p/aliyun-ubuntu-java.html" target="_blank" rel="noopener"> 这篇文章</a><br><code>Errors were encountered while processing:
+<p>的错误，可能是安装的java有问题(亲测，上述问题就是因为用的openjdk，换Oracle版的就好了)，请安装Oracle版的java(吐槽一句，阿里云下载java可能是做了本地缓存，1秒就下好了，但是文件又有问题，根本没办法安装)，Oracle java安装不上的请看<a href="http://www.cnblogs.com/DebugLife/p/aliyun-ubuntu-java.html" target="_blank" rel="noopener">这篇文章</a><br><code>Errors were encountered while processing:
  oracle-java7-installer
 E: Sub-process /usr/bin/dpkg returned an error code (1)</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">apt-get install python-software-properties</span><br><span class="line">apt-get install software-properties-common</span><br><span class="line">apt-add-repository ppa:webupd8team/java</span><br><span class="line">apt-get update</span><br><span class="line">sudo apt-get install oracle-java7-installer</span><br><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span></span><br><span class="line">mkdir minecraft_server</span><br><span class="line"><span class="built_in">cd</span> minecraft_server</span><br><span class="line">wget https://s3.amazonaws.com/Minecraft.Download/versions/1.12/minecraft_server.1.12.jar</span><br><span class="line">java -Xmx1024M -Xms1024M -jar minecraft_server.1.12.jar nogui</span><br></pre></td></tr></table></figure>
-<p>第一次运行会立即结束，修改 eula.txt 同意条约就行，第二次运行后修改 server.properties，把 online-mode 从 <code>true</code> 改为 <code>false</code> 使盗版启动器也能登录。<a href="http://minecraft-zh.gamepedia.com/index.php?title=Server.properties&variant=zh" target="_blank" rel="noopener">官方 wiki</a>写的超详细。<br><a href="">使用 supervisor</a>管理进程，minecraft_server.ini 配置如下</p>
+<p>第一次运行会立即结束，修改eula.txt同意条约就行，第二次运行后修改server.properties，把online-mode从<code>true</code>改为<code>false</code>使盗版启动器也能登录。<a href="http://minecraft-zh.gamepedia.com/index.php?title=Server.properties&variant=zh" target="_blank" rel="noopener">官方wiki</a>写的超详细。<br><a href="">使用supervisor</a>管理进程，minecraft_server.ini配置如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[program:minecraft_server]</span><br><span class="line">command&#x3D;&#x2F;usr&#x2F;java&#x2F;java8&#x2F;bin&#x2F;java -Xmx1024M -Xms1024M -jar &#x2F;usr&#x2F;local&#x2F;minecraft_server&#x2F;minecraft_server.1.12.jar nogui</span><br><span class="line">stdout_logfile&#x3D;&#x2F;var&#x2F;log&#x2F;minecraft_server&#x2F;out.log</span><br><span class="line">stderr_logfile&#x3D;&#x2F;var&#x2F;log&#x2F;minecraft_server&#x2F;err.log</span><br></pre></td></tr></table></figure>
 <p>启动器都是使用的别人的，侵删，等我有时间了整一个。</p>
 
@@ -316,12 +328,12 @@ E: Sub-process /usr/bin/dpkg returned an error code (1)</code></p>
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2017/06/08/atom/" rel="prev" title="设置 atom">
-      <i class="fa fa-chevron-left"></i> 设置 atom
+    <a href="/2017/06/08/atom/" rel="prev" title="设置atom">
+      <i class="fa fa-chevron-left"></i> 设置atom
     </a></div>
       <div class="post-nav-item">
-    <a href="/2017/06/14/supervisor/" rel="next" title="supervisor 相关">
-      supervisor 相关 <i class="fa fa-chevron-right"></i>
+    <a href="/2017/06/14/supervisor/" rel="next" title="supervisor相关">
+      supervisor相关 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -336,6 +348,7 @@ E: Sub-process /usr/bin/dpkg returned an error code (1)</code></p>
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -382,7 +395,7 @@ E: Sub-process /usr/bin/dpkg returned an error code (1)</code></p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pe 版建服"><span class="nav-number">1.</span> <span class="nav-text">pe 版建服</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pc 服务器建服"><span class="nav-number">2.</span> <span class="nav-text">pc 服务器建服 </span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pe版建服"><span class="nav-number">1.</span> <span class="nav-text">pe版建服</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pc服务器建服"><span class="nav-number">2.</span> <span class="nav-text">pc服务器建服</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -472,6 +485,10 @@ E: Sub-process /usr/bin/dpkg returned an error code (1)</code></p>
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -516,6 +533,28 @@ E: Sub-process /usr/bin/dpkg returned an error code (1)</code></p>
   
 
   
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'fdcf1cf9a619624b9e12',
+      clientSecret: '37a1606d9ef2698e89c84888fa0a28eb124f8d82',
+      repo: 'comment_for_blog',
+      owner: 'walio',
+      admin: ['walio'],
+      id: 'aa922ac5c07775c9c8b253ba8405e882',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>

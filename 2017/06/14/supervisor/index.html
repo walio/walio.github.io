@@ -9,13 +9,14 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <meta name="google-site-verification" content="J9x_3qeYJgpHXg3TWkjrMVeWgrvoJXCn9BdqH8lpyPE">
+  <meta name="google-site-verification" content="64FMlGAJs_Ar1iB0aZXQsWs5vrTqkLJ1lU3VCBLoVq8">
   <meta name="baidu-site-verification" content="Dd8P2nJsBS">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -30,10 +31,10 @@
     copycode: {"enable":false,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: false,
-    pangu: false,
+    lazyload: true,
+    pangu: true,
     comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
     algolia: {
       appID: '',
@@ -50,7 +51,7 @@
 
   <meta name="description" content="当使用ssh连接到Linux服务器时，开启阻塞进程后，关闭ssh连接即会停止阻塞进程，这时需要将阻塞进程s作为后台程序管理，个人感觉管理进程最佳工具是supervisor。官方文档">
 <meta property="og:type" content="article">
-<meta property="og:title" content="supervisor 相关">
+<meta property="og:title" content="supervisor相关">
 <meta property="og:url" content="https://walio.github.io/2017/06/14/supervisor/index.html">
 <meta property="og:site_name" content="冰淇凌好吃树难栽">
 <meta property="og:description" content="当使用ssh连接到Linux服务器时，开启阻塞进程后，关闭ssh连接即会停止阻塞进程，这时需要将阻塞进程s作为后台程序管理，个人感觉管理进程最佳工具是supervisor。官方文档">
@@ -73,19 +74,28 @@
   };
 </script>
 
-  <title>supervisor 相关 | 冰淇凌好吃树难栽</title>
+  <title>supervisor相关 | 冰淇凌好吃树难栽</title>
   
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100755954-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155294835-1"></script>
     <script>
       if (CONFIG.hostname === location.hostname) {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'UA-100755954-1');
+        gtag('config', 'UA-155294835-1');
       }
     </script>
 
 
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b7e22764d98213d5b77d57be73526009";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -194,6 +204,8 @@
     <span>0%</span>
   </div>
 
+  <a href="https://github.com/walio" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
 
     <main class="main">
       <div class="main-inner">
@@ -221,7 +233,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          supervisor 相关
+          supervisor相关
         </h2>
 
         <div class="post-meta">
@@ -263,21 +275,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>当使用 ssh 连接到 Linux 服务器时，开启阻塞进程后，关闭 ssh 连接即会停止阻塞进程，这时需要将阻塞进程 s 作为后台程序管理，个人感觉管理进程最佳工具是 supervisor。<a href="http://supervisord.org/index.html" target="_blank" rel="noopener">官方文档</a></p>
+        <p>当使用ssh连接到Linux服务器时，开启阻塞进程后，关闭ssh连接即会停止阻塞进程，这时需要将阻塞进程s作为后台程序管理，个人感觉管理进程最佳工具是supervisor。<a href="http://supervisord.org/index.html" target="_blank" rel="noopener">官方文档</a></p>
 <a id="more"></a>
-<p>supervisor 是 python 写成，且只支持 python2。</p>
-<h2 id="安装"><a href="# 安装" class="headerlink" title="安装"></a>安装</h2><p>linux 自带 python2，安装请用<code>sudo pip install supervisor</code></p>
+<p>supervisor是python写成，且只支持python2。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>linux自带python2，安装请用<code>sudo pip install supervisor</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Supervisor requires Python 2.4 or later but does not work on any version of Python 3.  You are using version 3.5.2 (default, Nov 17 2016, 17:05:23)</span><br><span class="line">    [GCC 5.4.0 20160609].  Please install using a supported version.</span><br></pre></td></tr></table></figure>
-<p>尝试使用 apt-get install supervisor</p>
-<h2 id="配置"><a href="# 配置" class="headerlink" title="配置"></a>配置</h2><p>centOS 安装后会生成 /etc/supervisor/supervisord.conf 并自动包含 /etc/supervisor/conf.d 文件夹下所有 ini 文件，ubuntu 要手动生成：</p>
+<p>尝试使用apt-get install supervisor</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>centOS安装后会生成/etc/supervisor/supervisord.conf并自动包含/etc/supervisor/conf.d文件夹下所有ini文件，ubuntu要手动生成：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /etc/supervisor</span><br><span class="line">mkdir /etc/supervisor/conf.d</span><br><span class="line">echo_supervisord_conf &gt; /etc/supervisor/supervisord.conf</span><br><span class="line">vim /etc/supervisor/supervisord.conf</span><br></pre></td></tr></table></figure>
 <p>将</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">;[include]</span><br><span class="line">;files &#x3D; relative&#x2F;directory&#x2F;*.ini</span><br></pre></td></tr></table></figure>
 <p>改为</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[include]</span><br><span class="line">files &#x3D; conf.d&#x2F;*.ini</span><br></pre></td></tr></table></figure>
-<p>修改完成后启动 supervisor 时 /etc/supervisor/supervisord.conf 会自动加载，并且 supervisord.conf 包含的 /etc/supervisor/conf.d 下的任何 ini 文件都会自动加载。ini 文件基本语法：</p>
+<p>修改完成后启动supervisor时/etc/supervisor/supervisord.conf会自动加载，并且supervisord.conf包含的/etc/supervisor/conf.d下的任何ini文件都会自动加载。ini文件基本语法：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[program:usercenter]</span><br><span class="line">directory &#x3D; &#x2F;home&#x2F;leon&#x2F;projects&#x2F;usercenter ; 程序的启动目录</span><br><span class="line">command &#x3D; gunicorn -c gunicorn.py wsgi:app ; 启动命令，可以看出与手动在命令行启动的命令是一样的</span><br><span class="line">autostart &#x3D; true ; 在 supervisord 启动的时候也自动启动</span><br><span class="line">startsecs &#x3D; 5 ; 启动 5 秒后没有异常退出，就当作已经正常启动了</span><br><span class="line">autorestart &#x3D; true ; 程序异常退出后自动重启</span><br><span class="line">startretries &#x3D; 3 ; 启动失败自动重试次数，默认是 3</span><br><span class="line">user &#x3D; leon ; 用哪个用户启动</span><br><span class="line">redirect_stderr &#x3D; true ; 把 stderr 重定向到 stdout，默认 false</span><br><span class="line">stdout_logfile_maxbytes &#x3D; 20MB ; stdout 日志文件大小，默认 50MB</span><br><span class="line">stdout_logfile_backups &#x3D; 20 ; stdout 日志文件备份数</span><br><span class="line">stdout_logfile &#x3D; &#x2F;data&#x2F;logs&#x2F;usercenter_stdout.log; stdout 日志文件，需要注意当指定目录不存在时无法正常启动，所以需要手动创建目录（supervisord 会自动创建日志文件）</span><br><span class="line"></span><br><span class="line">; 可以通过 environment 来添加需要的环境变量，一种常见的用法是修改 PYTHONPATH</span><br><span class="line">; environment&#x3D;PYTHONPATH&#x3D;$PYTHONPATH:&#x2F;path&#x2F;to&#x2F;somewhere</span><br></pre></td></tr></table></figure>
-<h2 id="启动"><a href="# 启动" class="headerlink" title="启动"></a>启动 </h2><p> 运行 <code>supervisord</code> 启动，运行 supervisorctl 进入 supervisorctl 的 shell 界面，可以执行以下命令</p>
+<h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>运行<code>supervisord</code>启动，运行supervisorctl进入supervisorctl的shell界面，可以执行以下命令</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; status    <span class="comment"># 查看程序状态</span></span><br><span class="line">&gt; stop usercenter   <span class="comment"># 关闭 usercenter 程序</span></span><br><span class="line">&gt; start usercenter  <span class="comment"># 启动 usercenter 程序</span></span><br><span class="line">&gt; restart usercenter    <span class="comment"># 重启 usercenter 程序</span></span><br><span class="line">&gt; reread    <span class="comment"># 读取有更新（增加）的配置文件，不会启动新添加的程序</span></span><br><span class="line">&gt; update    <span class="comment"># 重启配置文件修改过的程序</span></span><br></pre></td></tr></table></figure>
 
     </div>
@@ -297,12 +309,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2017/06/13/construct_mc_server/" rel="prev" title="搭建正义的太阳骑士 Minecraft 服务器 (pc 版和 pe 版)">
-      <i class="fa fa-chevron-left"></i> 搭建正义的太阳骑士 Minecraft 服务器 (pc 版和 pe 版)
+    <a href="/2017/06/13/construct_mc_server/" rel="prev" title="搭建正义的太阳骑士Minecraft服务器(pc版和pe版)">
+      <i class="fa fa-chevron-left"></i> 搭建正义的太阳骑士Minecraft服务器(pc版和pe版)
     </a></div>
       <div class="post-nav-item">
-    <a href="/2017/06/14/hexo_next_trick/" rel="next" title="next 主题一些技巧">
-      next 主题一些技巧 <i class="fa fa-chevron-right"></i>
+    <a href="/2017/06/14/hexo_next_trick/" rel="next" title="next主题一些技巧">
+      next主题一些技巧 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -317,6 +329,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -363,7 +376,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动"><span class="nav-number">3.</span> <span class="nav-text">启动 </span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#启动"><span class="nav-number">3.</span> <span class="nav-text">启动</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -453,6 +466,10 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -497,6 +514,28 @@
   
 
   
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'fdcf1cf9a619624b9e12',
+      clientSecret: '37a1606d9ef2698e89c84888fa0a28eb124f8d82',
+      repo: 'comment_for_blog',
+      owner: 'walio',
+      admin: ['walio'],
+      id: '975c9c4315a4bef10b6667eb76da816a',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>

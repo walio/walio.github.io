@@ -9,13 +9,14 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <meta name="google-site-verification" content="J9x_3qeYJgpHXg3TWkjrMVeWgrvoJXCn9BdqH8lpyPE">
+  <meta name="google-site-verification" content="64FMlGAJs_Ar1iB0aZXQsWs5vrTqkLJ1lU3VCBLoVq8">
   <meta name="baidu-site-verification" content="Dd8P2nJsBS">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -30,10 +31,10 @@
     copycode: {"enable":false,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: false,
-    pangu: false,
+    lazyload: true,
+    pangu: true,
     comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
     algolia: {
       appID: '',
@@ -50,7 +51,7 @@
 
   <meta name="description" content="多年以来踩过许许多多spark的坑，查问题的时候也是各种艰辛，基本没有中文资料，记录一下防止自己忘记，也方便后来人，主要是分pyspark相关、sparksql相关。尽量按照问题与回答进行组织。本篇为sparksql相关问题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sparksql 踩坑实践">
+<meta property="og:title" content="sparksql踩坑实践">
 <meta property="og:url" content="https://walio.github.io/2020/01/01/sparksql/index.html">
 <meta property="og:site_name" content="冰淇凌好吃树难栽">
 <meta property="og:description" content="多年以来踩过许许多多spark的坑，查问题的时候也是各种艰辛，基本没有中文资料，记录一下防止自己忘记，也方便后来人，主要是分pyspark相关、sparksql相关。尽量按照问题与回答进行组织。本篇为sparksql相关问题。">
@@ -75,19 +76,28 @@
   };
 </script>
 
-  <title>sparksql 踩坑实践 | 冰淇凌好吃树难栽</title>
+  <title>sparksql踩坑实践 | 冰淇凌好吃树难栽</title>
   
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100755954-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155294835-1"></script>
     <script>
       if (CONFIG.hostname === location.hostname) {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'UA-100755954-1');
+        gtag('config', 'UA-155294835-1');
       }
     </script>
 
 
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b7e22764d98213d5b77d57be73526009";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -196,6 +206,8 @@
     <span>0%</span>
   </div>
 
+  <a href="https://github.com/walio" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
 
     <main class="main">
       <div class="main-inner">
@@ -223,7 +235,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          sparksql 踩坑实践
+          sparksql踩坑实践
         </h2>
 
         <div class="post-meta">
@@ -247,90 +259,90 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>多年以来踩过许许多多 spark 的坑，查问题的时候也是各种艰辛，基本没有中文资料，记录一下防止自己忘记，也方便后来人，主要是分 pyspark 相关、sparksql 相关。尽量按照问题与回答进行组织。本篇为 sparksql 相关问题。</p>
+        <p>多年以来踩过许许多多spark的坑，查问题的时候也是各种艰辛，基本没有中文资料，记录一下防止自己忘记，也方便后来人，主要是分pyspark相关、sparksql相关。尽量按照问题与回答进行组织。本篇为sparksql相关问题。</p>
 <a id="more"></a>
 <ul>
-<li><p><strong>为什么与 decimal 相乘时，hive 和 sparksql 有精度差异？</strong></p>
+<li><p><strong>为什么与decimal相乘时，hive和sparksql有精度差异？</strong></p>
 <!-- -->
-<p><code>select (cast(29.26831421 as decimal(20,8))) * cast(4532 as bigint)</code>，乘法真实结果是 132643.99999972，在 hive 中结果是 132643，sparksql 结果是 132644。乍一看是 spark 做了四舍五入 hive 去尾，实际不是。<br>首先 cast as int 无论 spark 还是 hive 都是去尾。通过 explain 分析等可以得出，hive 执行时，select cast(29.26831421 as decimal(20,8)) * cast(4532 as bigint)并不会丢失 decimal 精度，而 sparksql 在这一步已经变为 132644，具体原因是 spark 首先将 bigint 转换为 decimal(20,0)（猜测因为 bigint 是 8byte，范围 -9,223,372,036,854,775,808 ~ 9,223,372,036,854,775,807，整数 19 位 + 符号 1 位），再取上限两个数均转换为 decimal(28,8)，然后结果保留 6 位小数（详见 2），实际上是 132643.99999972 舍入为 132643.000000</p>
+<p><code>select (cast(29.26831421 as decimal(20,8))) * cast(4532 as bigint)</code>，乘法真实结果是132643.99999972，在hive中结果是132643，sparksql结果是132644。乍一看是spark做了四舍五入hive去尾，实际不是。<br>首先cast as int无论spark还是hive都是去尾。通过explain分析等可以得出，hive执行时，select cast(29.26831421 as decimal(20,8)) * cast(4532 as bigint)并不会丢失decimal精度，而sparksql在这一步已经变为132644，具体原因是spark首先将bigint转换为decimal(20,0)（猜测因为bigint是8byte，范围-9,223,372,036,854,775,808 ~ 9,223,372,036,854,775,807，整数19位+符号1位），再取上限两个数均转换为decimal(28,8)，然后结果保留6位小数（详见2），实际上是132643.99999972舍入为132643.000000</p>
 </li>
 <li><p><strong>关于保留小位数</strong></p>
 <!-- -->
-<p>decimal*any，会将 any 转换成 decimal，如 bigint 转为 decimal(20,0)，int 转为 decimal(10,0)，然后成为 decimal(a,b)*decimal(c,d)的计算，计算结果的精确度首先保证整数部分，保留位数为 38-(a-b)-(c-d)，如 decimal(20,8)*bigint 保留位数为 38-12-20=6</p>
+<p>decimal*any，会将any转换成decimal，如bigint转为decimal(20,0)，int转为decimal(10,0)，然后成为decimal(a,b)*decimal(c,d)的计算，计算结果的精确度首先保证整数部分，保留位数为38-(a-b)-(c-d)，如decimal(20,8)*bigint保留位数为38-12-20=6</p>
 </li>
-<li><p><strong>为什么 collect_list 的数值类型会被转为 string 类型？</strong></p>
+<li><p><strong>为什么collect_list的数值类型会被转为string类型？</strong></p>
 <!-- -->
-<p>collect_list 只能 collect 同一类型数据，当 spark.sql 中有 collect_list(date,value)之类的语句时，value 会被强转为 string</p>
+<p>collect_list只能collect同一类型数据，当spark.sql中有collect_list(date,value)之类的语句时，value会被强转为string</p>
 </li>
-<li><p><strong>多个 collect_list 时，list 中不同列的相对位置是否相同？</strong></p>
+<li><p><strong>多个collect_list时，list中不同列的相对位置是否相同？</strong></p>
 <!-- -->
 <p>貌似并无保证。<a href="https://stackoverflow.com/questions/44448008/does-collect-list-maintain-relative-ordering-of-rows" target="_blank" rel="noopener">refer1</a>，<a href="https://stackoverflow.com/questions/40407514/use-more-than-one-collect-list-in-one-query-in-spark-sql" target="_blank" rel="noopener">refer2</a></p>
 </li>
-<li><p><strong>为什么 insert 会生成重复记录？</strong></p>
+<li><p><strong>为什么insert会生成重复记录？</strong></p>
 <!-- -->
-<p>insert overwrite 会覆盖，insert 不会，会生成重复记录，注意粘贴别粘错</p>
+<p>insert overwrite会覆盖，insert不会，会生成重复记录，注意粘贴别粘错</p>
 </li>
-<li><p><strong>为什么 array(key, value)的时候将 value 转为 Boolean 时后一位永远是 true？</strong></p>
+<li><p><strong>为什么array(key, value)的时候将value转为Boolean时后一位永远是true？</strong></p>
 <!-- -->
-<p>原理就是 array 中只能存同样类型的值，<code>select array(a,b)</code>，a 为 string 而 b 为 int 时，会自动执行<code>select(a,cast(b as string))</code>，取出后都为字符串，小心使用 1 和 0 表示 true 和 false 的，因为’1’和’0’均为 true</p>
+<p>原理就是array中只能存同样类型的值，<code>select array(a,b)</code>，a为string而b为int时，会自动执行<code>select(a,cast(b as string))</code>，取出后都为字符串，小心使用1和0表示true和false的，因为’1’和’0’均为true</p>
 </li>
-<li><p><strong>关于 int 的上限</strong></p>
+<li><p><strong>关于int的上限</strong></p>
 <!-- -->
-<p>select cast(xxx as int)注意数值范围，超过 int 范围会变为负值，建议统一用 cast(xxx as bigint)</p>
+<p>select cast(xxx as int)注意数值范围，超过int范围会变为负值，建议统一用cast(xxx as bigint)</p>
 </li>
-<li><p><strong>下述语句会生成 731 行记录</strong></p>
+<li><p><strong>下述语句会生成731行记录</strong></p>
 <!-- -->
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT</span><br><span class="line">  DATE_ADD(&#39;&#123;p_date&#125;&#39;, index - 365) AS base_date</span><br><span class="line">lateral view posexplode(split(space(730), &#39; &#39;)) pe as index,s</span><br></pre></td></tr></table></figure>
 </li>
-<li><p><strong>with as 会进行缓存吗？</strong></p>
+<li><p><strong>with as会进行缓存吗？</strong></p>
 <!-- -->
-<p>with as 貌似并不会缓存，如下面的查询中多次使用时的 filter 和 select 的列均相同时，会复用，其他情况则不会</p>
+<p>with as貌似并不会缓存，如下面的查询中多次使用时的filter和select的列均相同时，会复用，其他情况则不会</p>
 </li>
-<li><p><strong>window 语句为什么不能用在 where 条件里面？</strong></p>
+<li><p><strong>window语句为什么不能用在where条件里面？</strong></p>
 <!-- -->
 <p><a href="https://stackoverflow.com/questions/13997177/why-no-windowed-functions-in-where-clauses" target="_blank" rel="noopener">https://stackoverflow.com/questions/13997177/why-no-windowed-functions-in-where-clauses</a></p>
 </li>
 </ul>
 <!-- todo -->
 <ul>
-<li><p><strong>hive 表添加列以后为什么新增列都是空？</strong></p>
+<li><p><strong>hive表添加列以后为什么新增列都是空？</strong></p>
 <!-- -->
-<p>hive 更改列名后列值会变为 null，可以使用 <code>ALTER TABLE table SET TBLPROPERTIES (&#39;parquet.column.index.access&#39;=&#39;true&#39;)</code> 使用列的次序而不是列名读取列，可见 aws<a href="https://docs.aws.amazon.com/zh_cn/athena/latest/ug/handling-schema-updates-chapter.html" target="_blank" rel="noopener">官方文档</a></p>
+<p>hive更改列名后列值会变为null，可以使用<code>ALTER TABLE table SET TBLPROPERTIES (&#39;parquet.column.index.access&#39;=&#39;true&#39;)</code>使用列的次序而不是列名读取列，可见aws<a href="https://docs.aws.amazon.com/zh_cn/athena/latest/ug/handling-schema-updates-chapter.html" target="_blank" rel="noopener">官方文档</a></p>
 </li>
-<li><p><strong>percent_rank 重复记录的 percent 是一样的</strong></p>
+<li><p><strong>percent_rank重复记录的percent是一样的</strong></p>
 <!-- --></li>
-<li><p><strong>为什么 hash()方法冲突很严重？</strong></p>
+<li><p><strong>为什么hash()方法冲突很严重？</strong></p>
 <!-- -->
-<p>sparksql 的 hash()取值空间为 int 上下限（存疑），sparksql 使用的是 murmur3hash（确定），murmur3hash 有 2 个版本：<a href="https://segmentfault.com/a/1190000010990136" target="_blank" rel="noopener">https://segmentfault.com/a/1190000010990136</a></p>
+<p>sparksql的hash()取值空间为int上下限（存疑），sparksql使用的是murmur3hash（确定），murmur3hash有2个版本：<a href="https://segmentfault.com/a/1190000010990136" target="_blank" rel="noopener">https://segmentfault.com/a/1190000010990136</a></p>
 <blockquote>
 <p>除了 128 位版本以外，它还有生成 32 位哈希值的版本。在某些场景下，比如哈希的对象长度小于 128 位，或者存储空间要求占用小，或者需要把字符串转换成一个整数，这一特性就能帮上忙。当然，32 位哈希值发生碰撞的可能性就比 128 位的要高得多。当数据量达到十万时，就很有可能发生碰撞。</p>
 </blockquote>
 <!-- -->
-<p>猜测 sparksql 使用的是 32 位版本，哈希冲突在 sqrt(N)的时候大概率发生冲突，目前来看 10 万的数据量就会大概率发生冲突。int 加密到 int 参考解决方案：conv(substring(md5(string(did % (some prime))), start_index), 16, 10)。<br>2019-12-11 更新：确认 sparksql 用的 hash 是 32 位版本的，故在 2^16 量级发生碰撞概率较大。理论上来书 spark 的哈希适用于非加密转换</p>
+<p>猜测sparksql使用的是32位版本，哈希冲突在sqrt(N)的时候大概率发生冲突，目前来看10万的数据量就会大概率发生冲突。int加密到int参考解决方案：conv(substring(md5(string(did % (some prime))), start_index), 16, 10)。<br>2019-12-11更新：确认sparksql用的hash是32位版本的，故在2^16量级发生碰撞概率较大。理论上来书spark的哈希适用于非加密转换</p>
 </li>
-<li><p><strong>sparksql 为什么插入的时候特别慢？</strong></p>
+<li><p><strong>sparksql为什么插入的时候特别慢？</strong></p>
 <!-- -->
-<p>sparksql insert overwrite 太慢是因为使用了 hive 的早期版本，其中删除文件用了 for，而 hive 后续版本使用了线程池 <a href="https://www.cnblogs.com/barneywill/p/10154922.html" target="_blank" rel="noopener">https://www.cnblogs.com/barneywill/p/10154922.html</a></p>
+<p>sparksql insert overwrite太慢是因为使用了hive的早期版本，其中删除文件用了for，而hive后续版本使用了线程池 <a href="https://www.cnblogs.com/barneywill/p/10154922.html" target="_blank" rel="noopener">https://www.cnblogs.com/barneywill/p/10154922.html</a></p>
 </li>
 <li><p><strong>为什么取最新分区数据时速度很慢？</strong></p>
 <!-- -->
-<p>首先，以下三者是相同的 <br><code>select * from table where p_date in (select max(p_date) from table)</code><br><code>select * from table inner join (select max(partition_col) max_p from table t1) a where table.patition_col=a.max_p</code><br><code>select * from table left semi join (select max(partition_col) max_p from table t1) a where table.patition_col=a.max_p</code><br>explain 一下就能明白，三者的 plan 是一样的，改一种写法根本没有用（很容易理解，这些写法是完全等价的，spark 有 optimize，如果其中一种方法更快的话 spark 一定会把另外一个写法优化为更快的那种）测试版本：spark2.3。<br> 但是两种都很慢，因为这样会扫描全表。为什么扫描全表？（感觉很有问题，为什么不是扫描 meta 信息后取出符合条件的分区扫描）参考 <a href="https://stackoverflow.com/questions/56994923/spark-subquery-scan-whole-partition" target="_blank" rel="noopener"> 这个问题 </a> 题主还特地在评论中说问为什么，但没有人回答为什么，全是应该怎么办，也是无语了。个人正在等待<a href="https://stackoverflow.com/questions/59375233/sparksqlwhy-in-clause-on-partition-col-lead-to-full-table-scan" target="_blank" rel="noopener"> 回答 </a> 中 （todo：完善一下问题）</p>
+<p>首先，以下三者是相同的<br><code>select * from table where p_date in (select max(p_date) from table)</code><br><code>select * from table inner join (select max(partition_col) max_p from table t1) a where table.patition_col=a.max_p</code><br><code>select * from table left semi join (select max(partition_col) max_p from table t1) a where table.patition_col=a.max_p</code><br>explain一下就能明白，三者的plan是一样的，改一种写法根本没有用（很容易理解，这些写法是完全等价的，spark有optimize，如果其中一种方法更快的话spark一定会把另外一个写法优化为更快的那种）测试版本：spark2.3。<br>但是两种都很慢，因为这样会扫描全表。为什么扫描全表？（感觉很有问题，为什么不是扫描meta信息后取出符合条件的分区扫描）参考<a href="https://stackoverflow.com/questions/56994923/spark-subquery-scan-whole-partition" target="_blank" rel="noopener">这个问题</a> 题主还特地在评论中说问为什么，但没有人回答为什么，全是应该怎么办，也是无语了。个人正在等待<a href="https://stackoverflow.com/questions/59375233/sparksqlwhy-in-clause-on-partition-col-lead-to-full-table-scan" target="_blank" rel="noopener">回答</a>中 （todo：完善一下问题）</p>
 </li>
-<li><p><strong>hive 如何实现乘法聚合？</strong></p>
+<li><p><strong>hive如何实现乘法聚合？</strong></p>
 <!-- -->
-<p>hive 竟然没有类似 sum 的乘法聚合，坑爹！类似 exp(sum(log(value)))勉强能实现，sf 上全是这种，但是其实是错的！负数我且不论了，遇到 0 都很尴尬，value 中有一个 0，则乘法聚合结果理论上来说应该是 0，然而这种算法，log(0)=null，因此聚合时会忽略这个 null！而且还很难排查，因为不会报错，结果也很正常，不是 null，<a href="https://blog.jooq.org/2018/09/21/how-to-write-a-multiplication-aggregate-function-in-sql/" target="_blank" rel="noopener">这篇文章 </a> 做了非常深入的探讨, 搭嘎，口头哇路！这么麻烦不难受么，直接 udf 多好</p>
+<p>hive竟然没有类似sum的乘法聚合，坑爹！类似exp(sum(log(value)))勉强能实现，sf上全是这种，但是其实是错的！负数我且不论了，遇到0都很尴尬，value中有一个0，则乘法聚合结果理论上来说应该是0，然而这种算法，log(0)=null，因此聚合时会忽略这个null！而且还很难排查，因为不会报错，结果也很正常，不是null，<a href="https://blog.jooq.org/2018/09/21/how-to-write-a-multiplication-aggregate-function-in-sql/" target="_blank" rel="noopener">这篇文章</a>做了非常深入的探讨,搭嘎，口头哇路！这么麻烦不难受么，直接udf多好</p>
 </li>
-<li><p><strong>为什么 float 类型每次加和都不同？</strong></p>
+<li><p><strong>为什么float类型每次加和都不同？</strong></p>
 <!-- -->
-<p>float 类型加和有精度问题，由于不同的 executor 执行速度不一样，每一次可能是不同的 executor 的和聚合加在一起，因此进行舍入时的值时不一样的，会造成每次加的时候都会有一点点非常小的差异。</p>
+<p>float类型加和有精度问题，由于不同的executor执行速度不一样，每一次可能是不同的executor的和聚合加在一起，因此进行舍入时的值时不一样的，会造成每次加的时候都会有一点点非常小的差异。</p>
 </li>
-<li><p><strong>多个 limit 语句 union 需加括号</strong></p>
+<li><p><strong>多个limit语句union需加括号</strong></p>
 <!-- -->
-<p>select 语句中有 limit 语句时必须加括号，也就是 <code>select * from t1 limit 10 union all select * from t2 limit 10 会报错，必须改为(select * from t1 limit 10) union all (select * from t2 limit 10)</code>，<a href="https://stackoverflow.com/questions/1415328/combining-union-and-limit-operations-in-mysql-query" target="_blank" rel="noopener"> 参考</a>，原因是需要指定 limit 语句生效的子句</p>
+<p>select语句中有limit语句时必须加括号，也就是<code>select * from t1 limit 10 union all select * from t2 limit 10会报错，必须改为(select * from t1 limit 10) union all (select * from t2 limit 10)</code>，<a href="https://stackoverflow.com/questions/1415328/combining-union-and-limit-operations-in-mysql-query" target="_blank" rel="noopener">参考</a>，原因是需要指定limit语句生效的子句</p>
 </li>
-<li><p><strong>union all 只会检查字段数是否一致而不会检查字段名</strong></p>
+<li><p><strong>union all只会检查字段数是否一致而不会检查字段名</strong></p>
 <!-- -->
-<p><code>select a,b from table1 union all select c,d from table2</code>是正确的，生成的字段名分别为 a 和 b。所以字段顺序很重要，<code>select a,b from (select a,b from table1 union all select b,a from table2)</code>也是完全正确的，看不出来问题，真正用的时候才会有问题。另外 insert select 也务必注意顺序，若两列类型相同但顺序错了也是能插入的。</p>
+<p><code>select a,b from table1 union all select c,d from table2</code>是正确的，生成的字段名分别为a和b。所以字段顺序很重要，<code>select a,b from (select a,b from table1 union all select b,a from table2)</code>也是完全正确的，看不出来问题，真正用的时候才会有问题。另外insert select也务必注意顺序，若两列类型相同但顺序错了也是能插入的。</p>
 </li>
 </ul>
 
@@ -352,8 +364,8 @@
       <i class="fa fa-chevron-left"></i> 重新出发
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/01/01/pyspark/" rel="next" title="pyspark 相关问题踩坑">
-      pyspark 相关问题踩坑 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/01/01/pyspark/" rel="next" title="pyspark相关问题踩坑">
+      pyspark相关问题踩坑 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -368,6 +380,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -503,6 +516,10 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -547,6 +564,28 @@
   
 
   
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'fdcf1cf9a619624b9e12',
+      clientSecret: '37a1606d9ef2698e89c84888fa0a28eb124f8d82',
+      repo: 'comment_for_blog',
+      owner: 'walio',
+      admin: ['walio'],
+      id: 'fb195a10a576038568fc340de069277d',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>

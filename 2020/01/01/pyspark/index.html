@@ -9,13 +9,14 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <meta name="google-site-verification" content="J9x_3qeYJgpHXg3TWkjrMVeWgrvoJXCn9BdqH8lpyPE">
+  <meta name="google-site-verification" content="64FMlGAJs_Ar1iB0aZXQsWs5vrTqkLJ1lU3VCBLoVq8">
   <meta name="baidu-site-verification" content="Dd8P2nJsBS">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -30,10 +31,10 @@
     copycode: {"enable":false,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: false,
-    pangu: false,
+    lazyload: true,
+    pangu: true,
     comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
     algolia: {
       appID: '',
@@ -50,7 +51,7 @@
 
   <meta name="description" content="多年以来踩过许许多多spark的坑，查问题的时候也是各种艰辛，基本没有中文资料，记录一下防止自己忘记，也方便后来人，主要是分pyspark相关、sparksql相关。按照问题与回答进行组织。本篇为pyspark相关问题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pyspark 相关问题踩坑">
+<meta property="og:title" content="pyspark相关问题踩坑">
 <meta property="og:url" content="https://walio.github.io/2020/01/01/pyspark/index.html">
 <meta property="og:site_name" content="冰淇凌好吃树难栽">
 <meta property="og:description" content="多年以来踩过许许多多spark的坑，查问题的时候也是各种艰辛，基本没有中文资料，记录一下防止自己忘记，也方便后来人，主要是分pyspark相关、sparksql相关。按照问题与回答进行组织。本篇为pyspark相关问题。">
@@ -75,19 +76,28 @@
   };
 </script>
 
-  <title>pyspark 相关问题踩坑 | 冰淇凌好吃树难栽</title>
+  <title>pyspark相关问题踩坑 | 冰淇凌好吃树难栽</title>
   
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100755954-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155294835-1"></script>
     <script>
       if (CONFIG.hostname === location.hostname) {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'UA-100755954-1');
+        gtag('config', 'UA-155294835-1');
       }
     </script>
 
 
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b7e22764d98213d5b77d57be73526009";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -196,6 +206,8 @@
     <span>0%</span>
   </div>
 
+  <a href="https://github.com/walio" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
 
     <main class="main">
       <div class="main-inner">
@@ -223,7 +235,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          pyspark 相关问题踩坑
+          pyspark相关问题踩坑
         </h2>
 
         <div class="post-meta">
@@ -247,34 +259,34 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p> 多年以来踩过许许多多 spark 的坑，查问题的时候也是各种艰辛，基本没有中文资料，记录一下防止自己忘记，也方便后来人，主要是分 pyspark 相关、sparksql 相关。按照问题与回答进行组织。本篇为 pyspark 相关问题。</p>
+        <p>多年以来踩过许许多多spark的坑，查问题的时候也是各种艰辛，基本没有中文资料，记录一下防止自己忘记，也方便后来人，主要是分pyspark相关、sparksql相关。按照问题与回答进行组织。本篇为pyspark相关问题。</p>
 <a id="more"></a>
-<p><em>pyspark 本身没有什么问题，主要是 pyspark 中用到 numpy 等会遇到各种各样的问题。</em></p>
+<p><em>pyspark本身没有什么问题，主要是pyspark中用到numpy等会遇到各种各样的问题。</em></p>
 <ul>
-<li><p><strong>numpy 的 dtype 转换 </strong></p>
+<li><p><strong>numpy的dtype转换</strong></p>
 <!-- -->
-<p>astype，直接 int 可以转为 python 基本类型 </p>
+<p>astype，直接int可以转为python基本类型</p>
 </li>
-<li><p><strong>rdd join 时严格按照 key-value</strong></p>
+<li><p><strong>rdd join时严格按照key-value</strong></p>
 <!-- -->
-<p>rdd left join 时，比如 rdd 是 (a,b,c,d,e,f) left join 任何 rdd，则后面的 cdef 均会丢失 </p>
+<p>rdd left join时，比如rdd是(a,b,c,d,e,f) left join任何rdd，则后面的cdef均会丢失</p>
 </li>
-<li><p><strong>spark 的 udaf 相关 </strong></p>
+<li><p><strong>spark的udaf相关</strong></p>
 <!-- -->
-<p>spark dataframe 自定义 udaf 需要借助 pandas 的帮忙，比较麻烦（有没有别的方法？）</p>
+<p>spark dataframe 自定义udaf需要借助pandas的帮忙，比较麻烦（有没有别的方法？）</p>
 </li>
-<li><p><strong>pyspark 序列化异常 </strong></p>
+<li><p><strong>pyspark序列化异常</strong></p>
 <!-- -->
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">Caused by: net.razorvine.pickle.PickleException: problem construction object: java.lang.reflect.InvocationTargetException</span><br><span class="line">at net.razorvine.pickle.objects.AnyClassConstructor.construct(AnyClassConstructor.java:29)</span><br><span class="line">at net.razorvine.pickle.Unpickler.load_reduce(Unpickler.java:707)</span><br><span class="line">at net.razorvine.pickle.Unpickler.dispatch(Unpickler.java:175)</span><br><span class="line">at net.razorvine.pickle.Unpickler.load(Unpickler.java:99)</span><br><span class="line">at net.razorvine.pickle.Unpickler.loads(Unpickler.java:112)</span><br><span class="line">at org.apache.spark.api.python.SerDeUtil$$anonfun$pythonToJava$1$$anonfun$apply$1.apply(SerDeUtil.scala:188)</span><br><span class="line">at org.apache.spark.api.python.SerDeUtil$$anonfun$pythonToJava$1$$anonfun$apply$1.apply(SerDeUtil.scala:187)</span><br><span class="line">at scala.collection.Iterator$$anon$12.nextCur(Iterator.scala:434)</span><br><span class="line">at scala.collection.Iterator$$anon$12.hasNext(Iterator.scala:440)</span><br><span class="line">at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:408)</span><br><span class="line">at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:408)</span><br><span class="line">at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:408)</span><br><span class="line">at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.agg_doAggregateWithoutKey_0$(Unknown Source)</span><br><span class="line">at org.apache.spark.sql.catalyst.expressions.GeneratedClass$GeneratedIteratorForCodegenStage1.processNext(Unknown Source)</span><br><span class="line">at org.apache.spark.sql.execution.BufferedRowIterator.hasNext(BufferedRowIterator.java:43)</span><br><span class="line">at org.apache.spark.sql.execution.WholeStageCodegenExec$$anonfun$10$$anon$1.hasNext(WholeStageCodegenExec.scala:614)</span><br><span class="line">at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:408)</span><br><span class="line">at org.apache.spark.shuffle.sort.BypassMergeSortShuffleWriter.write(BypassMergeSortShuffleWriter.java:131)</span><br><span class="line">at org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:96)</span><br><span class="line">at org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:53)</span><br><span class="line">at org.apache.spark.scheduler.Task.run(Task.scala:109)</span><br><span class="line">at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:345)</span><br><span class="line">at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)</span><br><span class="line">at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)</span><br><span class="line">... 1 more</span><br></pre></td></tr></table></figure>
-<p> 类似于如上所示 PickleException 的问题，是因为在 spark 的 action 操作时返回的不是基本数据类型，没有实现 writable 接口，java 无法进行序列化从而在各个节点间传输数据导致的。可以检查下返回的数据中是否有 numpy 数据类型或 nan 等数据。</p>
+<p>类似于如上所示PickleException的问题，是因为在spark的action操作时返回的不是基本数据类型，没有实现writable接口，java无法进行序列化从而在各个节点间传输数据导致的。可以检查下返回的数据中是否有numpy数据类型或nan等数据。</p>
 </li>
-<li><p><strong>nan 问题 </strong></p>
+<li><p><strong>nan问题</strong></p>
 <!-- -->
-<p>numpy 在类似于 0/0 问题上不会报错，可以通过设置 np.seterr(all=’raise’) 让其抛出异常。但是 seterr 方法对 np.mean 函数无效，np.mean([1,2,nan]) 仍然可以正常运行。Decimal(np.nan) 和 Decimal.from_float(np.nan) 均能正常运行得到一个神奇的 Decimal(‘NaN’) 并且不会报错，设置 seterr 同样无用。</p>
+<p>numpy在类似于0/0问题上不会报错，可以通过设置np.seterr(all=’raise’)让其抛出异常。但是seterr方法对np.mean函数无效，np.mean([1,2,nan])仍然可以正常运行。Decimal(np.nan)和Decimal.from_float(np.nan)均能正常运行得到一个神奇的Decimal(‘NaN’)并且不会报错，设置seterr同样无用。</p>
 </li>
-<li><p><strong>rdd 中数据类型不一致 </strong></p>
+<li><p><strong>rdd中数据类型不一致</strong></p>
 <!-- -->
-<p> 当调用 spark.sql().rdd 某一列为 Decimal 类型，并向其中插入部分 int 类型数据时，spark 会尝试使用 decimal 取解析，从而将 int 解析为 None。（赋值给 np 矩阵就会变为 nan）</p>
+<p>当调用spark.sql().rdd某一列为Decimal类型，并向其中插入部分int类型数据时，spark会尝试使用decimal取解析，从而将int解析为None。（赋值给np矩阵就会变为nan）</p>
 </li>
 </ul>
 
@@ -292,12 +304,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/01/01/sparksql/" rel="prev" title="sparksql 踩坑实践">
-      <i class="fa fa-chevron-left"></i> sparksql 踩坑实践
+    <a href="/2020/01/01/sparksql/" rel="prev" title="sparksql踩坑实践">
+      <i class="fa fa-chevron-left"></i> sparksql踩坑实践
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/01/01/commonsql/" rel="next" title="常用的一些 sql">
-      常用的一些 sql <i class="fa fa-chevron-right"></i>
+    <a href="/2020/01/01/commonsql/" rel="next" title="常用的一些sql">
+      常用的一些sql <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -312,6 +324,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -447,6 +460,10 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -491,6 +508,28 @@
   
 
   
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'fdcf1cf9a619624b9e12',
+      clientSecret: '37a1606d9ef2698e89c84888fa0a28eb124f8d82',
+      repo: 'comment_for_blog',
+      owner: 'walio',
+      admin: ['walio'],
+      id: '8c20a063262e93b09eb78816010f5bc0',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>

@@ -9,13 +9,14 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
-  <meta name="google-site-verification" content="J9x_3qeYJgpHXg3TWkjrMVeWgrvoJXCn9BdqH8lpyPE">
+  <meta name="google-site-verification" content="64FMlGAJs_Ar1iB0aZXQsWs5vrTqkLJ1lU3VCBLoVq8">
   <meta name="baidu-site-verification" content="Dd8P2nJsBS">
 
 <link rel="stylesheet" href="/css/main.css">
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
 
 
 <script id="hexo-configurations">
@@ -30,10 +31,10 @@
     copycode: {"enable":false,"show_result":false,"style":null},
     back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
     bookmark: {"enable":false,"color":"#222","save":"auto"},
-    fancybox: false,
+    fancybox: true,
     mediumzoom: false,
-    lazyload: false,
-    pangu: false,
+    lazyload: true,
+    pangu: true,
     comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
     algolia: {
       appID: '',
@@ -50,7 +51,7 @@
 
   <meta name="description" content="一些关于python的想法。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python 每日进步">
+<meta property="og:title" content="python每日进步">
 <meta property="og:url" content="https://walio.github.io/2017/01/08/python/index.html">
 <meta property="og:site_name" content="冰淇凌好吃树难栽">
 <meta property="og:description" content="一些关于python的想法。">
@@ -75,19 +76,28 @@
   };
 </script>
 
-  <title>python 每日进步 | 冰淇凌好吃树难栽</title>
+  <title>python每日进步 | 冰淇凌好吃树难栽</title>
   
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100755954-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155294835-1"></script>
     <script>
       if (CONFIG.hostname === location.hostname) {
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'UA-100755954-1');
+        gtag('config', 'UA-155294835-1');
       }
     </script>
 
 
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b7e22764d98213d5b77d57be73526009";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -196,6 +206,8 @@
     <span>0%</span>
   </div>
 
+  <a href="https://github.com/walio" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
 
     <main class="main">
       <div class="main-inner">
@@ -223,7 +235,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          python 每日进步
+          python每日进步
         </h2>
 
         <div class="post-meta">
@@ -254,32 +266,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>一些关于 python 的想法。</p>
+        <p>一些关于python的想法。</p>
 <a id="more"></a>
-<h2 id="动态类型"><a href="# 动态类型" class="headerlink" title="动态类型"></a>动态类型 </h2><p> 注意 python 是动态类型而不是弱类型，简单来说 python 中‘asdf’+1 是会报错的，而弱类型如 js 就可以</p>
-<h2 id="urllib2-urlopen 和 requests-get 对比："><a href="#urllib2-urlopen 和 requests-get 对比：" class="headerlink" title="urllib2.urlopen 和 requests.get 对比："></a>urllib2.urlopen 和 requests.get 对比：</h2><ol>
-<li>功能一样。urllib2.urlopen 是异步调用，requests.get 是同步调用，一旦有一个 url 阻塞住就无法继续往下了。grequests 是异步的 requests，但是无法取法取得响应信息。</li>
-<li>自定义 404 界面 requests.get 可以正常返回页面信息，status_code 属性是 404 等，而 urllib2 抛出 HTTPError 异常</li>
+<h2 id="动态类型"><a href="#动态类型" class="headerlink" title="动态类型"></a>动态类型</h2><p>注意python是动态类型而不是弱类型，简单来说python中‘asdf’+1是会报错的，而弱类型如js就可以</p>
+<h2 id="urllib2-urlopen和requests-get对比："><a href="#urllib2-urlopen和requests-get对比：" class="headerlink" title="urllib2.urlopen和requests.get对比："></a>urllib2.urlopen和requests.get对比：</h2><ol>
+<li>功能一样。urllib2.urlopen是异步调用，requests.get是同步调用，一旦有一个url阻塞住就无法继续往下了。grequests是异步的requests，但是无法取法取得响应信息。</li>
+<li>自定义404界面requests.get可以正常返回页面信息，status_code属性是404等，而urllib2抛出HTTPError异常</li>
 </ol>
-<h2 id="打开文件"><a href="# 打开文件" class="headerlink" title="打开文件"></a>打开文件 </h2><p> 不要轻易用”w”打开文件，即使你什么也没做，文件也会被清空</p>
-<h2 id="性能测试"><a href="# 性能测试" class="headerlink" title="性能测试"></a>性能测试 </h2><h4 id="工具"><a href="# 工具" class="headerlink" title="工具"></a> 工具</h4><p>ipython，原谅我的愚昧无知，我一度以为 ipython 早就过时了，没想到功能很强大</p>
-<h4 id="列表推导和 map"><a href="# 列表推导和 map" class="headerlink" title="列表推导和 map"></a>列表推导和 map</h4><p>老生常谈，<a href="https://stackoverflow.com/questions/1247486/python-list-comprehension-vs-map" target="_blank" rel="noopener">sf 链接 </a>，最好自己运行一遍，毕竟 python 更新之后性能也许会改变？Windows 下如果<code>python -mtimeit -s&#39;xs=range(10)&#39; &#39;map(hex, xs)&#39;</code> 如果报 <code>SyntaxError: EOL while scanning string literal</code> 的错误的话，多半是因为单引号，改成 <br><code>python -mtimeit -s&quot;xs=range(10)&quot; &quot;map(hex, xs)&quot;</code> 或者 <code>python -mtimeit -s&#39;xs=range(10)&#39; &#39;map(hex,xs)&#39;</code>，原因大概是<code>map(hex, xs)</code> 中间的空格把这个字符串“截断成为两个参数 <code>map(hex,</code> 和<code>xs)</code>”了。<br>注意 python3 中 map 返回的是一个迭代器，返回列表需要 list(map)。参考 <br><a href="https://stackoverflow.com/a/40948713/8131108" target="_blank" rel="noopener"> 答案 </a> 版本 3.5.2 和我版本 3.6.1 很接近就没有重复试验了 <br> 可以看出 map 相对于列表推导有着非常明显的优势，可能是 python3 对 map 做了特别的优化(妈蛋我怎么记得 map 是 depricated 建议用列表推导和 zip 替代？)</p>
+<h2 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h2><p>不要轻易用”w”打开文件，即使你什么也没做，文件也会被清空</p>
+<h2 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h2><h4 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h4><p>ipython，原谅我的愚昧无知，我一度以为ipython早就过时了，没想到功能很强大</p>
+<h4 id="列表推导和map"><a href="#列表推导和map" class="headerlink" title="列表推导和map"></a>列表推导和map</h4><p>老生常谈，<a href="https://stackoverflow.com/questions/1247486/python-list-comprehension-vs-map" target="_blank" rel="noopener">sf链接</a>，最好自己运行一遍，毕竟python更新之后性能也许会改变？Windows下如果<code>python -mtimeit -s&#39;xs=range(10)&#39; &#39;map(hex, xs)&#39;</code>如果报<code>SyntaxError: EOL while scanning string literal</code>的错误的话，多半是因为单引号，改成<br><code>python -mtimeit -s&quot;xs=range(10)&quot; &quot;map(hex, xs)&quot;</code>或者<code>python -mtimeit -s&#39;xs=range(10)&#39; &#39;map(hex,xs)&#39;</code>，原因大概是<code>map(hex, xs)</code>中间的空格把这个字符串“截断成为两个参数<code>map(hex,</code>和<code>xs)</code>”了。<br>注意python3中map返回的是一个迭代器，返回列表需要list(map)。参考<br><a href="https://stackoverflow.com/a/40948713/8131108" target="_blank" rel="noopener">答案</a>版本3.5.2和我版本3.6.1很接近就没有重复试验了<br>可以看出map相对于列表推导有着非常明显的优势，可能是python3对map做了特别的优化(妈蛋我怎么记得map是depricated建议用列表推导和zip替代？)</p>
 <figure class="highlight ipython"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">%timeit list(map(sum, x_list))</span><br><span class="line"><span class="number">10000</span> loops, best of <span class="number">3</span>: <span class="number">161</span> µs per loop</span><br><span class="line"></span><br><span class="line">%timeit [sum(x) <span class="keyword">for</span> x <span class="keyword">in</span> x_list]</span><br><span class="line"><span class="number">1000</span> loops, best of <span class="number">3</span>: <span class="number">212</span> µs per loop</span><br><span class="line"></span><br><span class="line">%timeit list(map(sum, x_list))</span><br><span class="line"><span class="number">10000</span> loops, best of <span class="number">3</span>: <span class="number">161</span> µs per loop</span><br><span class="line"></span><br><span class="line">%timeit [sum(x) <span class="keyword">for</span> x <span class="keyword">in</span> x_list]</span><br><span class="line"><span class="number">1000</span> loops, best of <span class="number">3</span>: <span class="number">213</span> µs per loop</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight ipython"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">%timeit list(map(<span class="keyword">lambda</span> i: i+<span class="number">1</span>, i_list))</span><br><span class="line"><span class="number">10000</span> loops, best of <span class="number">3</span>: <span class="number">126</span> µs per loop</span><br><span class="line"></span><br><span class="line">%timeit [i+<span class="number">1</span> <span class="keyword">for</span> i <span class="keyword">in</span> i_list]</span><br><span class="line"><span class="number">10000</span> loops, best of <span class="number">3</span>: <span class="number">53.9</span> µs per loop</span><br><span class="line"></span><br><span class="line">%timeit list(map(<span class="keyword">lambda</span> i: i+<span class="number">1</span>, i_list))</span><br><span class="line"><span class="number">10000</span> loops, best of <span class="number">3</span>: <span class="number">125</span> µs per loop</span><br><span class="line"></span><br><span class="line">%timeit [i+<span class="number">1</span> <span class="keyword">for</span> i <span class="keyword">in</span> i_list]</span><br><span class="line"><span class="number">10000</span> loops, best of <span class="number">3</span>: <span class="number">53.9</span> µs per loop</span><br></pre></td></tr></table></figure>
-<p>sf 诚不我欺！</p>
-<h2 id="函数式编程"><a href="# 函数式编程" class="headerlink" title="函数式编程"></a>函数式编程 </h2><p> 简单来说减少中间变量，尽量使用不可变的集合 <br><a href="http://www.cnblogs.com/huxi/archive/2011/06/18/2084316.html" target="_blank" rel="noopener"> 推荐博文</a></p>
-<h4 id="闭包"><a href="# 闭包" class="headerlink" title="闭包"></a>闭包 </h4><p><a href="https://zhuanlan.zhihu.com/p/22486908?refer=study-fe" target="_blank" rel="noopener"> 简明介绍 </a> 简单来说就是防止随意更改变量，只允许部分函数更改</p>
+<p>sf诚不我欺！</p>
+<h2 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a>函数式编程</h2><p>简单来说减少中间变量，尽量使用不可变的集合<br><a href="http://www.cnblogs.com/huxi/archive/2011/06/18/2084316.html" target="_blank" rel="noopener">推荐博文</a></p>
+<h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4><p><a href="https://zhuanlan.zhihu.com/p/22486908?refer=study-fe" target="_blank" rel="noopener">简明介绍</a>简单来说就是防止随意更改变量，只允许部分函数更改</p>
 <blockquote>
-<p>那么，如果想要利用 reduce_找出列表中的最大值，应该怎么做呢？请自行思考：）</p>
+<p>那么，如果想要利用reduce_找出列表中的最大值，应该怎么做呢？请自行思考：）</p>
 </blockquote>
 <p>reduce_(lambda x,y:x if x&gt;y else y,[1,2,3],1)</p>
 <blockquote>
 <p>使用函数替代循环是函数式风格区别于指令式风格的最显而易见的特征。</p>
 </blockquote>
 <p>利于并行？</p>
-<h6 id="装饰器"><a href="# 装饰器" class="headerlink" title="装饰器"></a>装饰器 </h6><p> 有没有办法将上下文管理作为装饰器？将 sql 语句传入函数后装饰器取出结果后将 result 传入原函数，这样就改变了原函数的参数列表，调用者在使用函数时可能会感到疑惑？docstring 也不好写</p>
-<h6 id="gui"><a href="#gui" class="headerlink" title="gui"></a>gui</h6><p>Tkinter 只适合做最简单的应用，但凡复杂一点还是用 wxpython 或者 pyQt 吧 <br> 任何耗时的操作 (io 等) 均会造成 GUI 卡死，请把它们放在单独的进程中执行。<br>少用 pack()，我根本不知道怎么用 pack()对齐</p>
+<h6 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h6><p>有没有办法将上下文管理作为装饰器？将sql语句传入函数后装饰器取出结果后将result传入原函数，这样就改变了原函数的参数列表，调用者在使用函数时可能会感到疑惑？docstring也不好写</p>
+<h6 id="gui"><a href="#gui" class="headerlink" title="gui"></a>gui</h6><p>Tkinter只适合做最简单的应用，但凡复杂一点还是用wxpython或者pyQt吧<br>任何耗时的操作(io等)均会造成GUI卡死，请把它们放在单独的进程中执行。<br>少用pack()，我根本不知道怎么用pack()对齐</p>
 
     </div>
 
@@ -315,6 +327,7 @@
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -361,7 +374,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#动态类型"><span class="nav-number">1.</span> <span class="nav-text">动态类型 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#urllib2-urlopen 和 requests-get 对比："><span class="nav-number">2.</span> <span class="nav-text">urllib2.urlopen 和 requests.get 对比：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打开文件"><span class="nav-number">3.</span> <span class="nav-text">打开文件 </span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能测试"><span class="nav-number">4.</span> <span class="nav-text">性能测试 </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#工具"><span class="nav-number">4.0.1.</span> <span class="nav-text"> 工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表推导和 map"><span class="nav-number">4.0.2.</span> <span class="nav-text">列表推导和 map</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数式编程"><span class="nav-number">5.</span> <span class="nav-text">函数式编程 </span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#闭包"><span class="nav-number">5.0.1.</span> <span class="nav-text">闭包 </span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#装饰器"><span class="nav-number">5.0.1.0.1.</span> <span class="nav-text">装饰器 </span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#gui"><span class="nav-number">5.0.1.0.2.</span> <span class="nav-text">gui</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#动态类型"><span class="nav-number">1.</span> <span class="nav-text">动态类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#urllib2-urlopen和requests-get对比："><span class="nav-number">2.</span> <span class="nav-text">urllib2.urlopen和requests.get对比：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打开文件"><span class="nav-number">3.</span> <span class="nav-text">打开文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#性能测试"><span class="nav-number">4.</span> <span class="nav-text">性能测试</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#工具"><span class="nav-number">4.0.1.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#列表推导和map"><span class="nav-number">4.0.2.</span> <span class="nav-text">列表推导和map</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数式编程"><span class="nav-number">5.</span> <span class="nav-text">函数式编程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#闭包"><span class="nav-number">5.0.1.</span> <span class="nav-text">闭包</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#装饰器"><span class="nav-number">5.0.1.0.1.</span> <span class="nav-text">装饰器</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#gui"><span class="nav-number">5.0.1.0.2.</span> <span class="nav-text">gui</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -451,6 +464,10 @@
 
   
   <script src="/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -495,6 +512,28 @@
   
 
   
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: 'fdcf1cf9a619624b9e12',
+      clientSecret: '37a1606d9ef2698e89c84888fa0a28eb124f8d82',
+      repo: 'comment_for_blog',
+      owner: 'walio',
+      admin: ['walio'],
+      id: '3d45782496fe81ed3202d7be6d82488f',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
