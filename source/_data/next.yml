@@ -10,7 +10,7 @@ author: qianjie
 override: false
 
 # Console reminder if new version released.
-reminder: false
+reminder: true
 
 # Allow to cache content generation. Introduced in NexT v6.0.0.
 cache:
@@ -319,8 +319,8 @@ tagcloud:
 # Google Calendar
 # Share your recent schedule to others via calendar page.
 calendar:
-  calendar_id: <required> # Your Google account E-Mail
-  api_key: <required>
+  calendar_id: mr.qianjie@gmail.com # Your Google account E-Mail
+  api_key: AIzaSyC2Vlm5WoNoDA_uPmiOw748m-wkyPrrPfE
   orderBy: startTime
   offsetMax: 24 # Time Range
   offsetMin: 4 # Time Range
@@ -390,8 +390,8 @@ bookmark:
 
 # `Follow me on GitHub` banner in the top-right corner.
 github_banner:
-  enable: false
-  permalink: https://github.com/yourname
+  enable: true
+  permalink: https://github.com/walio
   title: Follow me on GitHub
 
 
@@ -472,7 +472,7 @@ exturl: false
 
 # Google Webmaster tools verification.
 # See: https://www.google.com/webmasters
-google_site_verification: J9x_3qeYJgpHXg3TWkjrMVeWgrvoJXCn9BdqH8lpyPE
+google_site_verification: 64FMlGAJs_Ar1iB0aZXQsWs5vrTqkLJ1lU3VCBLoVq8
 
 # Bing Webmaster tools verification.
 # See: https://www.bing.com/webmaster
@@ -508,7 +508,7 @@ math:
 
   # hexo-renderer-pandoc (or hexo-renderer-kramed) required for full MathJax support.
   mathjax:
-    enable: false
+    enable: true
     # See: https://mhchem.github.io/MathJax-mhchem/
     mhchem: false
 
@@ -524,7 +524,7 @@ pjax: false
 
 # FancyBox is a tool that offers a nice and elegant way to add zooming functionality for images.
 # For more information: https://fancyapps.com/fancybox
-fancybox: false
+fancybox: true
 
 # A JavaScript library for zooming images like Medium.
 # Do not enable both `fancybox` and `mediumzoom`.
@@ -533,11 +533,11 @@ mediumzoom: false
 
 # Vanilla JavaScript plugin for lazyloading images.
 # For more information: https://github.com/ApoorvSaxena/lozad.js
-lazyload: false
+lazyload: true
 
 # Pangu Support
 # For more information: https://github.com/vinta/pangu.js
-pangu: false
+pangu: true
 
 # Quicklink Support
 # For more information: https://github.com/GoogleChromeLabs/quicklink
@@ -640,12 +640,12 @@ livere_uid: # <your_uid>
 # Gitalk
 # For more information: https://gitalk.github.io, https://github.com/gitalk/gitalk
 gitalk:
-  enable: false
-  github_id: # GitHub repo owner
-  repo: # Repository name to store issues
-  client_id: # GitHub Application Client ID
-  client_secret: # GitHub Application Client Secret
-  admin_user: # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
+  enable: true
+  github_id: walio # GitHub repo owner
+  repo: comment_for_blog # Repository name to store issues
+  client_id: fdcf1cf9a619624b9e12 # GitHub Application Client ID
+  client_secret: 37a1606d9ef2698e89c84888fa0a28eb124f8d82 # GitHub Application Client Secret
+  admin_user: walio # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
   distraction_free_mode: true # Facebook-like distraction free mode
   # Gitalk's display language depends on user's browser or system environment
   # If you want everyone visiting your site to see a uniform language, you can set a force language value
@@ -677,13 +677,13 @@ add_this_id:
 
 # Google Analytics
 google_analytics:
-  tracking_id: UA-100755954-1
+  tracking_id: UA-155294835-1
   # By default, NexT will load an external gtag.js script on your site.
   # If you only need the pageview feature, set the following option to true to get a better performance.
   only_pageview: false
 
 # Baidu Analytics
-baidu_analytics: # <app_id>
+baidu_analytics: b7e22764d98213d5b77d57be73526009
 
 # Growingio Analytics
 growingio_analytics: # <project_id>
